@@ -13,7 +13,7 @@ HRESULT MainGame::init(void)
 	SCENEMANAGER->addScene("πË∆≤∏ ", new battleScene);
 	SCENEMANAGER->addScene("πË∆≤∏ 2", new battleScene2);
 
-	SCENEMANAGER->changeScene("Ω√¿€");
+	SCENEMANAGER->changeScene("πË∆≤∏ 2");
 
 	return S_OK;
 }

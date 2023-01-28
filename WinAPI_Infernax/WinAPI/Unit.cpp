@@ -18,7 +18,7 @@ void Unit::release(void)
 void Unit::update(void)
 {
     playerUpdate();
-    enemyUpdate();
+    //enemyUpdate();
 
     worldTimeCount++;
 }

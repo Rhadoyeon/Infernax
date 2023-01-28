@@ -10,7 +10,6 @@ private:
 
 	RECT crossRC;
 
-
 	int crossX, crossY;
 	int crowFrameX, crowFrameY;
 

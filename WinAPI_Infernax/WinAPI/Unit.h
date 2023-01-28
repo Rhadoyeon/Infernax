@@ -77,11 +77,10 @@ private: // Àû
 	int enemyX, enemyY;
 	int enemyState;
 
-	int enemyFrameX, enemyFrameY;
-
 	int zombieX, zombieY;
 
 	int zombieFrameX, zombieFrameY;
+	int zombieDieFrameX;
 
 	//float enemySpeed;
 	//bool enemyDie;
