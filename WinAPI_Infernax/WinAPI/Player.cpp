@@ -48,8 +48,8 @@ void Unit::playerUpdate(void)
 			{
 				if (enemyMoment.E_Die && bgMove !=890.0f)
 				{
-					zombieRc.left += 2;
-					zombieRc.right += 2;
+					zombieRC.left += 2;
+					zombieRC.right += 2;
 				}
 				bgMove += 2.0f;
 			}
@@ -149,12 +149,12 @@ void Unit::playerUpdate(void)
 	RECT temp;
 	if (playerFrameY == 0)
 	{
-		if (IntersectRect(&temp, &playerAttackRC, &zombieRc))
+		if (IntersectRect(&temp, &playerAttackRC, &zombieRC))
 		{
 			if (temp.right - temp.left > 50)
 			{
-				zombieRc.left -= 100;
-				zombieRc.right -= 100;
+				zombieRC.left -= 100;
+				zombieRC.right -= 100;
 
 				if (enemyMoment.E_Hp < 3) enemyMoment.E_Hp++;
 			}
@@ -162,12 +162,12 @@ void Unit::playerUpdate(void)
 	}
 	else if (playerFrameY == 1)
 	{
-		if (IntersectRect(&temp, &playerAttackRC, &zombieRc))
+		if (IntersectRect(&temp, &playerAttackRC, &zombieRC))
 		{
 			if (temp.right - temp.left > 50)
 			{
-				zombieRc.left += 100;
-				zombieRc.right += 100;
+				zombieRC.left += 100;
+				zombieRC.right += 100;
 			}
 		}
 	}
@@ -218,7 +218,7 @@ void Unit::playerRender(void)
 				playerAttackRC = RectMakeCenter(playerAttackX, playerAttackY, 140, 114);
 
 				zombieFrameY = 2;
-				if (!enemyMoment.E_Die) IMAGEMANAGER->findImage("좀비_걷기")->frameRender(getMemDC(), zombieRc.left, zombieRc.top - 8, zombieFrameX, zombieFrameY);
+				if (!enemyMoment.E_Die) IMAGEMANAGER->findImage("좀비_걷기")->frameRender(getMemDC(), zombieRC.left, zombieRC.top - 8, zombieFrameX, zombieFrameY);
 
 			}
 
@@ -240,7 +240,7 @@ void Unit::playerRender(void)
 				playerAttackY = playerY - 5;
 				playerAttackRC = RectMakeCenter(playerAttackX, playerAttackY, 140, 114);
 				zombieFrameY = 3;
-				if (!enemyMoment.E_Die) IMAGEMANAGER->findImage("좀비_걷기")->frameRender(getMemDC(), zombieRc.left, zombieRc.top - 8, zombieFrameX, zombieFrameY);
+				if (!enemyMoment.E_Die) IMAGEMANAGER->findImage("좀비_걷기")->frameRender(getMemDC(), zombieRC.left, zombieRC.top - 8, zombieFrameX, zombieFrameY);
 			}
 			IMAGEMANAGER->frameRender("플레이어_공격", getMemDC(), playerRC.left - 87, playerRC.top - 12, playerAttackFrameX, playerFrameY);
 		}

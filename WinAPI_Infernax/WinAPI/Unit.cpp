@@ -5,6 +5,7 @@ HRESULT Unit::init(void)
 {
     playerInit();
     enemyInit();
+    bossVomitInit();
 
     worldTimeCount = 0;
 
@@ -18,7 +19,8 @@ void Unit::release(void)
 void Unit::update(void)
 {
     playerUpdate();
-    //enemyUpdate();
+    enemyUpdate();
+    bossVomitUpdate();
 
     worldTimeCount++;
 }
@@ -26,5 +28,7 @@ void Unit::update(void)
 void Unit::render(void)
 {
     enemyRender();
+    bossVomitRender();
     playerRender();
+
 }

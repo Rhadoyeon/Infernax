@@ -38,7 +38,7 @@ void MainGame::Images(void)
 	// 적
 	IMAGEMANAGER->addFrameImage("좀비_걷기", ENEMY"Zombie_Walk.bmp", 108, 444, 2, 4, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("좀비_죽음", ENEMY"ZombieDie.bmp", 270, 102, 3, 1, true, COLORDEL);
-	IMAGEMANAGER->addFrameImage("보스_걷기", ENEMY"Boss.bmp", 0, 0, 0, 0, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("보스_걷기", ENEMY"VomitBoss.bmp", 8415, 840, 17, 2, true, COLORDEL);
 
 	// 오브젝트
 	//IMAGEMANAGER->addImage("십자가", OBJ"Cross.bmp", 120, 210, true, COLORDEL);

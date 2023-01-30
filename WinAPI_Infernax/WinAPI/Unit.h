@@ -48,8 +48,6 @@ private: // 플레이어
 
 	RECT playerRC;
 	RECT playerAttackRC;
-	RECT playerSitDownRC;
-	RECT zombieRc;
 	int playerState;
 
 	PlayerMoment playerMomemt;
@@ -71,11 +69,9 @@ private: // 플레이어
 
 	int worldTimeCount;
 
-private: // 적
+private: // 배틀씬1 적
 
-	RECT enemyRC;
-	int enemyX, enemyY;
-	int enemyState;
+	RECT zombieRC;
 
 	int zombieX, zombieY;
 
@@ -84,6 +80,16 @@ private: // 적
 
 	//float enemySpeed;
 	//bool enemyDie;
+
+private: // 첫번째 보스
+	RECT vomitBossRC;
+
+	int vomitBossX, vomitBossY;
+
+	int vomitBossFrameX, vomitBossFrameY;
+	int vomitBossAttackFrameX, vomitBossAttackFrameY;
+
+	int vomitBossDieFrameX, vomitBossDieFrameY;
 
 public:
 	HRESULT init(void);
@@ -98,6 +104,10 @@ public:
 	void enemyInit(void);
 	void enemyUpdate(void);
 	void enemyRender(void);
+
+	void bossVomitInit(void);
+	void bossVomitUpdate(void);
+	void bossVomitRender(void);
 
 	// 배경 이동 좌표 접근자
 	int getBgMove(void) { return bgMove; }

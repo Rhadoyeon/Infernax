@@ -47,6 +47,9 @@
     <Filter Include="Unit">
       <UniqueIdentifier>{c24c397d-cec9-43c8-891f-1bd51ffc0d1a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameScene">
+      <UniqueIdentifier>{586823a4-e6ea-47d4-8e2d-56daaf49c0e6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C3DMatrix.cpp">
@@ -124,7 +127,6 @@
     <ClCompile Include="AnimationScene.cpp">
       <Filter>API FrameWork\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="battleScene.cpp" />
     <ClCompile Include="Images.cpp" />
     <ClCompile Include="Unit.cpp">
       <Filter>Unit</Filter>
@@ -135,8 +137,18 @@
     <ClCompile Include="Player.cpp">
       <Filter>Unit</Filter>
     </ClCompile>
-    <ClCompile Include="StartScene.cpp" />
-    <ClCompile Include="battleScene2.cpp" />
+    <ClCompile Include="BossVomit.cpp">
+      <Filter>Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="battleScene.cpp">
+      <Filter>GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="battleScene2.cpp">
+      <Filter>GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="StartScene.cpp">
+      <Filter>GameScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C3DMatrix.h">
@@ -220,12 +232,18 @@
     <ClInclude Include="AnimationScene.h">
       <Filter>API FrameWork\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="battleScene.h" />
     <ClInclude Include="Unit.h">
       <Filter>Unit</Filter>
     </ClInclude>
-    <ClInclude Include="StartScene.h" />
-    <ClInclude Include="battleScene2.h" />
+    <ClInclude Include="battleScene.h">
+      <Filter>GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="battleScene2.h">
+      <Filter>GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="StartScene.h">
+      <Filter>GameScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="CodingInterview\Question.txt">
