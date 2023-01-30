@@ -39,6 +39,9 @@ struct EnemyMoment
 {
 	int E_Hp;
 	bool E_Die;
+	int BV_Hp;
+	bool BV_Die;
+
 };
 
 class Unit : public GameNode
@@ -52,6 +55,7 @@ private: // 플레이어
 
 	PlayerMoment playerMomemt;
 	EnemyMoment enemyMoment;
+	EnemyMoment bossMoment;
 
 	int playerX, playerY;
 	int playerAttackX, playerAttackY;

@@ -33,12 +33,12 @@ void MainGame::Images(void)
 	IMAGEMANAGER->addImage("전투1", BG"battleSceneLAND1.bmp", 3200, 1000, true, COLORDEL);
 
 	// 배틀씬2
-	IMAGEMANAGER->addImage("전투2", BG"battleSceneLAND2.bmp", 2129, 800, true, COLORDEL);
+	IMAGEMANAGER->addImage("전투2", BG"battleSceneLAND2.bmp", 2714, 800, true, COLORDEL);
 
 	// 적
 	IMAGEMANAGER->addFrameImage("좀비_걷기", ENEMY"Zombie_Walk.bmp", 108, 444, 2, 4, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("좀비_죽음", ENEMY"ZombieDie.bmp", 270, 102, 3, 1, true, COLORDEL);
-	IMAGEMANAGER->addFrameImage("보스_걷기", ENEMY"VomitBoss.bmp", 8415, 840, 17, 2, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("보스_걷기", ENEMY"VomitBoss.bmp", 6987, 846, 17, 2, true, COLORDEL);
 
 	// 오브젝트
 	//IMAGEMANAGER->addImage("십자가", OBJ"Cross.bmp", 120, 210, true, COLORDEL);

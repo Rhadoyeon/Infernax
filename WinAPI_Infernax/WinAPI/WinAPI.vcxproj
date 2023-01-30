@@ -226,18 +226,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="CodingInterview\Question.txt" />
-    <Text Include="Lessons\수업 내용_221108.txt" />
-    <Text Include="Lessons\수업 내용_221109.txt" />
-    <Text Include="Lessons\수업 내용_221110.txt" />
-    <Text Include="Lessons\수업 내용_221111.txt" />
-    <Text Include="Lessons\수업 내용_221112.txt" />
-    <Text Include="Lessons\수업 내용_221114.txt" />
-    <Text Include="Lessons\수업 내용_221115.txt" />
-    <Text Include="Lessons\수업 내용_221116.txt" />
-    <Text Include="Lessons\수업 내용_221121.txt" />
-    <Text Include="Lessons\수업 내용_221130.txt" />
-    <Text Include="Lessons\수업 내용_221220.txt" />
-    <Text Include="과제.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Characters.json" />

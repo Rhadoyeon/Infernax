@@ -21,27 +21,28 @@ void Unit::enemyUpdate(void)
 	}
 
 	// 좀비 오른쪽으로 무빙
-	if (playerX > zombieRC.right&& !enemyMoment.E_Die)
+	if (playerX > zombieRC.right && !enemyMoment.E_Die)
 	{
 		zombieFrameY = 1;
-		zombieRC.left += 1;
-		zombieRC.right += 1;
+		zombieX += 1;
+		//zombieRC.right += 1;
 	}
 
 	// 좀비 왼쪽으로 무빙
-	else if (playerX < zombieRC.left&&!enemyMoment.E_Die)
+	else if (playerX < zombieRC.right && !enemyMoment.E_Die)
 	{
 		zombieFrameY = 0;
-		zombieRC.left -= 1;
-		zombieRC.right -= 1;
+		zombieX -= 1;
+		//zombieRC.right -= 1;
 	}
 
 	if (enemyMoment.E_Hp == 3)
 	{
 		enemyMoment.E_Die = true;
 		if (zombieDieFrameX > IMAGEMANAGER->findImage("좀비_죽음")->getMaxFrameX()) zombieDieFrameX = 2;
-		if (zombieDieFrameX == 2);
 	}
+
+	zombieRC = RectMakeCenter(zombieX, zombieY, 55, 105);
 
 }
 

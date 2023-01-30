@@ -18,7 +18,6 @@ void Unit::playerInit(void)
 	// 플레이어 움직임
 	playerState = P_WALK;
 
-
 	playerMomemt.P_Die = false;
 	playerMomemt.P_Jump = false;
 
@@ -40,13 +39,10 @@ void Unit::playerUpdate(void)
 			playerState = P_WALK;
 			playerFrameY = 0;
 
-
-
-
 			// 배경제한
 			if (playerX < WINSIZE_X / 2)
 			{
-				if (enemyMoment.E_Die && bgMove !=890.0f)
+				if (enemyMoment.E_Die && bgMove != 890.0f)
 				{
 					zombieRC.left += 2;
 					zombieRC.right += 2;
@@ -70,14 +66,32 @@ void Unit::playerUpdate(void)
 		}
 
 		// 오른쪽
-		if (KEYMANAGER->isStayKeyDown('D') && !KEYMANAGER->isOnceKeyDown(VK_LEFT) && !playerRC.left <= 0)
+		if (KEYMANAGER->isStayKeyDown('D') && !KEYMANAGER->isOnceKeyDown(VK_LEFT) && !playerRC.left >= 0)
 		{
 			playerState = P_WALK;
 			playerFrameY = 1;
-			playerX += 2;
-			playerAttackX += 2;
 
-			if (playerX < WINSIZE_X / 2) bgMove -= 3.0f;
+			if (playerX > WINSIZE_X / 2)
+			{
+				if (enemyMoment.E_Die && bgMove != 890.0f)
+				{
+					zombieRC.left -= 2;
+					zombieRC.right -= 2;
+				}
+				bgMove -= 2.0f;
+			}
+			else
+			{
+				playerX += 2;
+				playerAttackX += 2;
+			}
+
+			if (bgMove < 0) bgMove = 0.0f;
+			if (bgMove == 0.0f)
+			{
+				playerX += 2;
+				playerAttackX += 2;
+			}
 
 			if (worldTimeCount % 15 == 0) playerFrameX++;
 			if (playerFrameX > IMAGEMANAGER->findImage("플레이어_걷기")->getMaxFrameX()) playerFrameX = 0;
@@ -143,6 +157,7 @@ void Unit::playerUpdate(void)
 			SCENEMANAGER->changeScene("배틀맵2");
 		}
 	}
+
 #pragma endregion
 
 #pragma region 적과의 충돌

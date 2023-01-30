@@ -29,9 +29,6 @@
     <Filter Include="API FrameWork\Image">
       <UniqueIdentifier>{3ade2f97-fca1-483c-94c8-5c1db157a66d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Lessons">
-      <UniqueIdentifier>{a33f2b97-30b6-4904-bc89-3ef554dfb8f7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="CodingInterview">
       <UniqueIdentifier>{aba916b2-d608-4045-affa-08b7167da573}</UniqueIdentifier>
     </Filter>
@@ -249,40 +246,6 @@
     <Text Include="CodingInterview\Question.txt">
       <Filter>CodingInterview</Filter>
     </Text>
-    <Text Include="Lessons\수업 내용_221108.txt">
-      <Filter>Lessons</Filter>
-    </Text>
-    <Text Include="Lessons\수업 내용_221109.txt">
-      <Filter>Lessons</Filter>
-    </Text>
-    <Text Include="Lessons\수업 내용_221110.txt">
-      <Filter>Lessons</Filter>
-    </Text>
-    <Text Include="Lessons\수업 내용_221111.txt">
-      <Filter>Lessons</Filter>
-    </Text>
-    <Text Include="Lessons\수업 내용_221112.txt">
-      <Filter>Lessons</Filter>
-    </Text>
-    <Text Include="Lessons\수업 내용_221114.txt">
-      <Filter>Lessons</Filter>
-    </Text>
-    <Text Include="Lessons\수업 내용_221115.txt">
-      <Filter>Lessons</Filter>
-    </Text>
-    <Text Include="Lessons\수업 내용_221116.txt">
-      <Filter>Lessons</Filter>
-    </Text>
-    <Text Include="Lessons\수업 내용_221121.txt">
-      <Filter>Lessons</Filter>
-    </Text>
-    <Text Include="Lessons\수업 내용_221130.txt">
-      <Filter>Lessons</Filter>
-    </Text>
-    <Text Include="Lessons\수업 내용_221220.txt">
-      <Filter>Lessons</Filter>
-    </Text>
-    <Text Include="과제.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Characters.json">
