@@ -42,10 +42,13 @@ void Unit::playerUpdate(void)
 			// 배경제한
 			if (playerX < WINSIZE_X / 2)
 			{
-				if (enemyMoment.E_Die && bgMove != 890.0f)
+				if (enemyMoment.E_Die && enemyMoment.BV_Die && bgMove != 890.0f)
 				{
 					zombieRC.left += 2;
 					zombieRC.right += 2;
+
+					vomitBossRC.left += 2;
+					vomitBossRC.right += 2;
 				}
 				bgMove += 2.0f;
 			}
@@ -73,10 +76,13 @@ void Unit::playerUpdate(void)
 
 			if (playerX > WINSIZE_X / 2)
 			{
-				if (enemyMoment.E_Die && bgMove != 890.0f)
+				if (enemyMoment.E_Die && enemyMoment.BV_Die && bgMove != 890.0f)
 				{
 					zombieRC.left -= 2;
 					zombieRC.right -= 2;
+
+					vomitBossRC.left -= 2;
+					vomitBossRC.right -= 2;
 				}
 				bgMove -= 2.0f;
 			}

@@ -7,6 +7,7 @@
 #define ENEMY "Resources/Images/Enemy/"
 #define IMG "Resources/Images/"
 #define PLAYERSKILL "Resources/Images/PlayerSkill/"
+#define Village "Resources/Images/Village/"
 #define UI "Resources/Images/UI/"
 #define DIALOG "Resources/Images/Dialog/"
 #define PLAYER "Resources/Images/Player/"
@@ -47,7 +48,7 @@ void MainGame::Images(void)
 	IMAGEMANAGER->addFrameImage("보스_대기", ENEMY"VomitBossStay.bmp", 4650, 846, 10, 2, true, COLORDEL);
 
 	// 마을
-
+	IMAGEMANAGER->addImage("마을_배경", Village"VillageBG.bmp", 0, 0, true, COLORDEL);
 
 	// 오브젝트
 	//IMAGEMANAGER->addImage("십자가", OBJ"Cross.bmp", 120, 210, true, COLORDEL);

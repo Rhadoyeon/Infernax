@@ -104,6 +104,7 @@ private: // 첫번째 보스
 
 	int vomitBossFrameX, vomitBossFrameY;
 	int vomitBossAttackFrameX, vomitBossAttackFrameY;
+	int vomitBossFireFrameX, vomitBossFireFrameY;
 
 	int vomitBossDieFrameX, vomitBossDieFrameY;
 

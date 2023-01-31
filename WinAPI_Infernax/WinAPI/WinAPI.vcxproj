@@ -183,6 +183,7 @@
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Unit.cpp" />
     <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="Village.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -223,6 +224,7 @@
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Unit.h" />
     <ClInclude Include="Utils.h" />
+    <ClInclude Include="Village.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CodingInterview\Question.txt" />
