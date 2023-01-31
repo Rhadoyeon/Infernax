@@ -49,19 +49,19 @@ void Unit::enemyUpdate(void)
 void Unit::enemyRender(void)
 {
 	//DrawRectMake(getMemDC(), zombieRc);
-	
 
-
-	if (enemyMoment.E_Die)
 	{
-		IMAGEMANAGER->findImage("Á»ºñ_Á×À½")->frameRender(getMemDC(), zombieRC.left, zombieRC.top, zombieDieFrameX, zombieFrameY);
+		if (enemyMoment.E_Die)
+		{
+			IMAGEMANAGER->findImage("Á»ºñ_Á×À½")->frameRender(getMemDC(), zombieRC.left, zombieRC.top, zombieDieFrameX, zombieFrameY);
 
-	}
-	else
-	{
-		if (zombieFrameY == 1)	IMAGEMANAGER->findImage("Á»ºñ_°È±â")->frameRender(getMemDC(),
-			zombieRC.left, zombieRC.top - 8, zombieFrameX, zombieFrameY);
-		else if (zombieFrameY == 0) IMAGEMANAGER->findImage("Á»ºñ_°È±â")->frameRender(getMemDC(),
-			zombieRC.left, zombieRC.top - 8, zombieFrameX, zombieFrameY);
+		}
+		else
+		{
+			if (zombieFrameY == 1)	IMAGEMANAGER->findImage("Á»ºñ_°È±â")->frameRender(getMemDC(),
+				zombieRC.left, zombieRC.top - 8, zombieFrameX, zombieFrameY);
+			else if (zombieFrameY == 0) IMAGEMANAGER->findImage("Á»ºñ_°È±â")->frameRender(getMemDC(),
+				zombieRC.left, zombieRC.top - 8, zombieFrameX, zombieFrameY);
+		}
 	}
 }

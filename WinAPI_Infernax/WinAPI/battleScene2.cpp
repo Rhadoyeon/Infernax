@@ -29,5 +29,7 @@ void battleScene2::render(void)
 	IMAGEMANAGER->findImage("전투2")->render(getMemDC(), unit->getBgMove() - 1432, 0);
 
 	// 플레이어와 적 그리기
-	unit->render();
+	//unit->render();
+	unit->bossVomitRender();
+	unit->playerRender();
 }

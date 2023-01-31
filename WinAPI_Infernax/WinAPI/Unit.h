@@ -26,13 +26,15 @@ enum ENEMYSTATE
 
 struct PlayerMoment
 {
-	int P_Hp;		// 체력
-	int P_Mp;		// 마력
-	int P_Life;		// 목숨
-	float P_Exp;	// 경험치
-	float P_Gold;	// 돈
-	bool P_Jump;	// 점프
-	bool P_Die;		// 죽음
+	RECT P_Rc;			// 렉트
+	RECT P_AttackRc;	// 공격렉트
+	int P_Hp;			// 체력
+	int P_Mp;			// 마력
+	int P_Life;			// 목숨
+	float P_Exp;		// 경험치
+	float P_Gold;		// 돈
+	bool P_Jump;		// 점프
+	bool P_Die;			// 죽음
 };
 
 struct EnemyMoment
@@ -47,28 +49,37 @@ struct EnemyMoment
 class Unit : public GameNode
 {
 private: // 플레이어
+
+	// 화면 움직임
 	float bgMove;
 
 	RECT playerRC;
 	RECT playerAttackRC;
-	int playerState;
 
+	// enum문
+	int playerState;
+	int EnemyState;
+
+	// struct
 	PlayerMoment playerMomemt;
 	EnemyMoment enemyMoment;
 	EnemyMoment bossMoment;
 
-	int playerX, playerY;
-	int playerAttackX, playerAttackY;
-	int playerStandX, playerStandY;
+	float playerX, playerY;
+	float playerAttackX, playerAttackY;
+	float playerStandX, playerStandY;
 
+	// 프레임
 	int playerFrameX, playerFrameY;
 	int playerAttackFrameX;
 	int	playerJumpFrameX;
 	int playerSitDownFrameX;
 	int playerStandFrameX;
 
+	// 플레이어 점프
 	float playerSpeed, playerGravity;
 
+	// 화면 알파
 	int alpha;
 
 	int worldTimeCount;
@@ -77,7 +88,7 @@ private: // 배틀씬1 적
 
 	RECT zombieRC;
 
-	int zombieX, zombieY;
+	float zombieX, zombieY;
 
 	int zombieFrameX, zombieFrameY;
 	int zombieDieFrameX;
@@ -87,8 +98,9 @@ private: // 배틀씬1 적
 
 private: // 첫번째 보스
 	RECT vomitBossRC;
+	RECT vomitBossTwoRC;
 
-	int vomitBossX, vomitBossY;
+	float vomitBossX, vomitBossY;
 
 	int vomitBossFrameX, vomitBossFrameY;
 	int vomitBossAttackFrameX, vomitBossAttackFrameY;

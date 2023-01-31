@@ -8,7 +8,6 @@ private:
 	int bgMove;
 	Unit* unit;
 
-
 public:
 	HRESULT init(void);
 	void release(void);

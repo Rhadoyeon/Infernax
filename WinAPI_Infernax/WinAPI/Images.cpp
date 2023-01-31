@@ -1,5 +1,6 @@
 #include "Stdafx.h"
 #include "MainGame.h"
+#include "Unit.h"
 
 #define BG "Resources/Images/Background/"
 #define BOSS "Resources/Images/Boss/"
@@ -21,9 +22,9 @@ void MainGame::Images(void)
 	IMAGEMANAGER->addFrameImage("플레이어_걷기", PLAYER"PlayerMove1.bmp", 207, 204, 3, 2, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("플레이어_점프", PLAYER"PlayerJump1.bmp", 132, 198, 2, 2, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("플레이어_공격", PLAYER"PlayerAttack.bmp", 456, 228, 2, 2, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("플레이어_앉기", PLAYER"PlayerSitDown.bmp", 66, 132, 1, 2, true, COLORDEL);
 
 	// 미구현
-	IMAGEMANAGER->addFrameImage("플레이어_앉기", PLAYER"PlayerSitDown.bmp", 66, 132, 1, 2, true, COLORDEL);
 	//IMAGEMANAGER->addFrameImage("플레이어_상처", PLAYER"PlayerDeal.bmp", 342, 228, 2, 2, true, COLORDEL);
 	//IMAGEMANAGER->addFrameImage("플레이어_죽음", PLAYER"PlayerDie.bmp", 342, 228, 2, 2, true, COLORDEL);
 
@@ -38,7 +39,15 @@ void MainGame::Images(void)
 	// 적
 	IMAGEMANAGER->addFrameImage("좀비_걷기", ENEMY"Zombie_Walk.bmp", 108, 444, 2, 4, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("좀비_죽음", ENEMY"ZombieDie.bmp", 270, 102, 3, 1, true, COLORDEL);
-	IMAGEMANAGER->addFrameImage("보스_걷기", ENEMY"VomitBoss.bmp", 6987, 846, 17, 2, true, COLORDEL);
+
+	// 보스
+	IMAGEMANAGER->addFrameImage("보스_걷기", ENEMY"VomitBossWalk.bmp", 3720, 846, 8, 2, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("보스_불길1", ENEMY"VomitBossFireAttack1.bmp", 234, 252, 2, 2, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("보스_불꽃2", ENEMY"VomitBossFireAttack2.bmp", 120, 168, 2, 2, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("보스_대기", ENEMY"VomitBossStay.bmp", 4650, 846, 10, 2, true, COLORDEL);
+
+	// 마을
+
 
 	// 오브젝트
 	//IMAGEMANAGER->addImage("십자가", OBJ"Cross.bmp", 120, 210, true, COLORDEL);
