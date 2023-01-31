@@ -117,6 +117,12 @@ private: // 첫번째 보스
 
 	int vomitBossDieFrameX, vomitBossDieFrameY;
 
+	bool _fireBoss;
+	int _fireTime;
+	int _fireStart;
+	int _fireEndTime;
+	bool _fireEnd;
+
 public:
 	HRESULT init(void);
 	void release(void);

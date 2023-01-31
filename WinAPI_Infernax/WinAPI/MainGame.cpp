@@ -15,7 +15,7 @@ HRESULT MainGame::init(void)
 	SCENEMANAGER->addScene("¹èÆ²¸Ê2", new battleScene2);
 	SCENEMANAGER->addScene("¸¶À»", new VillageScene);
 
-	SCENEMANAGER->changeScene("¹èÆ²¸Ê");
+	SCENEMANAGER->changeScene("¸¶À»");
 
 	return S_OK;
 }

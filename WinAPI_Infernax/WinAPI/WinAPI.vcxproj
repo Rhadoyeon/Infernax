@@ -172,6 +172,7 @@
     <ClCompile Include="Quest.cpp" />
     <ClCompile Include="QuestSample.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="ShopScene.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="SoundScene.cpp" />
     <ClCompile Include="StartScene.cpp" />
@@ -214,6 +215,7 @@
     <ClInclude Include="QuestSample.h" />
     <ClInclude Include="RandomFunction.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="ShopScene.h" />
     <ClInclude Include="SingletonBase.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="SoundScene.h" />

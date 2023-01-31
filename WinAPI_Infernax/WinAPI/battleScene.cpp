@@ -57,7 +57,7 @@ void battleScene::update(void)
 
 	if (unit->getPlayerX() <= 30)
 	{
-		bgAlpha1 += 50;
+		bgAlpha1 += 2;
 		if (bgAlpha1 > 255)
 		{
 			SCENEMANAGER->changeScene("배틀맵2");
@@ -102,6 +102,9 @@ void battleScene::render(void)
 	//unit->render();
 	unit->enemyRender();
 	unit->playerRender();
+
+	IMAGEMANAGER->findImage("알파블랙")->alphaRender(getMemDC(), 0, 0, bgAlpha1);
+
 
 	//IMAGEMANAGER->findImage("전투2")->render(getMemDC(), 0, 0, _player->getPlayerX() + 849, _player->getPlayerY(), 1280, 800);
 	//IMAGEMANAGER->findImage("전투1")->render(getMemDC(), 0, 0, _player->getPlayerX(), _player->getPlayerY(), 1280, 800);

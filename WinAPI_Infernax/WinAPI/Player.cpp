@@ -401,6 +401,4 @@ void Unit::playerRender(void)
 		else if (playerFrameY == 0) IMAGEMANAGER->frameRender("플레이어_앉기", getMemDC(), playerRC.left - 6, playerRC.top + 35, playerFrameX, playerFrameY);
 	}*/
 #pragma endregion
-
-	IMAGEMANAGER->findImage("알파블랙")->alphaRender(getMemDC(), 0, 0, alpha);
 }
