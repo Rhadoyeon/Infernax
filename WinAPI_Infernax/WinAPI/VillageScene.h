@@ -1,13 +1,10 @@
 #pragma once
 #include "GameNode.h"
-#include "Unit.h"
-
-class battleScene2 : public GameNode
+class VillageScene : public GameNode
 {
 private:
-	int bgMove2;
-	int bgAlpha2;
-	Unit* unit;
+	int bgMove3;
+
 
 public:
 	HRESULT init(void);
@@ -15,8 +12,7 @@ public:
 	void update(void);
 	void render(void);
 
-	battleScene2() {}
-	~battleScene2() {}
-
+	VillageScene() {}
+	~VillageScene() {}
 };
 

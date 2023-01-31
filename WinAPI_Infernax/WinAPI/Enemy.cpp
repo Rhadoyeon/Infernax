@@ -14,14 +14,14 @@ void Unit::enemyInit(void)
 
 void Unit::enemyUpdate(void)
 {
-	if (bgMove >= 0)
+	if (bgMove1 >= 0)
 	{
 		if (worldTimeCount % 15 == 0) zombieFrameX++;
 		if (zombieFrameX > IMAGEMANAGER->findImage("좀비_걷기")->getMaxFrameX()) zombieFrameX = 0;
 	}
 
 	// 좀비 오른쪽으로 무빙
-	if (playerX > zombieRC.right && !enemyMoment.E_Die)
+	if (player.X > zombieRC.right && !enemyMoment.E_Die)
 	{
 		zombieFrameY = 1;
 		zombieX += 1;
@@ -29,7 +29,7 @@ void Unit::enemyUpdate(void)
 	}
 
 	// 좀비 왼쪽으로 무빙
-	else if (playerX < zombieRC.right && !enemyMoment.E_Die)
+	else if (player.X < zombieRC.right && !enemyMoment.E_Die)
 	{
 		zombieFrameY = 0;
 		zombieX -= 1;

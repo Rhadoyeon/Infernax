@@ -206,7 +206,6 @@ void Animation::frameUpdate(float elapsedTime)
 	if (_isPlay)
 	{
 		_elapsedSec += elapsedTime;
-		cout << _elapsedSec << endl;
 
 		//프레임 업데이트 시간이 되었으면
 		if (_elapsedSec >= _frameUpdateSec)

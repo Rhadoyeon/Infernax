@@ -6,7 +6,7 @@ HRESULT battleScene::init(void)
 	unit = new Unit;
 	unit->init();
 
-	bgMove = 0;
+	bgMove1 = 0;
 	//crossX = 100;
 	//crossY = 350;
 	//crossRC = RectMakeCenter(crossX, crossY, 90, 114);
@@ -18,9 +18,9 @@ HRESULT battleScene::init(void)
 	// 까마귀 초기화
 	for (int i = 0; i < _countof(crows); i++)
 	{
-		crows[i].startX = RND->getFromFloatTo(400.0f, 700.0f);
+		crows[i].startX = RND->getFromFloatTo(100.0f, 400.0f);
 		crows[i].startY = RND->getFromFloatTo(250.0f, 450.0f);
-		crows[i].endX = RND->getFromFloatTo(600.0f, 800.0f);
+		crows[i].endX = RND->getFromFloatTo(-400.0f, -100.0f);
 		crows[i].endY = RND->getFromFloatTo(-100.0f, -200.0f);
 		crows[i].index = 0;
 		crows[i].left = false;
@@ -46,7 +46,7 @@ void battleScene::update(void)
 			if (crows[i].index > IMAGEMANAGER->findImage("까마귀")->getMaxFrameX()) crows[i].index = 0;
 		}
 
-		if (unit->getBgMove() > 850)
+		if (unit->getPlayerX() < 500)
 		{
 			crows[i].left = true;
 			crows[i].radian = getAngle(crows[i].startX, crows[i].startY, crows[i].endX, crows[i].endY);
@@ -55,15 +55,23 @@ void battleScene::update(void)
 		}
 	}
 
+	if (unit->getPlayerX() <= 30)
+	{
+		bgAlpha1 += 50;
+		if (bgAlpha1 > 255)
+		{
+			SCENEMANAGER->changeScene("배틀맵2");
+		}
+	}
 
-	//if (unit->getWorldTimeCount() % 15 == 0) crowFrameX++;
-	//if (crowFrameX > IMAGEMANAGER->findImage("까마귀")->getMaxFrameX()) crowFrameX = 0;
+	if (unit->getWorldTimeCount() % 15 == 0) crowFrameX++;
+	if (crowFrameX > IMAGEMANAGER->findImage("까마귀")->getMaxFrameX()) crowFrameX = 0;
 
-	//if (unit->getBgMove() >= 600)
-	//{
-	//	crossRC.top += 2;
-	//	crossRC.right += 2;
-	//}
+	/*if (unit->getBgMove() >= 600)
+	{
+		crossRC.top += 2;
+		crossRC.right += 2;
+	}*/
 
 	//crossRC = RectMakeCenter(crossX, crossY, 90, 114);
 
@@ -73,20 +81,23 @@ void battleScene::update(void)
 void battleScene::render(void)
 {
 	// 배경 그리기
-	IMAGEMANAGER->findImage("배경1")->render(getMemDC(), unit->getBgMove() - 1200, 0);
+	/*IMAGEMANAGER->findImage("배경1")->render(getMemDC(), unit->getBgMove() - 1200, 0);
 	IMAGEMANAGER->findImage("배경2")->render(getMemDC(), unit->getBgMove() - 1200, -200);
-	IMAGEMANAGER->findImage("전투1")->render(getMemDC(), unit->getBgMove() - 1000, -200);
+	IMAGEMANAGER->findImage("전투1")->render(getMemDC(), unit->getBgMove() - 1000, -200);*/
+
+	IMAGEMANAGER->findImage("배경1")->render(getMemDC(), -200, 0);
+	IMAGEMANAGER->findImage("배경2")->render(getMemDC(), -200, -200);
+	IMAGEMANAGER->findImage("전투1")->render(getMemDC(), -200, -200);
 
 	// 까마귀 그리기
 	for (int i = 0; i < _countof(crows); i++)
 	{
 		if (crows[i].left)
-			IMAGEMANAGER->findImage("까마귀")->frameRender(getMemDC(), unit->getBgMove() - crows[i].startX, crows[i].startY, crows[i].index, 0);
+			IMAGEMANAGER->findImage("까마귀")->frameRender(getMemDC(), crows[i].startX, crows[i].startY, crows[i].index, 0);
 		else
-			IMAGEMANAGER->findImage("까마귀")->frameRender(getMemDC(), unit->getBgMove() - crows[i].startX, crows[i].startY, crows[i].index, 1);
+			IMAGEMANAGER->findImage("까마귀")->frameRender(getMemDC(), crows[i].startX, crows[i].startY, crows[i].index, 1);
 	}
 
-	cout << unit->getBgMove() << endl;
 	// 플레이어와 적 그리기
 	//unit->render();
 	unit->enemyRender();

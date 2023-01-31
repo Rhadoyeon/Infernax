@@ -1,7 +1,7 @@
 #pragma once
 #include "GameNode.h"
 
-enum PLAYERSTATE
+enum PLAYER_STATE
 {
 	P_WALK,
 	P_STAND,
@@ -24,17 +24,24 @@ enum ENEMYSTATE
 	E_DIE
 };
 
-struct PlayerMoment
+struct PlayerStruct
 {
-	RECT P_Rc;			// 렉트
-	RECT P_AttackRc;	// 공격렉트
+	float X, Y, Speed, Gravity;
+	RECT Rc;			// 렉트
+	RECT AttackRc;		// 공격렉트
+	PLAYER_STATE State;	// enum
+	int FrameX;			// 프레임
+	int FrameY;			// 프레임
+	int JumpFrameX;		// 프레임
 	int P_Hp;			// 체력
 	int P_Mp;			// 마력
 	int P_Life;			// 목숨
 	float P_Exp;		// 경험치
-	float P_Gold;		// 돈
+	float P_Gold;		// 골드
+	bool Right;			// 좌/우
 	bool P_Jump;		// 점프
 	bool P_Die;			// 죽음
+	bool P_JumpCount;	// 점프확인
 };
 
 struct EnemyMoment
@@ -50,8 +57,10 @@ class Unit : public GameNode
 {
 private: // 플레이어
 
+	PlayerStruct player;
+
 	// 화면 움직임
-	float bgMove;
+	float bgMove1;
 
 	RECT playerRC;
 	RECT playerAttackRC;
@@ -61,11 +70,11 @@ private: // 플레이어
 	int EnemyState;
 
 	// struct
-	PlayerMoment playerMomemt;
+	//PlayerMoment playerMomemt;
 	EnemyMoment enemyMoment;
 	EnemyMoment bossMoment;
 
-	float playerX, playerY;
+	//float playerX, playerY;
 	float playerAttackX, playerAttackY;
 	float playerStandX, playerStandY;
 
@@ -87,7 +96,7 @@ private: // 플레이어
 private: // 배틀씬1 적
 
 	RECT zombieRC;
-
+	float bgMove2;
 	float zombieX, zombieY;
 
 	int zombieFrameX, zombieFrameY;
@@ -127,10 +136,13 @@ public:
 	void bossVomitRender(void);
 
 	// 배경 이동 좌표 접근자
-	int getBgMove(void) { return bgMove; }
+	int getBgMove(void) { return bgMove1; }
 
 	// WorldTimeCount 접근자
 	int getWorldTimeCount(void) { return worldTimeCount; }
+
+	// 플레이어 X 좌표 접근자
+	float getPlayerX(void) { return player.X; }
 
 	Unit() {}
 	~Unit() {}

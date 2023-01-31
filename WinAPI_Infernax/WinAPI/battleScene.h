@@ -12,14 +12,15 @@ struct StructCrow
 class battleScene : public GameNode
 {
 private:
-	int bgMove;
+	int bgMove1;
+	int bgAlpha1;
 	Unit* unit;
 
 	RECT crossRC;
 
 	StructCrow crows[10];
-	//int crossX[10], crossY[10];
-	//int crowFrameX, crowFrameY;
+	int crossX[10], crossY[10];
+	int crowFrameX, crowFrameY;
 
 public:
 	HRESULT init(void);

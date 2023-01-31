@@ -21,7 +21,7 @@ void Unit::bossVomitUpdate(void)
 	if (vomitBossFrameX > IMAGEMANAGER->findImage("보스_걷기")->getMaxFrameX()) vomitBossFrameX = 0;
 
 	// 보스 오른쪽으로 무빙
-	if (playerX > vomitBossRC.right && !enemyMoment.BV_Die)
+	if (player.X > vomitBossRC.right && !enemyMoment.BV_Die)
 	{
 		EnemyState = E_WALK;
 		vomitBossFrameY = 0;
@@ -29,7 +29,7 @@ void Unit::bossVomitUpdate(void)
 	}
 
 	// 보스 왼쪽으로 무빙
-	else if (playerX < vomitBossRC.left && !enemyMoment.BV_Die)
+	else if (player.X < vomitBossRC.left && !enemyMoment.BV_Die)
 	{
 		EnemyState = E_WALK;
 		vomitBossFrameY = 1;
@@ -37,7 +37,7 @@ void Unit::bossVomitUpdate(void)
 	}
 
 	RECT Btemp;
-	if (playerFrameY == 0)
+	if (player.FrameY == 0)
 	{
 		if (IntersectRect(&Btemp, &playerRC, &vomitBossTwoRC))
 		{
@@ -53,7 +53,7 @@ void Unit::bossVomitUpdate(void)
 		}
 		else vomitBossAttackFrameX = 0;
 	}
-	else if (playerFrameY == 1)
+	else if (player.FrameY == 1)
 	{
 		if (IntersectRect(&Btemp, &playerRC, &vomitBossTwoRC))
 		{
@@ -70,7 +70,6 @@ void Unit::bossVomitUpdate(void)
 		else vomitBossAttackFrameX = 0;
 	}
 
-	cout << bgMove << endl;
 
 	vomitBossRC = RectMakeCenter(vomitBossX, vomitBossY, 141, 140);
 	vomitBossTwoRC = RectMakeCenter(vomitBossX, vomitBossY, 200, 140);

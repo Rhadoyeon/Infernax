@@ -3,6 +3,7 @@
 #include "StartScene.h"
 #include "battleScene.h"
 #include "battleScene2.h"
+#include "VillageScene.h"
 
 HRESULT MainGame::init(void)
 {
@@ -12,8 +13,9 @@ HRESULT MainGame::init(void)
 	SCENEMANAGER->addScene("Ω√¿€", new StartScene);
 	SCENEMANAGER->addScene("πË∆≤∏ ", new battleScene);
 	SCENEMANAGER->addScene("πË∆≤∏ 2", new battleScene2);
+	SCENEMANAGER->addScene("∏∂¿ª", new VillageScene);
 
-	SCENEMANAGER->changeScene("πË∆≤∏ 2");
+	SCENEMANAGER->changeScene("πË∆≤∏ ");
 
 	return S_OK;
 }
