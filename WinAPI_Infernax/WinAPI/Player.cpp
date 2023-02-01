@@ -100,39 +100,6 @@ void Unit::playerUpdate(void)
 	}
 #pragma endregion
 
-#pragma region 플레이어 인벤토리
-	if (KEYMANAGER->isOnceKeyDown(VK_SPACE))
-	{
-		player.P_Inven = true;
-	}
-
-	if (player.P_Inven == true)
-	{
-		if (KEYMANAGER->isOnceKeyDown('1'))
-		{
-			player.Inven = MAGIC;
-			IMAGEMANAGER->findImage("마법")->getWidth();
-		}
-
-		if (KEYMANAGER->isOnceKeyDown('2'))
-		{
-			player.Inven = QUEST;
-			IMAGEMANAGER->findImage("퀘스트")->getWidth();
-		}
-
-		if (KEYMANAGER->isOnceKeyDown('3'))
-		{
-			player.Inven = CHARECTER;
-			IMAGEMANAGER->findImage("캐릭터")->getWidth();
-		}
-	}
-
-	if (KEYMANAGER->isOnceKeyDown(VK_RETURN))
-	{
-		player.P_Inven = false;
-	}
-#pragma endregion
-
 #pragma region 플레이어 이동 시 인덱스 업데이트
 
 	// 인덱스 업데이트
@@ -305,6 +272,39 @@ void Unit::playerUpdate(void)
 				if (enemyMoment.E_Hp < 3) enemyMoment.E_Hp++;
 			}
 		}
+	}
+#pragma endregion
+
+#pragma region 플레이어 인벤토리
+	if (KEYMANAGER->isOnceKeyDown(VK_SPACE))
+	{
+		player.P_Inven = true;
+	}
+
+	if (player.P_Inven == true)
+	{
+		if (KEYMANAGER->isOnceKeyDown('1'))
+		{
+			player.Inven = MAGIC;
+			IMAGEMANAGER->findImage("마법")->getWidth();
+		}
+
+		if (KEYMANAGER->isOnceKeyDown('2'))
+		{
+			player.Inven = QUEST;
+			IMAGEMANAGER->findImage("퀘스트")->getWidth();
+		}
+
+		if (KEYMANAGER->isOnceKeyDown('3'))
+		{
+			player.Inven = CHARECTER;
+			IMAGEMANAGER->findImage("캐릭터")->getWidth();
+		}
+	}
+
+	if (KEYMANAGER->isOnceKeyDown(VK_RETURN))
+	{
+		player.P_Inven = false;
 	}
 #pragma endregion
 
