@@ -15,7 +15,7 @@ enum PLAYER_STATE
 	P_DIE
 };
 
-enum ENEMYSTATE
+enum ENEMY_STATE
 {
 	E_WALK,
 	E_JUMP,
@@ -44,8 +44,9 @@ struct PlayerStruct
 	bool P_JumpCount;	// 점프확인
 };
 
-struct EnemyMoment
+struct EnemyStruct
 {
+	ENEMY_STATE State;
 	int E_Hp;
 	bool E_Die;
 	int BV_Hp;
@@ -58,11 +59,10 @@ class Unit : public GameNode
 private: // 플레이어
 
 	PlayerStruct player;
-
+	EnemyStruct enemy;
 	// 화면 움직임
 	float bgMove1;
 
-	RECT playerRC;
 	RECT playerAttackRC;
 
 	// enum문
@@ -70,9 +70,8 @@ private: // 플레이어
 	int EnemyState;
 
 	// struct
-	//PlayerMoment playerMomemt;
-	EnemyMoment enemyMoment;
-	EnemyMoment bossMoment;
+	EnemyStruct enemyMoment;
+	EnemyStruct bossMoment;
 
 	//float playerX, playerY;
 	float playerAttackX, playerAttackY;
