@@ -25,7 +25,6 @@ void Unit::enemyUpdate(void)
 	{
 		zombieFrameY = 1;
 		zombieX += 1;
-		//zombieRC.right += 1;
 	}
 
 	// Á»ºñ ¿ÞÂÊÀ¸·Î ¹«ºù
@@ -33,7 +32,6 @@ void Unit::enemyUpdate(void)
 	{
 		zombieFrameY = 0;
 		zombieX -= 1;
-		//zombieRC.right -= 1;
 	}
 
 	if (enemyMoment.E_Hp == 3)
@@ -50,18 +48,16 @@ void Unit::enemyRender(void)
 {
 	//DrawRectMake(getMemDC(), zombieRc);
 
+	if (enemyMoment.E_Die)
 	{
-		if (enemyMoment.E_Die)
-		{
-			IMAGEMANAGER->findImage("Á»ºñ_Á×À½")->frameRender(getMemDC(), zombieRC.left, zombieRC.top, zombieDieFrameX, zombieFrameY);
-
-		}
-		else
-		{
-			if (zombieFrameY == 1)	IMAGEMANAGER->findImage("Á»ºñ_°È±â")->frameRender(getMemDC(),
-				zombieRC.left, zombieRC.top - 8, zombieFrameX, zombieFrameY);
-			else if (zombieFrameY == 0) IMAGEMANAGER->findImage("Á»ºñ_°È±â")->frameRender(getMemDC(),
-				zombieRC.left, zombieRC.top - 8, zombieFrameX, zombieFrameY);
-		}
+		IMAGEMANAGER->findImage("Á»ºñ_Á×À½")->frameRender(getMemDC(), zombieRC.left, zombieRC.top, zombieDieFrameX, zombieFrameY);
 	}
+	else
+	{
+		if (zombieFrameY == 1)	IMAGEMANAGER->findImage("Á»ºñ_°È±â")->frameRender(getMemDC(),
+			zombieRC.left, zombieRC.top - 8, zombieFrameX, zombieFrameY);
+		else if (zombieFrameY == 0) IMAGEMANAGER->findImage("Á»ºñ_°È±â")->frameRender(getMemDC(),
+			zombieRC.left, zombieRC.top - 8, zombieFrameX, zombieFrameY);
+	}
+
 }

@@ -102,7 +102,6 @@ void Unit::bossVomitUpdate(void)
 			_fireEnd = false;
 		}
 	}
-	cout << _fireTime << endl;
 #pragma endregion
 
 	vomitBossRC = RectMakeCenter(vomitBossX, vomitBossY, 141, 140);

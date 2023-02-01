@@ -11,21 +11,15 @@ void Unit::playerInit(void)
 
 	player.State = P_STAND;
 
-	player.P_Die = false;
-	player.P_Jump = false;
-	player.P_JumpCount = false;
+	player.P_Die = player.P_Jump = player.P_JumpCount = false;
 
 	player.Speed = player.Gravity = 0.0f;
 #pragma endregion
-
-	// 장 변경 시 알파 값 초기화
-	alpha = 0;
 }
 
 void Unit::playerUpdate(void)
 {
 #pragma region 키 입력 시 플레이어 이동
-
 	// 왼쪽으로 걷기 시
 	if (KEYMANAGER->isStayKeyDown(VK_LEFT))
 	{
@@ -68,6 +62,7 @@ void Unit::playerUpdate(void)
 	if (KEYMANAGER->isOnceKeyUp('X'))
 	{
 		player.State = P_STAND;
+		player.AttackRc = RectMakeCenter(0, 0, 0, 0);
 	}
 
 	// 점프 시
@@ -78,6 +73,7 @@ void Unit::playerUpdate(void)
 		player.Speed = 10.5f;
 		player.Gravity = 0.8f;
 	}
+
 	if (worldTimeCount % 15 == 0) player.JumpFrameX++;
 	if (player.FrameX > IMAGEMANAGER->findImage("플레이어_점프")->getMaxFrameX()) player.JumpFrameX = 1;
 	
@@ -252,7 +248,7 @@ void Unit::playerUpdate(void)
 
 #pragma region 적과의 충돌
 	RECT temp;
-	if (player.FrameY == 0)
+	if (!player.Right)
 	{
 		if (IntersectRect(&temp, &player.AttackRc, &zombieRC))
 		{
@@ -265,7 +261,7 @@ void Unit::playerUpdate(void)
 			}
 		}
 	}
-	else if (player.FrameY == 1)
+	else if (player.Right)
 	{
 		if (IntersectRect(&temp, &player.AttackRc, &zombieRC))
 		{
@@ -274,7 +270,7 @@ void Unit::playerUpdate(void)
 				zombieRC.left += 100;
 				zombieRC.right += 100;
 
-				//if (enemyMoment.E_Hp < 3) enemyMoment.E_Hp++;
+				if (enemyMoment.E_Hp < 3) enemyMoment.E_Hp++;
 			}
 		}
 	}
@@ -285,8 +281,8 @@ void Unit::playerUpdate(void)
 
 void Unit::playerRender(void)
 {
-	//DrawRectMake(getMemDC(), playerRC);
-	//DrawRectMake(getMemDC(), playerAttackRC);
+	//DrawRectMake(getMemDC(), player.AttackRc);
+	//DrawRectMake(getMemDC(), player.Rc);
 
 #pragma region 플레이어 랜더
 	if (player.State == P_STAND)
@@ -308,19 +304,35 @@ void Unit::playerRender(void)
 	else if (player.State == P_ATTACK)
 	{
 		// 공격 우측/좌측
-		if (player.Right)
+		if (!player.Right)
 		{
+			if (player.AttackFrameX == 1)
+			{
+				player.AttackRc = RectMakeCenter(player.X, player.Y, 70, 114);
+			}
+			if (player.AttackFrameX == 0)
+			{
+				player.AttackRc = RectMakeCenter(player.X, player.Y, 140, 114);
+			}
 			IMAGEMANAGER->frameRender("플레이어_공격", getMemDC(),
-				player.Rc.left - 80, player.Rc.top - 12, player.FrameX, player.Right);
-			//zombieFrameY = 2;
+				player.Rc.left - 88, player.Rc.top - 13, player.FrameX, player.Right);
+			//zombieFrameY = 3;
 			//if (!enemyMoment.E_Die) IMAGEMANAGER->findImage("좀비_걷기")->frameRender(getMemDC(),
 			//	zombieRC.left, zombieRC.top - 8, zombieFrameX, zombieFrameY);
 		}
-		else if (!player.Right)
+		else if (player.Right)
 		{
+			if (player.AttackFrameX == 1)
+			{
+				player.AttackRc = RectMakeCenter(player.X, player.Y, 70, 114);
+			}
+			if (player.AttackFrameX == 0)
+			{
+				player.AttackRc = RectMakeCenter(player.X, player.Y, 140, 114);
+			}
 			IMAGEMANAGER->frameRender("플레이어_공격", getMemDC(),
-				player.Rc.left - 89, player.Rc.top - 12, player.FrameX, player.Right);
-			//zombieFrameY = 3;
+				player.Rc.left - 76, player.Rc.top - 13, player.FrameX, player.Right);
+			//zombieFrameY = 2;
 			//if (!enemyMoment.E_Die) IMAGEMANAGER->findImage("좀비_걷기")->frameRender(getMemDC(),
 			//	zombieRC.left, zombieRC.top - 8, zombieFrameX, zombieFrameY);
 		}

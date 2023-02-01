@@ -19,7 +19,7 @@ HRESULT MainGame::init(void)
 	//SCENEMANAGER->addScene("∏∂¿ª", new VillageScene);
 
 
-	SCENEMANAGER->changeScene("πË∆≤∏ 2");
+	SCENEMANAGER->changeScene("πË∆≤∏ ");
 
 	return S_OK;
 }
