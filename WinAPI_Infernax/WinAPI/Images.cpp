@@ -12,6 +12,7 @@
 #define DIALOG "Resources/Images/Dialog/"
 #define PLAYER "Resources/Images/Player/"
 #define OBJ "Resources/Images/Object/"
+#define INVEN "Resources/Images/Inven/"
 #define SHOP "Resources/Images/Shop/"
 #define ENDING "Resources/Images/Ending/"
 #define COLORDEL RGB(255, 0, 255)
@@ -54,7 +55,14 @@ void MainGame::Images(void)
 
 	// 오브젝트
 	//IMAGEMANAGER->addImage("십자가", OBJ"Cross.bmp", 120, 210, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("죽음이펙트", OBJ"EnemyDieEffect.bmp", 153, 114, 3, 1, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("까마귀", OBJ"Crow.bmp", 90, 114, 2, 2, true, COLORDEL);
 	IMAGEMANAGER->addImage("알파블랙", OBJ"BgBlack.bmp", WINSIZE_X, WINSIZE_Y, true, COLORDEL);
-	IMAGEMANAGER->addFrameImage("죽음이펙트", OBJ"EnemyDieEffect.bmp", 153, 114, 3, 1, true, COLORDEL);
+	IMAGEMANAGER->addImage("선택", OBJ"Select.bmp", 136, 136, true, COLORDEL);
+
+	// 인벤(마법, 퀘스트, 캐릭터)
+	IMAGEMANAGER->addImage("마법", INVEN"Magic.bmp", WINSIZE_X, WINSIZE_Y, true, COLORDEL);
+	IMAGEMANAGER->addImage("퀘스트", INVEN"Quest.bmp", WINSIZE_X, WINSIZE_Y, true, COLORDEL);
+	IMAGEMANAGER->addImage("캐릭터", INVEN"Charicter.bmp", WINSIZE_X, WINSIZE_Y, true, COLORDEL);
+
 }

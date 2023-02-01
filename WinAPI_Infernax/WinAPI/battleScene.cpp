@@ -7,13 +7,6 @@ HRESULT battleScene::init(void)
 	unit->init();
 
 	bgMove1 = 0;
-	//crossX = 100;
-	//crossY = 350;
-	//crossRC = RectMakeCenter(crossX, crossY, 90, 114);
-
-	//crowFrameX = crowFrameY = 0;
-
-
 
 	// ±Ó∏∂±Õ √ ±‚»≠
 	for (int i = 0; i < _countof(crows); i++)
@@ -66,16 +59,6 @@ void battleScene::update(void)
 
 	if (unit->getWorldTimeCount() % 15 == 0) crowFrameX++;
 	if (crowFrameX > IMAGEMANAGER->findImage("±Ó∏∂±Õ")->getMaxFrameX()) crowFrameX = 0;
-
-	/*if (unit->getBgMove() >= 600)
-	{
-		crossRC.top += 2;
-		crossRC.right += 2;
-	}*/
-
-	//crossRC = RectMakeCenter(crossX, crossY, 90, 114);
-
-	//cout << unit->getBgMove() << endl;
 }
 
 void battleScene::render(void)

@@ -4,6 +4,8 @@ class InvenScene : public GameNode
 {
 private:
 
+	bool inven;
+
 public:
 	HRESULT init(void);
 	void release(void);

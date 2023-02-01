@@ -24,6 +24,13 @@ enum ENEMY_STATE
 	E_DIE
 };
 
+enum PLAYER_INVEN
+{
+	MAGIC,
+	QUEST,
+	CHARECTER
+};
+
 struct PlayerStruct
 {
 	float X, Y, Speed, Gravity;		// 위치/중력
@@ -31,6 +38,7 @@ struct PlayerStruct
 	RECT Rc;				// 렉트
 	RECT AttackRc;			// 공격렉트
 	PLAYER_STATE State;		// enum
+	PLAYER_INVEN Inven;
 	int FrameX;				// 프레임
 	int FrameY;				
 	int JumpFrameX;			
@@ -44,6 +52,7 @@ struct PlayerStruct
 	bool P_Jump;			// 점프
 	bool P_Die;				// 죽음
 	bool P_JumpCount;		// 점프확인
+	bool P_Inven;			// 인벤토리
 };
 
 struct EnemyStruct

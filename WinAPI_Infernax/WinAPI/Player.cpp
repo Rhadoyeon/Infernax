@@ -10,8 +10,9 @@ void Unit::playerInit(void)
 	player.FrameX = player.FrameY = player.JumpFrameX = 0;
 
 	player.State = P_STAND;
+	player.Inven = MAGIC;
 
-	player.P_Die = player.P_Jump = player.P_JumpCount = false;
+	player.P_Die = player.P_Jump = player.P_JumpCount = player.P_Inven = false;
 
 	player.Speed = player.Gravity = 0.0f;
 #pragma endregion
@@ -97,8 +98,39 @@ void Unit::playerUpdate(void)
 			player.State = P_STAND;
 		}
 	}
+#pragma endregion
 
+#pragma region 플레이어 인벤토리
+	if (KEYMANAGER->isOnceKeyDown(VK_SPACE))
+	{
+		player.P_Inven = true;
+	}
 
+	if (player.P_Inven == true)
+	{
+		if (KEYMANAGER->isOnceKeyDown('1'))
+		{
+			player.Inven = MAGIC;
+			IMAGEMANAGER->findImage("마법")->getWidth();
+		}
+
+		if (KEYMANAGER->isOnceKeyDown('2'))
+		{
+			player.Inven = QUEST;
+			IMAGEMANAGER->findImage("퀘스트")->getWidth();
+		}
+
+		if (KEYMANAGER->isOnceKeyDown('3'))
+		{
+			player.Inven = CHARECTER;
+			IMAGEMANAGER->findImage("캐릭터")->getWidth();
+		}
+	}
+
+	if (KEYMANAGER->isOnceKeyDown(VK_RETURN))
+	{
+		player.P_Inven = false;
+	}
 #pragma endregion
 
 #pragma region 플레이어 이동 시 인덱스 업데이트
@@ -131,7 +163,6 @@ void Unit::playerUpdate(void)
 			player.FrameX = 0;
 		}
 	}
-#pragma endregion
 
 	//if (!playerMomemt.P_Die)
 	//{
@@ -245,6 +276,7 @@ void Unit::playerUpdate(void)
 	//	if (playerStandFrameX > IMAGEMANAGER->findImage("플레이어_앉기")->getMaxFrameX()) playerStandFrameX = 0;
 	//	if (KEYMANAGER->isOnceKeyUp('S')) playerState = P_STAND;
 	//}
+#pragma endregion
 
 #pragma region 적과의 충돌
 	RECT temp;
@@ -415,4 +447,14 @@ void Unit::playerRender(void)
 	//	else if (player.FrameY == 0) IMAGEMANAGER->frameRender("플레이어_앉기", getMemDC(), player.Rc.left - 6, player.Rc.top + 35, player.FrameX, player.FrameY);
 	//}
 #pragma endregion
+
+#pragma region 인벤토리 랜더
+
+	if (player.P_Inven)
+	{
+		if (player.Inven == MAGIC) IMAGEMANAGER->findImage("마법")->render(getMemDC(), 0, 0);
+		if (player.Inven == QUEST) IMAGEMANAGER->findImage("퀘스트")->render(getMemDC(), 0, 0);
+		if (player.Inven == CHARECTER) IMAGEMANAGER->findImage("캐릭터")->render(getMemDC(), 0, 0);
+	}
 }
+#pragma endregion
