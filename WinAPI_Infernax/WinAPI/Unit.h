@@ -100,13 +100,13 @@ private: // 첫번째 보스
 	int vomitBossAttackFrameX, vomitBossAttackFrameY;
 	int vomitBossFireFrameX, vomitBossFireFrameY;
 
-	int vomitBossDieFrameX, vomitBossDieFrameY;
+	int vomitBossDieFrameX1, vomitBossDieFrameX2;
 
-	int _fireTime;
-	int _fireStart;
-	int _fireEndTime;
-	bool _fireBoss;
-	bool _fireEnd;
+	int vomitBossFireTime;
+	int vomitBossFireStart;
+	int vomitBossFireEndTime;
+	bool vomitBossFireBoss;
+	bool vomitBossFireEnd;
 
 public:
 	HRESULT init(void);

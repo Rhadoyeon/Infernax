@@ -46,9 +46,11 @@ void MainGame::Images(void)
 	IMAGEMANAGER->addFrameImage("보스_불길1", ENEMY"VomitBossFireAttack1.bmp", 234, 252, 2, 2, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("보스_불꽃2", ENEMY"VomitBossFireAttack2.bmp", 120, 168, 2, 2, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("보스_대기", ENEMY"VomitBossStay.bmp", 4650, 846, 10, 2, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("보스_죽음1", ENEMY"VomitBossDie1.bmp", 1800, 876, 2, 2, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("보스_죽음2", ENEMY"VomitBossDie2.bmp", 9000, 876, 10, 2, true, COLORDEL);
 
 	// 마을
-	IMAGEMANAGER->addImage("마을_배경", Village"VillageBG.bmp", 3683, 800, true, COLORDEL);
+	IMAGEMANAGER->addImage("마을_배경", Village"VillageBG.bmp", 2714, 800, true, COLORDEL);
 
 	// 오브젝트
 	//IMAGEMANAGER->addImage("십자가", OBJ"Cross.bmp", 120, 210, true, COLORDEL);
