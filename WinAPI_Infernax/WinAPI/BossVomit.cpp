@@ -12,6 +12,7 @@ void Unit::bossVomitInit(void)
 	vomitBoss.State = E_WALK;
 	vomitBoss.Hp = 0;
 	vomitBoss.Die = false;
+	vomitBoss.DieChange = false;
 
 	vomitBoss.FireBoss = false;
 	vomitBoss.FireTime = 0;
@@ -139,15 +140,21 @@ void Unit::bossVomitUpdate(void)
 	{
 		vomitBoss.Die = true;
 		vomitBoss.State = E_DIE;
-		if (worldTimeCount % 13 == 0) vomitBoss.DieFrameX1++;
-		if (vomitBoss.DieFrameX1 > IMAGEMANAGER->findImage("º¸½º_Á×À½1")->getMaxFrameX()) vomitBoss.DieFrameX1 = 1;
-
-		if (vomitBoss.DieFrameX1 == 1)
+		vomitBoss.FireTime++;
+		if (vomitBoss.FireTime < 300)
 		{
-			if (worldTimeCount % 13 == 0) vomitBoss.DieFrameX2++;
-			if (vomitBoss.DieFrameX2 > IMAGEMANAGER->findImage("º¸½º_Á×À½2")->getMaxFrameX()) vomitBoss.DieFrameX2 = 9;
+			if (worldTimeCount % 13 == 0) vomitBoss.DieFrameX1++;
+			if (vomitBoss.DieFrameX1 > IMAGEMANAGER->findImage("º¸½º_Á×À½1")->getMaxFrameX()) vomitBoss.DieFrameX1 = 0;
+			vomitBoss.DieChange = true;
 		}
 	}
+	if (vomitBoss.FireTime > 300)
+	{
+		vomitBoss.DieChange = false;
+		if (worldTimeCount % 13 == 0) vomitBoss.DieFrameX2++;
+		if (vomitBoss.DieFrameX2 > IMAGEMANAGER->findImage("º¸½º_Á×À½2")->getMaxFrameX()) vomitBoss.DieFrameX2 = 9;
+	}
+
 #pragma endregion
 	vomitBoss.OneRc = RectMakeCenter(vomitBoss.X, vomitBoss.Y, 141, 140);
 	vomitBoss.TwoRc = RectMakeCenter(vomitBoss.X, vomitBoss.Y, 400, 140);
@@ -185,12 +192,16 @@ void Unit::bossVomitRender(void)
 	{
 		if (vomitBoss.State == E_DIE)
 		{
-			//if (vomitBoss.FrameY == 1)	IMAGEMANAGER->findImage("º¸½º_Á×À½1")->frameRender(getMemDC(), vomitBossRC.left - 300, vomitBossRC.top - 300, vomitBossDieFrameX1, vomitBossFrameY);
-			//else if (vomitBoss.FrameY == 0) IMAGEMANAGER->findImage("º¸½º_Á×À½1")->frameRender(getMemDC(), vomitBossRC.left - 400, vomitBossRC.top - 300, vomitBossDieFrameX1, vomitBossFrameY);
-
-			if (vomitBoss.FrameY == 1)	IMAGEMANAGER->findImage("º¸½º_Á×À½2")->frameRender(getMemDC(), vomitBoss.OneRc.left - 300, vomitBoss.OneRc.top - 300, vomitBoss.DieFrameX2, vomitBoss.FrameY);
-			else if (vomitBoss.FrameY == 0) IMAGEMANAGER->findImage("º¸½º_Á×À½2")->frameRender(getMemDC(), vomitBoss.OneRc.left - 400, vomitBoss.OneRc.top - 300, vomitBoss.DieFrameX2, vomitBoss.FrameY);
-			
+			if (vomitBoss.DieChange)
+			{
+				if (vomitBoss.FrameY == 1)	IMAGEMANAGER->findImage("º¸½º_Á×À½1")->frameRender(getMemDC(), vomitBoss.OneRc.left - 300, vomitBoss.OneRc.top - 300, vomitBoss.DieFrameX1, vomitBoss.FrameY);
+				else if (vomitBoss.FrameY == 0) IMAGEMANAGER->findImage("º¸½º_Á×À½1")->frameRender(getMemDC(), vomitBoss.OneRc.left - 400, vomitBoss.OneRc.top - 300, vomitBoss.DieFrameX1, vomitBoss.FrameY);
+			}
+			else
+			{
+				if (vomitBoss.FrameY == 1)	IMAGEMANAGER->findImage("º¸½º_Á×À½2")->frameRender(getMemDC(), vomitBoss.OneRc.left - 300, vomitBoss.OneRc.top - 300, vomitBoss.DieFrameX2, vomitBoss.FrameY);
+				else if (vomitBoss.FrameY == 0) IMAGEMANAGER->findImage("º¸½º_Á×À½2")->frameRender(getMemDC(), vomitBoss.OneRc.left - 400, vomitBoss.OneRc.top - 300, vomitBoss.DieFrameX2, vomitBoss.FrameY);
+			}
 		}
 	}
 #pragma endregion

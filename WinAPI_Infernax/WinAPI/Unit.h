@@ -87,6 +87,7 @@ struct BossStruct
 	int FireEndTime;
 	bool FireBoss;
 	bool FireEnd;
+	bool DieChange;
 
 	int Hp;
 	bool Die;

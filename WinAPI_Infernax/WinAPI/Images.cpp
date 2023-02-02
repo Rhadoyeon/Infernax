@@ -29,6 +29,11 @@ void MainGame::Images(void)
 	//IMAGEMANAGER->addFrameImage("플레이어_상처", PLAYER"PlayerDeal.bmp", 342, 228, 2, 2, true, COLORDEL);
 	//IMAGEMANAGER->addFrameImage("플레이어_죽음", PLAYER"PlayerDie.bmp", 342, 228, 2, 2, true, COLORDEL);
 
+	// 시작
+	IMAGEMANAGER->addFrameImage("시작", BG"StartScene.bmp", 4255, 800, 3, 1, true, COLORDEL);
+	IMAGEMANAGER->addImage("구름_위", BG"StartCloudUp.bmp", 1287, 237, true, COLORDEL);
+	IMAGEMANAGER->addImage("구름_아래", BG"StartCloudDown.bmp", 1287, 237, true, COLORDEL);
+
 	// 배틀씬1
 	IMAGEMANAGER->addImage("배경1", BG"battleSceneBG.bmp", 3006, 1000, true, COLORDEL);
 	IMAGEMANAGER->addImage("배경2", BG"battleSceneBG1.bmp", 3588, 1000, true, COLORDEL);
@@ -47,6 +52,7 @@ void MainGame::Images(void)
 	IMAGEMANAGER->addFrameImage("보스_불꽃2", ENEMY"VomitBossFireAttack2.bmp", 120, 168, 2, 2, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("보스_대기", ENEMY"VomitBossStay.bmp", 4650, 846, 10, 2, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("보스_죽음1", ENEMY"VomitBossDie1.bmp", 1800, 876, 2, 2, true, COLORDEL);
+	//IMAGEMANAGER->addFrameImage("보스_죽음1", ENEMY"VomitBossDie1.bmp", 10800, 876, 12, 2, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("보스_죽음2", ENEMY"VomitBossDie2.bmp", 9000, 876, 10, 2, true, COLORDEL);
 
 	// 마을
