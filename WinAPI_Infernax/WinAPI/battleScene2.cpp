@@ -6,7 +6,7 @@ HRESULT battleScene2::init(void)
 	unit = new Unit;
 	unit->init();
 
-	bgMove2 = 0;
+	//bgMove2 = 0;
 
 	return S_OK;
 }

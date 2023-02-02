@@ -5,7 +5,6 @@
 #define BG "Resources/Images/Background/"
 #define BOSS "Resources/Images/Boss/"
 #define ENEMY "Resources/Images/Enemy/"
-#define IMG "Resources/Images/"
 #define PLAYERSKILL "Resources/Images/PlayerSkill/"
 #define Village "Resources/Images/Village/"
 #define UI "Resources/Images/UI/"
@@ -64,5 +63,4 @@ void MainGame::Images(void)
 	IMAGEMANAGER->addImage("마법", INVEN"Magic.bmp", WINSIZE_X, WINSIZE_Y, true, COLORDEL);
 	IMAGEMANAGER->addImage("퀘스트", INVEN"Quest.bmp", WINSIZE_X, WINSIZE_Y, true, COLORDEL);
 	IMAGEMANAGER->addImage("캐릭터", INVEN"Charicter.bmp", WINSIZE_X, WINSIZE_Y, true, COLORDEL);
-
 }

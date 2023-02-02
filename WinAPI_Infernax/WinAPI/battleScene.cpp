@@ -6,7 +6,7 @@ HRESULT battleScene::init(void)
 	unit = new Unit;
 	unit->init();
 
-	bgMove1 = 0;
+	//bgMove1 = 0;
 
 	// 까마귀 초기화
 	for (int i = 0; i < _countof(crows); i++)

@@ -12,7 +12,7 @@ void Unit::playerInit(void)
 	player.State = P_STAND;
 	player.Inven = MAGIC;
 
-	player.P_Die = player.P_Jump = player.P_JumpCount = player.P_Inven = false;
+	player.Die = player.Jump = player.JumpCount = player.Inventory = false;
 
 	player.Speed = player.Gravity = 0.0f;
 #pragma endregion
@@ -67,10 +67,10 @@ void Unit::playerUpdate(void)
 	}
 
 	// 점프 시
-	if (KEYMANAGER->isOnceKeyDown('Z') && !player.P_JumpCount)
+	if (KEYMANAGER->isOnceKeyDown('Z') && !player.JumpCount)
 	{
-		player.P_Jump = true;
-		player.P_JumpCount = true;
+		player.Jump = true;
+		player.JumpCount = true;
 		player.Speed = 10.5f;
 		player.Gravity = 0.8f;
 	}
@@ -78,7 +78,7 @@ void Unit::playerUpdate(void)
 	if (worldTimeCount % 15 == 0) player.JumpFrameX++;
 	if (player.FrameX > IMAGEMANAGER->findImage("플레이어_점프")->getMaxFrameX()) player.JumpFrameX = 1;
 	
-	if (player.P_Jump)
+	if (player.Jump)
 	{
 		player.State = P_JUMP;
 		player.Gravity -= 0.3f;
@@ -87,8 +87,8 @@ void Unit::playerUpdate(void)
 
 	if (player.Rc.top >= 522)
 	{
-		player.P_Jump = false;
-		player.P_JumpCount = false;
+		player.Jump = false;
+		player.JumpCount = false;
 		player.Y = 570;
 		player.State = P_STAND;
 		player.JumpFrameX = 0;
@@ -245,43 +245,13 @@ void Unit::playerUpdate(void)
 	//}
 #pragma endregion
 
-#pragma region 적과의 충돌
-	RECT temp;
-	if (!player.Right)
-	{
-		if (IntersectRect(&temp, &player.AttackRc, &zombieRC))
-		{
-			if (temp.right - temp.left > 50)
-			{
-				zombieRC.left -= 100;
-				zombieRC.right -= 100;
-
-				if (enemyMoment.E_Hp < 3) enemyMoment.E_Hp++;
-			}
-		}
-	}
-	else if (player.Right)
-	{
-		if (IntersectRect(&temp, &player.AttackRc, &zombieRC))
-		{
-			if (temp.right - temp.left > 50)
-			{
-				zombieRC.left += 100;
-				zombieRC.right += 100;
-
-				if (enemyMoment.E_Hp < 3) enemyMoment.E_Hp++;
-			}
-		}
-	}
-#pragma endregion
-
 #pragma region 플레이어 인벤토리
 	if (KEYMANAGER->isOnceKeyDown(VK_SPACE))
 	{
-		player.P_Inven = true;
+		player.Inventory = true;
 	}
 
-	if (player.P_Inven == true)
+	if (player.Inventory == true)
 	{
 		if (KEYMANAGER->isOnceKeyDown('1'))
 		{
@@ -304,7 +274,7 @@ void Unit::playerUpdate(void)
 
 	if (KEYMANAGER->isOnceKeyDown(VK_RETURN))
 	{
-		player.P_Inven = false;
+		player.Inventory = false;
 	}
 #pragma endregion
 
@@ -450,11 +420,11 @@ void Unit::playerRender(void)
 
 #pragma region 인벤토리 랜더
 
-	if (player.P_Inven)
+	if (player.Inventory)
 	{
 		if (player.Inven == MAGIC) IMAGEMANAGER->findImage("마법")->render(getMemDC(), 0, 0);
 		if (player.Inven == QUEST) IMAGEMANAGER->findImage("퀘스트")->render(getMemDC(), 0, 0);
 		if (player.Inven == CHARECTER) IMAGEMANAGER->findImage("캐릭터")->render(getMemDC(), 0, 0);
 	}
-}
 #pragma endregion
+}

@@ -39,33 +39,58 @@ struct PlayerStruct
 	RECT AttackRc;			// 공격렉트
 	PLAYER_STATE State;		// enum
 	PLAYER_INVEN Inven;
-	int FrameX;				// 프레임
-	int FrameY;				
+	int FrameX, FrameY;		// 프레임
 	int JumpFrameX;			
 	int AttackFrameX;
-	int P_Hp;				// 체력
-	int P_Mp;				// 마력
-	int P_Life;				// 목숨
-	float P_Exp;			// 경험치
-	float P_Gold;			// 골드
+	int Hp;					// 체력
+	int Mp;					// 마력
+	int Life;				// 목숨
+	float Exp;				// 경험치
+	float Gold;				// 골드
 	bool Right;				// 좌/우
-	bool P_Jump;			// 점프
-	bool P_Die;				// 죽음
-	bool P_JumpCount;		// 점프확인
-	bool P_Inven;			// 인벤토리
+	bool Jump;				// 점프
+	bool Die;				// 죽음
+	bool JumpCount;			// 점프확인
+	bool Inventory;				// 인벤토리
 };
 
 struct EnemyStruct
 {
 	ENEMY_STATE State;
 
-	int E_Hp;
-	bool E_Die;
-	bool E_Right;
+	// zombie
+	RECT Rc;
+	float bgMove2;
+	float X, Y;
+	int FrameX, FrameY;
+	int DieFrameX;
 
-	int BV_Hp;
-	bool BV_Die;
-	bool BV_Right;
+	int Hp;
+	bool Die;
+	bool Right;
+};
+
+struct BossStruct
+{
+	ENEMY_STATE State;
+
+	RECT OneRc;
+	RECT TwoRc;
+	float X, Y;
+	int FrameX, FrameY;
+	int AttackFrameX;
+	int FireFrameX;
+	int DieFrameX1, DieFrameX2;
+
+	int FireTime;
+	int FireStart;
+	int FireEndTime;
+	bool FireBoss;
+	bool FireEnd;
+
+	int Hp;
+	bool Die;
+	bool Right;
 };
 
 class Unit : public GameNode
@@ -73,49 +98,16 @@ class Unit : public GameNode
 private: // 플레이어
 
 	PlayerStruct player;
-	EnemyStruct enemy;
-
-	// 화면 움직임
-	float bgMove1;
-
-	RECT playerAttackRC;
-
-	// enum문
-	int playerState;
-	int EnemyState;
-
-	// struct
-	EnemyStruct enemyMoment;
-	EnemyStruct bossMoment;
+	float bgMove1;			// 화면 움직임
 
 	int worldTimeCount;
 
 private: // 배틀씬1 적
-
-	RECT zombieRC;
+	EnemyStruct zombie;
 	float bgMove2;
-	float zombieX, zombieY;
-
-	int zombieFrameX, zombieFrameY;
-	int zombieDieFrameX;
 
 private: // 첫번째 보스
-	RECT vomitBossRC;
-	RECT vomitBossTwoRC;
-
-	float vomitBossX, vomitBossY;
-
-	int vomitBossFrameX, vomitBossFrameY;
-	int vomitBossAttackFrameX, vomitBossAttackFrameY;
-	int vomitBossFireFrameX, vomitBossFireFrameY;
-
-	int vomitBossDieFrameX1, vomitBossDieFrameX2;
-
-	int vomitBossFireTime;
-	int vomitBossFireStart;
-	int vomitBossFireEndTime;
-	bool vomitBossFireBoss;
-	bool vomitBossFireEnd;
+	BossStruct vomitBoss;
 
 public:
 	HRESULT init(void);

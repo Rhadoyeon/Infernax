@@ -152,9 +152,6 @@
     <ClCompile Include="ShopScene.cpp">
       <Filter>GameScene</Filter>
     </ClCompile>
-    <ClCompile Include="InvenScene.cpp">
-      <Filter>GameScene</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C3DMatrix.h">
@@ -254,9 +251,6 @@
       <Filter>GameScene</Filter>
     </ClInclude>
     <ClInclude Include="ShopScene.h">
-      <Filter>GameScene</Filter>
-    </ClInclude>
-    <ClInclude Include="InvenScene.h">
       <Filter>GameScene</Filter>
     </ClInclude>
   </ItemGroup>

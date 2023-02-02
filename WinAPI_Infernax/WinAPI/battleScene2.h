@@ -5,7 +5,7 @@
 class battleScene2 : public GameNode
 {
 private:
-	int bgMove2;
+	//int bgMove2;
 	int bgAlpha2;
 	Unit* unit;
 

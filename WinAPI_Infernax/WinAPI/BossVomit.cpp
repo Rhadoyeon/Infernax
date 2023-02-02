@@ -3,49 +3,47 @@
 
 void Unit::bossVomitInit(void)
 {
-#pragma region 초기화
-	vomitBossX = 0.0f;
-	vomitBossY = 552.0f;
-	vomitBossRC = RectMakeCenter(vomitBossX, vomitBossY, 141, 140);
-	vomitBossTwoRC = RectMakeCenter(vomitBossX, vomitBossY, 400, 140);
+#pragma region vomit boss 초기화
+	vomitBoss.X = 0.0f;
+	vomitBoss.Y = 552.0f;
 
-	vomitBossFrameX = vomitBossFrameY = vomitBossAttackFrameX = vomitBossAttackFrameY = vomitBossDieFrameX1 = vomitBossDieFrameX2 = vomitBossFireFrameX = vomitBossFireFrameY = 0;
+	vomitBoss.FrameX = vomitBoss.FrameY = vomitBoss.AttackFrameX  = vomitBoss.DieFrameX1 = vomitBoss.DieFrameX2 = vomitBoss.FireFrameX = 0;
 
-	enemy.State = E_WALK;
-	enemyMoment.BV_Hp = 0;
-	enemyMoment.BV_Die = false;
+	vomitBoss.State = E_WALK;
+	vomitBoss.Hp = 0;
+	vomitBoss.Die = false;
 
-	vomitBossFireBoss = false;
-	vomitBossFireTime = 0;
-	vomitBossFireEnd = false;
-	vomitBossFireEndTime = 0;
+	vomitBoss.FireBoss = false;
+	vomitBoss.FireTime = 0;
+	vomitBoss.FireEnd = false;
+	vomitBoss.FireEndTime = 0;
 #pragma endregion
 }
 
 void Unit::bossVomitUpdate(void)
 {
 #pragma region 보스 이동
-	if (!enemyMoment.BV_Die)
+	if (!vomitBoss.Die)
 	{
-		if (worldTimeCount % 25 == 0) vomitBossFrameX++;
-		if (vomitBossFrameX > IMAGEMANAGER->findImage("보스_걷기")->getMaxFrameX()) vomitBossFrameX = 0;
+		if (worldTimeCount % 25 == 0) vomitBoss.FrameX++;
+		if (vomitBoss.FrameX > IMAGEMANAGER->findImage("보스_걷기")->getMaxFrameX()) vomitBoss.FrameX = 0;
 
 		// 보스 오른쪽으로 무빙
-		if (!vomitBossFireBoss)
+		if (!vomitBoss.FireBoss)
 		{
-			if (player.X > vomitBossRC.right && !enemyMoment.BV_Die)
+			if (player.X > vomitBoss.OneRc.right && !vomitBoss.Die)
 			{
-				enemy.State = E_WALK;
-				vomitBossFrameY = 0;
-				if (worldTimeCount % 2 == 0) vomitBossX += 1.5f;
+				vomitBoss.State = E_WALK;
+				vomitBoss.FrameY = 0;
+				if (worldTimeCount % 2 == 0) vomitBoss.X += 1.5f;
 			}
 
 			// 보스 왼쪽으로 무빙
-			else if (player.X < vomitBossRC.left && !enemyMoment.BV_Die)
+			else if (player.X < vomitBoss.OneRc.left && !vomitBoss.Die)
 			{
-				enemy.State = E_WALK;
-				vomitBossFrameY = 1;
-				if (worldTimeCount % 2 == 0) vomitBossX -= 1.5f;
+				vomitBoss.State = E_WALK;
+				vomitBoss.FrameY = 1;
+				if (worldTimeCount % 2 == 0) vomitBoss.X -= 1.5f;
 			}
 		}
 #pragma endregion
@@ -54,60 +52,60 @@ void Unit::bossVomitUpdate(void)
 		RECT Btemp;
 		if (player.FrameY == 0)
 		{
-			if (IntersectRect(&Btemp, &player.Rc, &vomitBossTwoRC) && !vomitBossFireEnd && !vomitBossFireBoss)
+			if (IntersectRect(&Btemp, &player.Rc, &vomitBoss.TwoRc) && !vomitBoss.FireEnd && !vomitBoss.FireBoss)
 			{
 				// 충돌될때 fire는 true / 시간, 프레임 초기화
-				vomitBossFireBoss = true;
-				vomitBossFireTime = 0;
-				vomitBossAttackFrameX = 0;
+				vomitBoss.FireBoss = true;
+				vomitBoss.FireTime = 0;
+				vomitBoss.AttackFrameX = 0;
 			}
 		}
 		else if (player.FrameY == 1)
 		{
-			if (IntersectRect(&Btemp, &player.Rc, &vomitBossTwoRC))
+			if (IntersectRect(&Btemp, &player.Rc, &vomitBoss.TwoRc))
 			{
-				enemy.State = E_ATTACK;
-				if (worldTimeCount % 20 == 0) vomitBossAttackFrameX++;
-				if (vomitBossAttackFrameX >= IMAGEMANAGER->findImage("보스_대기")->getMaxFrameX()) vomitBossAttackFrameX = 9;
+				vomitBoss.State = E_ATTACK;
+				if (worldTimeCount % 20 == 0) vomitBoss.AttackFrameX++;
+				if (vomitBoss.AttackFrameX >= IMAGEMANAGER->findImage("보스_대기")->getMaxFrameX()) vomitBoss.AttackFrameX = 9;
 
-				if (vomitBossAttackFrameX == 9)
+				if (vomitBoss.AttackFrameX == 9)
 				{
-					if (worldTimeCount % 7 == 0) vomitBossFireFrameX++;
-					if (vomitBossFireFrameX > IMAGEMANAGER->findImage("보스_불길1")->getMaxFrameX()) vomitBossFireFrameX = 0;
-					if (vomitBossFireFrameX > IMAGEMANAGER->findImage("보스_불꽃2")->getMaxFrameX()) vomitBossFireFrameX = 0;
+					if (worldTimeCount % 7 == 0) vomitBoss.FireFrameX++;
+					if (vomitBoss.FireFrameX > IMAGEMANAGER->findImage("보스_불길1")->getMaxFrameX()) vomitBoss.FireFrameX = 0;
+					if (vomitBoss.FireFrameX > IMAGEMANAGER->findImage("보스_불꽃2")->getMaxFrameX()) vomitBoss.FireFrameX = 0;
 				}
 			}
 		}
 
 		// 충돌이 true일때 불 true줘서 불 발사
-		if (vomitBossFireBoss)
+		if (vomitBoss.FireBoss)
 		{
-			vomitBossFireTime++;
-			if (vomitBossFireTime > 300)
+			vomitBoss.FireTime++;
+			if (vomitBoss.FireTime > 300)
 			{
-				vomitBossFireBoss = false;
-				vomitBossFireTime = 0;
-				vomitBossFireEnd = true;
+				vomitBoss.FireBoss = false;
+				vomitBoss.FireTime = 0;
+				vomitBoss.FireEnd = true;
 			}
-			enemy.State = E_ATTACK;
-			if (worldTimeCount % 20 == 0) vomitBossAttackFrameX++;
-			if (vomitBossAttackFrameX >= IMAGEMANAGER->findImage("보스_대기")->getMaxFrameX()) vomitBossAttackFrameX = 9;
-			if (vomitBossAttackFrameX == 9)
+			vomitBoss.State = E_ATTACK;
+			if (worldTimeCount % 20 == 0) vomitBoss.AttackFrameX++;
+			if (vomitBoss.AttackFrameX >= IMAGEMANAGER->findImage("보스_대기")->getMaxFrameX()) vomitBoss.AttackFrameX = 9;
+			if (vomitBoss.AttackFrameX == 9)
 			{
-				if (worldTimeCount % 7 == 0) vomitBossFireFrameX++;
-				if (vomitBossFireFrameX > IMAGEMANAGER->findImage("보스_불길1")->getMaxFrameX()) vomitBossFireFrameX = 0;
-				if (vomitBossFireFrameX > IMAGEMANAGER->findImage("보스_불꽃2")->getMaxFrameX()) vomitBossFireFrameX = 0;
+				if (worldTimeCount % 7 == 0) vomitBoss.FireFrameX++;
+				if (vomitBoss.FireFrameX > IMAGEMANAGER->findImage("보스_불길1")->getMaxFrameX()) vomitBoss.FireFrameX = 0;
+				if (vomitBoss.FireFrameX > IMAGEMANAGER->findImage("보스_불꽃2")->getMaxFrameX()) vomitBoss.FireFrameX = 0;
 			}
 		}
 
 		// 300초 이상이 되면 End는 true / fire 시간은 초기화
-		if (vomitBossFireEnd)
+		if (vomitBoss.FireEnd)
 		{
-			vomitBossFireEndTime++;
-			if (vomitBossFireEndTime > 300)
+			vomitBoss.FireEndTime++;
+			if (vomitBoss.FireEndTime > 300)
 			{
-				vomitBossFireEndTime = 0;
-				vomitBossFireEnd = false;
+				vomitBoss.FireEndTime = 0;
+				vomitBoss.FireEnd = false;
 			}
 		}
 #pragma endregion
@@ -116,43 +114,43 @@ void Unit::bossVomitUpdate(void)
 		RECT BPtemp;
 		if (player.FrameY == 0)
 		{
-			if (IntersectRect(&BPtemp, &player.AttackRc, &vomitBossRC))
+			if (IntersectRect(&BPtemp, &player.AttackRc, &vomitBoss.OneRc))
 			{
-				if (enemyMoment.BV_Hp < 400)
+				if (vomitBoss.Hp < 400)
 				{
-					enemyMoment.BV_Hp++;
+					vomitBoss.Hp++;
 				}
 			}
 		}
 
 		if (player.FrameY == 1)
 		{
-			if (IntersectRect(&BPtemp, &player.AttackRc, &vomitBossRC))
+			if (IntersectRect(&BPtemp, &player.AttackRc, &vomitBoss.OneRc))
 			{
-				if (enemyMoment.BV_Hp < 400)
+				if (vomitBoss.Hp < 400)
 				{
-					enemyMoment.BV_Hp++;
+					vomitBoss.Hp++;
 				}
 			}
 		}
 	}
 	
-	if (enemyMoment.BV_Hp == 400)
+	if (vomitBoss.Hp == 400)
 	{
-		enemyMoment.BV_Die = true;
-		enemy.State = E_DIE;
-		if (worldTimeCount % 13 == 0) vomitBossDieFrameX1++;
-		if (vomitBossDieFrameX1 > IMAGEMANAGER->findImage("보스_죽음1")->getMaxFrameX()) vomitBossDieFrameX1 = 1;
+		vomitBoss.Die = true;
+		vomitBoss.State = E_DIE;
+		if (worldTimeCount % 13 == 0) vomitBoss.DieFrameX1++;
+		if (vomitBoss.DieFrameX1 > IMAGEMANAGER->findImage("보스_죽음1")->getMaxFrameX()) vomitBoss.DieFrameX1 = 1;
 
-		if (vomitBossDieFrameX1 == 1)
+		if (vomitBoss.DieFrameX1 == 1)
 		{
-			if (worldTimeCount % 13 == 0) vomitBossDieFrameX2++;
-			if (vomitBossDieFrameX2 > IMAGEMANAGER->findImage("보스_죽음2")->getMaxFrameX()) vomitBossDieFrameX2 = 9;
+			if (worldTimeCount % 13 == 0) vomitBoss.DieFrameX2++;
+			if (vomitBoss.DieFrameX2 > IMAGEMANAGER->findImage("보스_죽음2")->getMaxFrameX()) vomitBoss.DieFrameX2 = 9;
 		}
 	}
 #pragma endregion
-	vomitBossRC = RectMakeCenter(vomitBossX, vomitBossY, 141, 140);
-	vomitBossTwoRC = RectMakeCenter(vomitBossX, vomitBossY, 400, 140);
+	vomitBoss.OneRc = RectMakeCenter(vomitBoss.X, vomitBoss.Y, 141, 140);
+	vomitBoss.TwoRc = RectMakeCenter(vomitBoss.X, vomitBoss.Y, 400, 140);
 }
 
 void Unit::bossVomitRender(void)
@@ -160,41 +158,40 @@ void Unit::bossVomitRender(void)
 	//DrawRectMake(getMemDC(), vomitBossTwoRC);
 	//DrawRectMake(getMemDC(), vomitBossRC);
 #pragma region 보스 랜더
-	if (enemy.State == E_WALK)
+	if (vomitBoss.State == E_WALK)
 	{
-		if (vomitBossFrameY == 1)	IMAGEMANAGER->findImage("보스_걷기")->frameRender(getMemDC(), vomitBossRC.left - 100, vomitBossRC.top - 283, vomitBossFrameX, vomitBossFrameY);
-		else if (vomitBossFrameY == 0) IMAGEMANAGER->findImage("보스_걷기")->frameRender(getMemDC(), vomitBossRC.left - 180, vomitBossRC.top - 283, vomitBossFrameX, vomitBossFrameY);
+		if (vomitBoss.FrameY == 1)	IMAGEMANAGER->findImage("보스_걷기")->frameRender(getMemDC(), vomitBoss.OneRc.left - 100, vomitBoss.OneRc.top - 283, vomitBoss.FrameX, vomitBoss.FrameY);
+		else if (vomitBoss.FrameY == 0) IMAGEMANAGER->findImage("보스_걷기")->frameRender(getMemDC(), vomitBoss.OneRc.left - 180, vomitBoss.OneRc.top - 283, vomitBoss.FrameX, vomitBoss.FrameY);
 	}
 
-	if (enemy.State == E_ATTACK)
+	if (vomitBoss.State == E_ATTACK)
 	{
-		if (vomitBossFrameY == 1)	IMAGEMANAGER->findImage("보스_대기")->frameRender(getMemDC(), vomitBossRC.left - 100, vomitBossRC.top - 283, vomitBossAttackFrameX, vomitBossFrameY);
-		else if (vomitBossFrameY == 0) IMAGEMANAGER->findImage("보스_대기")->frameRender(getMemDC(), vomitBossRC.left - 180, vomitBossRC.top - 283, vomitBossAttackFrameX, vomitBossFrameY);
+		if (vomitBoss.FrameY == 1)	IMAGEMANAGER->findImage("보스_대기")->frameRender(getMemDC(), vomitBoss.OneRc.left - 100, vomitBoss.OneRc.top - 283, vomitBoss.AttackFrameX, vomitBoss.FrameY);
+		else if (vomitBoss.FrameY == 0) IMAGEMANAGER->findImage("보스_대기")->frameRender(getMemDC(), vomitBoss.OneRc.left - 180, vomitBoss.OneRc.top - 283, vomitBoss.AttackFrameX, vomitBoss.FrameY);
 	
-		if (vomitBossAttackFrameX == 9)
+		if (vomitBoss.AttackFrameX == 9)
 		{
-			if (vomitBossFrameY == 1)	IMAGEMANAGER->findImage("보스_불길1")->frameRender(getMemDC(), vomitBossRC.left - 125, vomitBossRC.top + 12, vomitBossFireFrameX, vomitBossFrameY);
-			else if (vomitBossFrameY == 0) IMAGEMANAGER->findImage("보스_불길1")->frameRender(getMemDC(), vomitBossRC.left + 195, vomitBossRC.top + 12, vomitBossFireFrameX, vomitBossFrameY);
+			if (vomitBoss.FrameY == 1)	IMAGEMANAGER->findImage("보스_불길1")->frameRender(getMemDC(), vomitBoss.OneRc.left - 125, vomitBoss.OneRc.top + 12, vomitBoss.FireFrameX, vomitBoss.FrameY);
+			else if (vomitBoss.FrameY == 0) IMAGEMANAGER->findImage("보스_불길1")->frameRender(getMemDC(), vomitBoss.OneRc.left + 195, vomitBoss.OneRc.top + 12, vomitBoss.FireFrameX, vomitBoss.FrameY);
 
-			if (vomitBossFrameY == 1)	IMAGEMANAGER->findImage("보스_불꽃2")->frameRender(getMemDC(), vomitBossRC.left - 115 , vomitBossRC.top + 52, vomitBossFireFrameX, vomitBossFrameY);
-			else if (vomitBossFrameY == 0) IMAGEMANAGER->findImage("보스_불꽃2")->frameRender(getMemDC(), vomitBossRC.left + 240, vomitBossRC.top + 52, vomitBossFireFrameX, vomitBossFrameY);
+			if (vomitBoss.FrameY == 1)	IMAGEMANAGER->findImage("보스_불꽃2")->frameRender(getMemDC(), vomitBoss.OneRc.left - 115 , vomitBoss.OneRc.top + 52, vomitBoss.FireFrameX, vomitBoss.FrameY);
+			else if (vomitBoss.FrameY == 0) IMAGEMANAGER->findImage("보스_불꽃2")->frameRender(getMemDC(), vomitBoss.OneRc.left + 240, vomitBoss.OneRc.top + 52, vomitBoss.FireFrameX, vomitBoss.FrameY);
 			
-			if (vomitBossFrameY == 1)	IMAGEMANAGER->findImage("보스_불꽃2")->frameRender(getMemDC(), vomitBossRC.left - 170, vomitBossRC.top + 52, vomitBossFireFrameX, vomitBossFrameY);
-			else if (vomitBossFrameY == 0) IMAGEMANAGER->findImage("보스_불꽃2")->frameRender(getMemDC(), vomitBossRC.left + 300, vomitBossRC.top + 52, vomitBossFireFrameX, vomitBossFrameY);
+			if (vomitBoss.FrameY == 1)	IMAGEMANAGER->findImage("보스_불꽃2")->frameRender(getMemDC(), vomitBoss.OneRc.left - 170, vomitBoss.OneRc.top + 52, vomitBoss.FireFrameX, vomitBoss.FrameY);
+			else if (vomitBoss.FrameY == 0) IMAGEMANAGER->findImage("보스_불꽃2")->frameRender(getMemDC(), vomitBoss.OneRc.left + 300, vomitBoss.OneRc.top + 52, vomitBoss.FireFrameX, vomitBoss.FrameY);
 		}		
 	}
-	if (enemyMoment.BV_Die)
+	if (vomitBoss.Die)
 	{
-		if (enemy.State == E_DIE)
+		if (vomitBoss.State == E_DIE)
 		{
-			//if (vomitBossFrameY == 1)	IMAGEMANAGER->findImage("보스_죽음1")->frameRender(getMemDC(), vomitBossRC.left - 300, vomitBossRC.top - 300, vomitBossDieFrameX1, vomitBossFrameY);
-			//else if (vomitBossFrameY == 0) IMAGEMANAGER->findImage("보스_죽음1")->frameRender(getMemDC(), vomitBossRC.left - 400, vomitBossRC.top - 300, vomitBossDieFrameX1, vomitBossFrameY);
+			//if (vomitBoss.FrameY == 1)	IMAGEMANAGER->findImage("보스_죽음1")->frameRender(getMemDC(), vomitBossRC.left - 300, vomitBossRC.top - 300, vomitBossDieFrameX1, vomitBossFrameY);
+			//else if (vomitBoss.FrameY == 0) IMAGEMANAGER->findImage("보스_죽음1")->frameRender(getMemDC(), vomitBossRC.left - 400, vomitBossRC.top - 300, vomitBossDieFrameX1, vomitBossFrameY);
 
-			if (vomitBossFrameY == 1)	IMAGEMANAGER->findImage("보스_죽음2")->frameRender(getMemDC(), vomitBossRC.left - 300, vomitBossRC.top - 300, vomitBossDieFrameX2, vomitBossFrameY);
-			else if (vomitBossFrameY == 0) IMAGEMANAGER->findImage("보스_죽음2")->frameRender(getMemDC(), vomitBossRC.left - 400, vomitBossRC.top - 300, vomitBossDieFrameX2, vomitBossFrameY);
+			if (vomitBoss.FrameY == 1)	IMAGEMANAGER->findImage("보스_죽음2")->frameRender(getMemDC(), vomitBoss.OneRc.left - 300, vomitBoss.OneRc.top - 300, vomitBoss.DieFrameX2, vomitBoss.FrameY);
+			else if (vomitBoss.FrameY == 0) IMAGEMANAGER->findImage("보스_죽음2")->frameRender(getMemDC(), vomitBoss.OneRc.left - 400, vomitBoss.OneRc.top - 300, vomitBoss.DieFrameX2, vomitBoss.FrameY);
 			
 		}
 	}
 #pragma endregion
-
 }

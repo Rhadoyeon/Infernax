@@ -6,6 +6,8 @@ HRESULT VillageScene::init(void)
 	unit = new Unit;
 	unit->init();
 
+	bgMove3 = 0;
+
 	return S_OK;
 }
 
@@ -26,5 +28,4 @@ void VillageScene::render(void)
 	IMAGEMANAGER->findImage("마을_배경")->render(getMemDC(), 0, 0);
 
 	unit->playerRender();
-
 }
