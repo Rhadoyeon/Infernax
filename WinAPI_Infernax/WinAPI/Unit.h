@@ -51,7 +51,8 @@ struct PlayerStruct
 	bool Jump;				// 점프
 	bool Die;				// 죽음
 	bool JumpCount;			// 점프확인
-	bool Inventory;				// 인벤토리
+	bool Inventory;			// 인벤토리
+	bool Move;				// 플레이어 움직임
 };
 
 struct EnemyStruct
@@ -60,7 +61,6 @@ struct EnemyStruct
 
 	// zombie
 	RECT Rc;
-	float bgMove2;
 	float X, Y;
 	int FrameX, FrameY;
 	int DieFrameX;
@@ -99,13 +99,12 @@ class Unit : public GameNode
 private: // 플레이어
 
 	PlayerStruct player;
-	float bgMove1;			// 화면 움직임
+	float bgMove;			// 화면 움직임
 
 	int worldTimeCount;
 
 private: // 배틀씬1 적
 	EnemyStruct zombie;
-	float bgMove2;
 
 private: // 첫번째 보스
 	BossStruct vomitBoss;
@@ -129,13 +128,15 @@ public:
 	void bossVomitRender(void);
 
 	// 배경 이동 좌표 접근자
-	int getBgMove(void) { return bgMove1; }
+	int getBgMove(void) { return bgMove; }
 
 	// WorldTimeCount 접근자
 	int getWorldTimeCount(void) { return worldTimeCount; }
 
 	// 플레이어 X 좌표 접근자
 	float getPlayerX(void) { return player.X; }
+
+	bool getPlayerMove(void) { return player.Move; }
 
 	Unit() {}
 	~Unit() {}

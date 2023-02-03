@@ -4,9 +4,12 @@
 class StartScene : public GameNode
 {
 private:
-	int startFrameX1, startFrameY1;
+	int startFrameX, startThunderFrameX;
 	float loopBg1, loopBg2;
 	int worldTimeCount;
+	int startTime, PressAnyKey;
+
+	bool thunder;
 
 public:
 	HRESULT init(void);

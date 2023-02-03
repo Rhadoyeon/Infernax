@@ -19,7 +19,7 @@ void Unit::enemyUpdate(void)
 #pragma region 좀비 이동
 	if (!player.Inventory)
 	{
-		if (bgMove1 >= 0)
+		if (bgMove >= 0)
 		{
 			if (worldTimeCount % 15 == 0) zombie.FrameX++;
 			if (zombie.FrameX > IMAGEMANAGER->findImage("좀비_걷기")->getMaxFrameX()) zombie.FrameX = 0;

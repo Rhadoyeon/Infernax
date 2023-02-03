@@ -31,8 +31,13 @@ void MainGame::Images(void)
 
 	// 시작
 	IMAGEMANAGER->addFrameImage("시작", BG"StartScene.bmp", 4255, 800, 3, 1, true, COLORDEL);
-	IMAGEMANAGER->addImage("구름_위", BG"StartCloudUp.bmp", 1287, 237, true, COLORDEL);
+	IMAGEMANAGER->addImage("제목", OBJ"Infernax.bmp", 951, 405, true, COLORDEL);
+	IMAGEMANAGER->addImage("구름_위", BG"StartCloudUp.bmp", 1716, 316, true, COLORDEL);
 	IMAGEMANAGER->addImage("구름_아래", BG"StartCloudDown.bmp", 1287, 237, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("번개_왼쪽", OBJ"ThunderL.bmp", 615, 321, 5, 1, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("번개_오른쪽", OBJ"ThunderR.bmp", 1035, 309, 5, 1, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("넘김글자", BG"PressAnyKey.bmp",	2628, 20, 6, 1, true, COLORDEL);
+
 
 	// 배틀씬1
 	IMAGEMANAGER->addImage("배경1", BG"battleSceneBG.bmp", 3006, 1000, true, COLORDEL);
@@ -52,17 +57,17 @@ void MainGame::Images(void)
 	IMAGEMANAGER->addFrameImage("보스_불꽃2", ENEMY"VomitBossFireAttack2.bmp", 120, 168, 2, 2, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("보스_대기", ENEMY"VomitBossStay.bmp", 4650, 846, 10, 2, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("보스_죽음1", ENEMY"VomitBossDie1.bmp", 1800, 876, 2, 2, true, COLORDEL);
-	//IMAGEMANAGER->addFrameImage("보스_죽음1", ENEMY"VomitBossDie1.bmp", 10800, 876, 12, 2, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("보스_죽음2", ENEMY"VomitBossDie2.bmp", 9000, 876, 10, 2, true, COLORDEL);
 
 	// 마을
-	IMAGEMANAGER->addImage("마을_배경", Village"VillageBG.bmp", 2714, 800, true, COLORDEL);
+	IMAGEMANAGER->addImage("마을_배경", Village"VillageBG.bmp", 3547, 800, true, COLORDEL);
 
 	// 오브젝트
 	//IMAGEMANAGER->addImage("십자가", OBJ"Cross.bmp", 120, 210, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("죽음이펙트", OBJ"EnemyDieEffect.bmp", 153, 114, 3, 1, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("까마귀", OBJ"Crow.bmp", 90, 114, 2, 2, true, COLORDEL);
 	IMAGEMANAGER->addImage("알파블랙", OBJ"BgBlack.bmp", WINSIZE_X, WINSIZE_Y, true, COLORDEL);
+	IMAGEMANAGER->addImage("화이트", OBJ"BgWhite.bmp", WINSIZE_X, WINSIZE_Y, true, COLORDEL);
 	IMAGEMANAGER->addImage("선택", OBJ"Select.bmp", 136, 136, true, COLORDEL);
 
 	// 인벤(마법, 퀘스트, 캐릭터)

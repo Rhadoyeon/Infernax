@@ -12,7 +12,7 @@ void Unit::playerInit(void)
 	player.State = P_STAND;
 	player.Inven = MAGIC;
 
-	player.Die = player.Jump = player.JumpCount = player.Inventory = false;
+	player.Die = player.Jump = player.JumpCount = player.Inventory = player.Move = false;
 
 	player.Speed = player.Gravity = 0.0f;
 #pragma endregion
@@ -21,25 +21,44 @@ void Unit::playerInit(void)
 void Unit::playerUpdate(void)
 {
 #pragma region 키 입력 시 플레이어 이동
-	// 왼쪽으로 걷기 시
-	if (KEYMANAGER->isStayKeyDown(VK_LEFT))
+
+	if (player.X >= WINSIZE_X / 2)
 	{
-		player.X -= 2;
-		player.State = P_WALK;
-		player.Right = false;
+		player.Move = true;
 	}
+
+	if (player.X <= WINSIZE_X / 2)
+	{
+		player.Move = false;
+	}
+
+	// 왼쪽으로 걷기 시
+	if (player.Move)
+	{
+		if (KEYMANAGER->isStayKeyDown(VK_LEFT))
+		{
+			player.X -= 2;
+			player.State = P_WALK;
+			player.Right = false;
+		}
+	}
+
 	if (KEYMANAGER->isOnceKeyUp(VK_LEFT))
 	{
 		player.State = P_STAND;
 	}
 
-	// 오른쪽으로 걷기 시
-	if (KEYMANAGER->isStayKeyDown(VK_RIGHT))
+	if (!player.Move)
 	{
-		player.X += 2;
-		player.State = P_WALK;
-		player.Right = true;
+		// 오른쪽으로 걷기 시
+		if (KEYMANAGER->isStayKeyDown(VK_RIGHT))
+		{
+			player.X += 2;
+			player.State = P_WALK;
+			player.Right = true;
+		}
 	}
+
 	if (KEYMANAGER->isOnceKeyUp(VK_RIGHT))
 	{
 		player.State = P_STAND;

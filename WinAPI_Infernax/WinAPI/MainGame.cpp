@@ -18,7 +18,7 @@ HRESULT MainGame::init(void)
 	//SCENEMANAGER->addScene("방어구", new VillageScene);
 	//SCENEMANAGER->addScene("스킬", new VillageScene);
 
-	SCENEMANAGER->changeScene("시작");
+	SCENEMANAGER->changeScene("마을");
 
 	return S_OK;
 }

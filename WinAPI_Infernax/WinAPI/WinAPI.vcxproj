@@ -145,6 +145,7 @@
     <ClCompile Include="AnimationScene.cpp" />
     <ClCompile Include="battleScene.cpp" />
     <ClCompile Include="battleScene2.cpp" />
+    <ClCompile Include="battleScene3.cpp" />
     <ClCompile Include="BossVomit.cpp" />
     <ClCompile Include="C3DMatrix.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -192,6 +193,7 @@
     <ClInclude Include="AnimationScene.h" />
     <ClInclude Include="battleScene.h" />
     <ClInclude Include="battleScene2.h" />
+    <ClInclude Include="battleScene3.h" />
     <ClInclude Include="C3DMatrix.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClInclude>
