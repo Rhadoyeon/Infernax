@@ -6,7 +6,12 @@ HRESULT VillageScene::init(void)
 	unit = new Unit;
 	unit->init();
 
-	bgMove = 0;
+	unit->setPlayerVillage(true);
+	_battleScene2 = new battleScene2;
+	_battleScene2->init();
+
+	bgMove = 0;	
+
 
 	return S_OK;
 }
@@ -18,32 +23,20 @@ void VillageScene::release(void)
 
 void VillageScene::update(void)
 {
-	if (!unit->getPlayerMove() && KEYMANAGER->isStayKeyDown(VK_LEFT))
-	{
-		bgMove += 2.0f;
-	}
-
-	if (unit->getPlayerMove() && KEYMANAGER->isStayKeyDown(VK_RIGHT))
-	{
-		bgMove -= 2.0f;
-	}
-
-	if (bgMove > 1434)
-	{
-		bgMove = 1434;
-	}
-	if (bgMove < -500)
-	{
-		bgMove = -500;
-	}
 	unit->update();
+
+
+	if (KEYMANAGER->isOnceKeyDown(VK_UP))
+	{
+		SCENEMANAGER->changeScene("무기상점");
+	}
 }
 
 void VillageScene::render(void)
 {
-	IMAGEMANAGER->findImage("배경1")->render(getMemDC(), bgMove - 1700, 0);
-	IMAGEMANAGER->findImage("배경2")->render(getMemDC(), bgMove - 1800, -200);
-	IMAGEMANAGER->findImage("마을_배경")->render(getMemDC(), bgMove - 1433, 0);
+	IMAGEMANAGER->findImage("배경1")->render(getMemDC(), unit->getBgMove() - 2200, 0);
+	IMAGEMANAGER->findImage("배경2")->render(getMemDC(), unit->getBgMove() - 2200, -200);
+	IMAGEMANAGER->findImage("마을_배경")->render(getMemDC(), unit->getBgMove() - 2300, 0);
 
 	unit->playerRender();
 }

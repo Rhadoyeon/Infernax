@@ -6,7 +6,7 @@ HRESULT battleScene::init(void)
 	unit = new Unit;
 	unit->init();
 
-	//bgMove1 = 0;
+	bgMove = 0;
 
 	// 까마귀 초기화
 	for (int i = 0; i < _countof(crows); i++)
@@ -64,9 +64,10 @@ void battleScene::update(void)
 void battleScene::render(void)
 {
 	// 배경 그리기
-	/*IMAGEMANAGER->findImage("배경1")->render(getMemDC(), unit->getBgMove() - 1200, 0);
-	IMAGEMANAGER->findImage("배경2")->render(getMemDC(), unit->getBgMove() - 1200, -200);
-	IMAGEMANAGER->findImage("전투1")->render(getMemDC(), unit->getBgMove() - 1000, -200);*/
+	//IMAGEMANAGER->findImage("배경1")->render(getMemDC(), unit->getBgMove() - 1200, 0);
+	//IMAGEMANAGER->findImage("배경2")->render(getMemDC(), unit->getBgMove() - 1200, -200);
+	//IMAGEMANAGER->findImage("전투1")->render(getMemDC(), unit->getBgMove() - 1000, -200);
+	
 
 	IMAGEMANAGER->findImage("배경1")->render(getMemDC(), -200, 0);
 	IMAGEMANAGER->findImage("배경2")->render(getMemDC(), -200, -200);
@@ -82,7 +83,6 @@ void battleScene::render(void)
 	}
 
 	// 플레이어와 적 그리기
-	//unit->render();
 	unit->enemyRender();
 	unit->playerRender();
 

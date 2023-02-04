@@ -8,11 +8,12 @@ void Unit::playerInit(void)
 	player.Y = 570;
 
 	player.FrameX = player.FrameY = player.JumpFrameX = 0;
+	villageMove = false;
 
 	player.State = P_STAND;
 	player.Inven = MAGIC;
 
-	player.Die = player.Jump = player.JumpCount = player.Inventory = player.Move = false;
+	player.Die = player.Jump = player.JumpCount = player.Inventory = player.Move =  false;
 
 	player.Speed = player.Gravity = 0.0f;
 #pragma endregion
@@ -22,34 +23,35 @@ void Unit::playerUpdate(void)
 {
 #pragma region 키 입력 시 플레이어 이동
 
-	if (player.X >= WINSIZE_X / 2)
+	if (!villageMove)
 	{
-		player.Move = true;
-	}
+		if (player.X > WINSIZE_X / 2)
+		{
+			player.Move = true;
 
-	if (player.X <= WINSIZE_X / 2)
-	{
-		player.Move = false;
-	}
-
-	// 왼쪽으로 걷기 시
-	if (player.Move)
-	{
+		}
+		if (player.X < WINSIZE_X / 2)
+		{
+			player.Move = false;
+		}
+		// 왼쪽으로 걷기 시
+		//if (player.Move)
+		//{
 		if (KEYMANAGER->isStayKeyDown(VK_LEFT))
 		{
 			player.X -= 2;
 			player.State = P_WALK;
 			player.Right = false;
 		}
-	}
+		//}
 
-	if (KEYMANAGER->isOnceKeyUp(VK_LEFT))
-	{
-		player.State = P_STAND;
-	}
+		if (KEYMANAGER->isOnceKeyUp(VK_LEFT))
+		{
+			player.State = P_STAND;
+		}
 
-	if (!player.Move)
-	{
+		//if (!player.Move)
+		//{
 		// 오른쪽으로 걷기 시
 		if (KEYMANAGER->isStayKeyDown(VK_RIGHT))
 		{
@@ -57,13 +59,76 @@ void Unit::playerUpdate(void)
 			player.State = P_WALK;
 			player.Right = true;
 		}
+		//}
+
+		if (KEYMANAGER->isOnceKeyUp(VK_RIGHT))
+		{
+			player.State = P_STAND;
+		}
 	}
 
-	if (KEYMANAGER->isOnceKeyUp(VK_RIGHT))
+	if (villageMove)
 	{
-		player.State = P_STAND;
+		if (KEYMANAGER->isStayKeyDown(VK_LEFT))
+		{
+			if (WINSIZE_X / 2 < player.X)
+			{
+				player.X -= 2;
+				player.State = P_WALK;
+				player.Right = false;
+				bgMove += 2.0f;
+			}
+			else
+			{
+				player.State = P_WALK;
+				player.Right = false;
+				bgMove += 2.0f;
+			}
+		}
+
+		if (KEYMANAGER->isOnceKeyUp(VK_LEFT))
+		{
+			player.State = P_STAND;
+		}
+
+
+		if (KEYMANAGER->isStayKeyDown(VK_RIGHT))
+		{
+			if (WINSIZE_X / 2 > player.X)
+			{
+				player.X += 2;
+				player.State = P_WALK;
+				player.Right = true;
+				bgMove -= 2.0f;
+			}
+
+			else
+			{
+				player.State = P_WALK;
+				player.Right = true;
+				bgMove -= 2.0f;
+			}
+		}
+		if (KEYMANAGER->isOnceKeyUp(VK_RIGHT))
+		{
+			player.State = P_STAND;
+		}
+
+
+		if (bgMove > 2100 && KEYMANAGER->isStayKeyDown(VK_LEFT))
+		{
+			bgMove = 2100;
+			player.X -= 2;
+		}
+
+		if (bgMove < 200 && KEYMANAGER->isStayKeyDown(VK_RIGHT))
+		{
+			bgMove = 200;
+			player.X += 2;
+		}
 	}
 
+	cout << villageMove << endl;
 	// 앉기 시
 	if (KEYMANAGER->isStayKeyDown(VK_DOWN))
 	{
@@ -337,9 +402,6 @@ void Unit::playerRender(void)
 			}
 			IMAGEMANAGER->frameRender("플레이어_공격", getMemDC(),
 				player.Rc.left - 88, player.Rc.top - 13, player.FrameX, player.Right);
-			//zombieFrameY = 3;
-			//if (!enemyMoment.E_Die) IMAGEMANAGER->findImage("좀비_걷기")->frameRender(getMemDC(),
-			//	zombieRC.left, zombieRC.top - 8, zombieFrameX, zombieFrameY);
 		}
 		else if (player.Right)
 		{
@@ -353,9 +415,6 @@ void Unit::playerRender(void)
 			}
 			IMAGEMANAGER->frameRender("플레이어_공격", getMemDC(),
 				player.Rc.left - 76, player.Rc.top - 13, player.FrameX, player.Right);
-			//zombieFrameY = 2;
-			//if (!enemyMoment.E_Die) IMAGEMANAGER->findImage("좀비_걷기")->frameRender(getMemDC(),
-			//	zombieRC.left, zombieRC.top - 8, zombieFrameX, zombieFrameY);
 		}
 	}
 	else if (player.State == P_JUMP)

@@ -52,7 +52,8 @@ void Unit::enemyUpdate(void)
 				zombie.Rc.left -= 100;
 				zombie.Rc.right -= 100;
 
-				if (zombie.Hp < 3) zombie.Hp++;
+
+				if (zombie.Hp < 20) zombie.Hp++;
 			}
 		}
 	}
@@ -65,14 +66,16 @@ void Unit::enemyUpdate(void)
 				zombie.Rc.left += 100;
 				zombie.Rc.right += 100;
 
-				if (zombie.Hp < 3) zombie.Hp++;
+				if (zombie.Hp < 20) zombie.Hp++;
 			}
 		}
 	}
 
-	if (zombie.Hp == 3)
+	if (zombie.Hp == 20)
 	{
 		zombie.Die = true;
+		//if (!player.Right) if (!zombie.Die) IMAGEMANAGER->findImage("Á»ºñ_°È±â")->frameRender(getMemDC(), zombie.Rc.left, zombie.Rc.top - 8, zombie.FrameX, 2);
+		//if (player.Right) if (!zombie.Die) IMAGEMANAGER->findImage("Á»ºñ_°È±â")->frameRender(getMemDC(), zombie.Rc.left, zombie.Rc.top - 8, zombie.FrameX, 3);
 		if (zombie.DieFrameX > IMAGEMANAGER->findImage("Á»ºñ_Á×À½")->getMaxFrameX()) zombie.DieFrameX = 2;
 	}
 #pragma endregion

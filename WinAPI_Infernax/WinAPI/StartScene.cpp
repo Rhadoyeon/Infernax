@@ -49,7 +49,7 @@ void StartScene::update(void)
 
     if (KEYMANAGER->isOnceKeyDown(VK_SPACE))
     {
-        SCENEMANAGER->changeScene("배틀맵");
+        SCENEMANAGER->changeScene("메인메뉴");
     }
 
     loopBg1 += 0.5f;

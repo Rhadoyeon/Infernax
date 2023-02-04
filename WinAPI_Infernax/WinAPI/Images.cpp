@@ -38,9 +38,17 @@ void MainGame::Images(void)
 	IMAGEMANAGER->addFrameImage("번개_오른쪽", OBJ"ThunderR.bmp", 1035, 309, 5, 1, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("넘김글자", BG"PressAnyKey.bmp",	2628, 20, 6, 1, true, COLORDEL);
 
+	// 메인메뉴
+	IMAGEMANAGER->addImage("게임선택", BG"MainSelect.bmp", 1280, 800, true, COLORDEL);
+	IMAGEMANAGER->addImage("게임설정", BG"MainSetting.bmp", 796, 605, true, COLORDEL);
+	IMAGEMANAGER->addImage("선택오브젝트", OBJ"SelectPoint.bmp", 21, 21, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("메인메뉴", OBJ"MainMenu.bmp", 312, 117, 2, 3, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("계속하기", OBJ"Continue.bmp", 260, 39, 2, 1, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("설정", OBJ"Setting.bmp", 128, 38, 2, 1, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("오디오", OBJ"Sound.bmp", 204, 37, 2, 1, true, COLORDEL);
 
 	// 배틀씬1
-	IMAGEMANAGER->addImage("배경1", BG"battleSceneBG.bmp", 3006, 1000, true, COLORDEL);
+	IMAGEMANAGER->addImage("배경1", BG"battleSceneBG.bmp", 4000, 1000, true, COLORDEL);
 	IMAGEMANAGER->addImage("배경2", BG"battleSceneBG1.bmp", 3588, 1000, true, COLORDEL);
 	IMAGEMANAGER->addImage("전투1", BG"battleSceneLAND1.bmp", 3200, 1000, true, COLORDEL);
 
@@ -60,7 +68,15 @@ void MainGame::Images(void)
 	IMAGEMANAGER->addFrameImage("보스_죽음2", ENEMY"VomitBossDie2.bmp", 9000, 876, 10, 2, true, COLORDEL);
 
 	// 마을
-	IMAGEMANAGER->addImage("마을_배경", Village"VillageBG.bmp", 3547, 800, true, COLORDEL);
+	IMAGEMANAGER->addImage("마을_배경", Village"VillageBG.bmp", 3800, 800, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("장인", Village"Smith.bmp", 360, 123, 4, 1, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("마법사", Village"Magician.bmp", 108, 102, 2, 1, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("스킬상인", Village"Skill.bmp", 108, 114, 2, 1, true, COLORDEL);
+
+	// 상점(방어구, 스킬, 여관)
+	IMAGEMANAGER->addImage("무기상점", Village"SmithBG.bmp", 1363, 1000, true, COLORDEL);
+	//IMAGEMANAGER->addImage("스킬", Village"skillBG.bmp", 3800, 800, true, COLORDEL);
+	//IMAGEMANAGER->addImage("여관", Village"shelterBG.bmp", 3800, 800, true, COLORDEL);
 
 	// 오브젝트
 	//IMAGEMANAGER->addImage("십자가", OBJ"Cross.bmp", 120, 210, true, COLORDEL);

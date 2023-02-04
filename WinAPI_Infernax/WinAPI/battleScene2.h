@@ -13,6 +13,9 @@ public:
 	void release(void);
 	void update(void);
 	void render(void);
+	//void setPlayerVillage(bool Move);
+
+	//bool getVillageMove(void) { return villageMove; }
 
 	battleScene2() {}
 	~battleScene2() {}

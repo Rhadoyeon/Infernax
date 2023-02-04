@@ -12,7 +12,7 @@ struct StructCrow
 class battleScene : public GameNode
 {
 private:
-	//int bgMove1;
+	int bgMove;
 	int bgAlpha1;
 	Unit* unit;
 

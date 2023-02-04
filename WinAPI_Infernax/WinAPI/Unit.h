@@ -100,8 +100,8 @@ private: // 플레이어
 
 	PlayerStruct player;
 	float bgMove;			// 화면 움직임
-
 	int worldTimeCount;
+	bool villageMove;
 
 private: // 배틀씬1 적
 	EnemyStruct zombie;
@@ -127,6 +127,10 @@ public:
 	void bossVomitUpdate(void);
 	void bossVomitRender(void);
 
+	void setPlayerX(float X) { player.X = X; }
+	void setPlayerDirection(bool right) { player.Right = right; }
+
+	void setPlayerVillage(bool Move) { villageMove = Move; }
 	// 배경 이동 좌표 접근자
 	int getBgMove(void) { return bgMove; }
 
@@ -135,7 +139,7 @@ public:
 
 	// 플레이어 X 좌표 접근자
 	float getPlayerX(void) { return player.X; }
-
+	RECT getPlayerRc(void) { return player.Rc; }
 	bool getPlayerMove(void) { return player.Move; }
 
 	Unit() {}

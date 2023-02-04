@@ -168,6 +168,7 @@
     <ClCompile Include="MainGame.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="Quest.cpp" />
@@ -212,6 +213,7 @@
     <ClInclude Include="JsonSaveLoader.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="MainGame.h" />
+    <ClInclude Include="MainMenu.h" />
     <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="Quest.h" />
     <ClInclude Include="QuestSample.h" />
