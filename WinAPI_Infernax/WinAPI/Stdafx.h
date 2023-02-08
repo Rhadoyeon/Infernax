@@ -92,7 +92,6 @@ using namespace std;
 #include "KeyManager.h"
 #include "ImageManager.h"
 #include "FontManager.h"
-#include "TempSoundManager.h"
 #include "Utils.h"
 
 //12.21 추가
@@ -107,6 +106,9 @@ using namespace std;
 // 01.19 추가
 #include "JsonSaveLoader.h"
 
+// 02.04 추가
+#include "SaveManager.h"
+
 
 using namespace MY_UTIL;
 
@@ -117,7 +119,6 @@ using namespace MY_UTIL;
 #define KEYMANAGER KeyManager::getSingleton()
 #define IMAGEMANAGER ImageManager::getSingleton()
 #define FONTMANAGER FontManager::getSingleton()
-#define TEMPSOUNDMANAGER TempSoundManager::getSingleton()
 
 //12.21 추가
 #define TIMEMANAGER TimeManager::getSingleton()
@@ -130,6 +131,9 @@ using namespace MY_UTIL;
 
 // 01.17 추가
 #define JSONDATAMANAGER JsonSaveLoader::getSingleton()
+
+// 02.04 추가
+#define SAVEMANAGER SaveManager::getSingleton()
 
 /*
 ! D2D/D3D 헤더 파일
@@ -176,7 +180,7 @@ ID2D1HwndRenderTarget* _ID2DRenderTarget = nullptr;
 
 #else
 
-#define WIN_NAME (LPSTR)(TEXT("WindowsAPI"))
+#define WIN_NAME (LPSTR)(TEXT("Infernax"))
 #define WINSTART_X 400
 #define WINSTART_Y 100
 #define WINSIZE_X 1280

@@ -13,14 +13,141 @@ void Unit::playerInit(void)
 	player.State = P_STAND;
 	player.Inven = MAGIC;
 
-	player.Die = player.Jump = player.JumpCount = player.Inventory = player.Move =  false;
+	player.Die = player.Jump = player.JumpCount = player.Inventory = player.Move = /*player.MoveCheck*/ false;
+
+	player.moveControl = 0;
+
+	player.colliChkDown = false;
 
 	player.Speed = player.Gravity = 0.0f;
+	player.Rc = RectMakeCenter(player.X, player.Y, 69, 103);
+
+	bgMove3 = 720;
 #pragma endregion
+
+	for (int i = 0; i < _countof(playerCrash); i++)
+	{
+		playerCrash[i] = false;
+	}
 }
 
 void Unit::playerUpdate(void)
 {
+	player.Rc = RectMakeCenter(player.X, player.Y, 69, 103);
+	player.DownRc = RectMakeCenter(player.Rc.left + 33, player.Rc.top + 97, 10, 10);
+
+#pragma region 픽셀 충돌
+//	// 업
+//	for (int i = player.UpRc.left - 10; i < player.UpRc.right + 10; i++)
+//	{
+//		COLORREF UpColor = GetPixel(IMAGEMANAGER->findImage("픽셀_전투3")->getMemDC(),
+//			i + bgMove3, player.UpRc.top + 200);
+//
+//		int UpR = GetRValue(UpColor);
+//		int UpG = GetGValue(UpColor);
+//		int UpB = GetBValue(UpColor);
+//
+//
+//		if (UpR == 255 && UpG == 0 && UpB == 0)
+//		{
+//			player.colliChkUp = true;
+//		}
+//
+//		else
+//		{
+//			player.colliChkUp = false;
+//			//player.Gravity -= 0.5f;
+//		}
+//
+//		if (player.colliChkUp)
+//		{
+//			player.Y += 0.1f;
+//		}
+//	}
+	// 다운
+	for (int i = player.DownRc.left - 10; i < player.DownRc.right + 10; i++)
+	{
+		COLORREF DownColor = GetPixel(IMAGEMANAGER->findImage("픽셀_전투3")->getMemDC(),
+			i + bgMove3, player.DownRc.bottom + 200);
+
+		int DownR = GetRValue(DownColor);
+		int DownG = GetGValue(DownColor);
+		int DownB = GetBValue(DownColor);
+
+
+		if (DownR == 255 && DownG == 0 && DownB == 0)
+		{
+			player.colliChkDown = true;
+		}
+
+		else
+		{
+			player.colliChkDown = false;
+			//player.Gravity -= 0.5f;
+		}
+
+		if (player.colliChkDown)
+		{
+			player.Y += 0.00001f;
+			//player.Gravity -= 0.2f;
+		}
+	}
+//	// 오른쪽
+//	for (int i = player.RightRc.top - 10; i < player.RightRc.bottom + 10; i++)
+//	{
+//
+//		COLORREF RightColor = GetPixel(IMAGEMANAGER->findImage("픽셀_전투3")->getMemDC(),
+//			player.RightRc.right + bgMove3 + 20, i + 200);
+//
+//		int RightR = GetRValue(RightColor);
+//		int RightG = GetGValue(RightColor);
+//		int RightB = GetBValue(RightColor);
+//
+//
+//		if (RightR == 255 && RightG == 0 && RightB == 0)
+//		{
+//			player.colliChkRight = true;
+//		}
+//
+//		else
+//		{
+//			player.colliChkRight = false;
+//		}
+//
+//		if (player.colliChkRight)
+//		{
+//			player.X += 0.1f;
+//		}
+//	}
+//
+//	// 왼쪽
+//	for (int i = player.LeftRc.top - 10; i < player.LeftRc.bottom + 10; i++)
+//	{
+//
+//		COLORREF LeftColor = GetPixel(IMAGEMANAGER->findImage("픽셀_전투3")->getMemDC(),
+//			player.LeftRc.left + bgMove3, i + 200);
+//
+//		int LeftR = GetRValue(LeftColor);
+//		int LeftG = GetGValue(LeftColor);
+//		int LeftB = GetBValue(LeftColor);
+//
+//
+//		if (LeftR == 255 && LeftG == 0 && LeftB == 0)
+//		{
+//			player.colliChkLeft = true;
+//		}
+//		else
+//		{
+//			player.colliChkLeft = false;
+//		}
+//
+//		if (player.colliChkLeft)
+//		{
+//			player.X += 0.1f;
+//		}
+//	}
+#pragma endregion
+
 #pragma region 키 입력 시 플레이어 이동
 
 	if (!villageMove)
@@ -28,38 +155,32 @@ void Unit::playerUpdate(void)
 		if (player.X > WINSIZE_X / 2)
 		{
 			player.Move = true;
-
 		}
 		if (player.X < WINSIZE_X / 2)
 		{
 			player.Move = false;
 		}
-		// 왼쪽으로 걷기 시
-		//if (player.Move)
-		//{
+
 		if (KEYMANAGER->isStayKeyDown(VK_LEFT))
 		{
+			//player.MoveCheck = false;
 			player.X -= 2;
 			player.State = P_WALK;
 			player.Right = false;
 		}
-		//}
 
 		if (KEYMANAGER->isOnceKeyUp(VK_LEFT))
 		{
 			player.State = P_STAND;
 		}
 
-		//if (!player.Move)
-		//{
-		// 오른쪽으로 걷기 시
 		if (KEYMANAGER->isStayKeyDown(VK_RIGHT))
 		{
+			//player.MoveCheck = false;
 			player.X += 2;
 			player.State = P_WALK;
 			player.Right = true;
 		}
-		//}
 
 		if (KEYMANAGER->isOnceKeyUp(VK_RIGHT))
 		{
@@ -71,19 +192,22 @@ void Unit::playerUpdate(void)
 	{
 		if (KEYMANAGER->isStayKeyDown(VK_LEFT))
 		{
+			player.X -= 2;
+			player.State = P_WALK;
+			player.Right = false;
+
 			if (WINSIZE_X / 2 < player.X)
 			{
-				player.X -= 2;
-				player.State = P_WALK;
-				player.Right = false;
 				bgMove += 2.0f;
+				bgMove3 += 2.0f;
 			}
-			else
-			{
-				player.State = P_WALK;
-				player.Right = false;
-				bgMove += 2.0f;
-			}
+			//else
+			//{
+			//	player.State = P_WALK;
+			//	player.Right = false;
+			//	bgMove += 2.0f;
+			//	bgMove3 += 2.0f;
+			//}
 		}
 
 		if (KEYMANAGER->isOnceKeyUp(VK_LEFT))
@@ -94,20 +218,23 @@ void Unit::playerUpdate(void)
 
 		if (KEYMANAGER->isStayKeyDown(VK_RIGHT))
 		{
+			player.X += 2;
+			player.State = P_WALK;
+			player.Right = true;
+
 			if (WINSIZE_X / 2 > player.X)
 			{
-				player.X += 2;
-				player.State = P_WALK;
-				player.Right = true;
 				bgMove -= 2.0f;
+				bgMove3 -= 2.0f;
 			}
 
-			else
-			{
-				player.State = P_WALK;
-				player.Right = true;
-				bgMove -= 2.0f;
-			}
+			//else
+			//{
+			//	player.State = P_WALK;
+			//	player.Right = true;
+			//	bgMove -= 2.0f;
+			//	bgMove3 -= 2.0f;
+			//}
 		}
 		if (KEYMANAGER->isOnceKeyUp(VK_RIGHT))
 		{
@@ -121,14 +248,64 @@ void Unit::playerUpdate(void)
 			player.X -= 2;
 		}
 
+		if (bgMove3 > 1440 && KEYMANAGER->isStayKeyDown(VK_LEFT))
+		{
+			bgMove3 = 1440;
+			player.X += 2;
+		}
+
+
 		if (bgMove < 200 && KEYMANAGER->isStayKeyDown(VK_RIGHT))
 		{
 			bgMove = 200;
 			player.X += 2;
 		}
+
+		if (bgMove3 < 720 && KEYMANAGER->isStayKeyDown(VK_RIGHT))
+		{
+			bgMove3 = 720;
+			player.X -= 2;
+		}
+
 	}
 
-	cout << villageMove << endl;
+	//if (KEYMANAGER->isStayKeyDown(VK_LEFT))
+	//{
+	//	if (villageMove)
+	//	{
+	//		if (KEYMANAGER->isStayKeyDown(VK_LEFT))
+	//		{
+	//			if (!playerCrash[0])
+	//			{
+	//				player.X -= 2.0f;
+	//				bgMove3 += 2.0f;
+	//				player.State = P_WALK;
+	//				player.Right = false;
+	//			}
+	//			else if (playerCrash[0])
+	//			{
+	//				if (WINSIZE_X / 2 < player.X)
+	//				{
+	//					player.X += 2.0f;
+	//					bgMove3 -= 2.0f;
+	//				}
+	//			}
+	//		}
+	//	}
+	//}
+
+	//if (KEYMANAGER->isStayKeyDown(VK_RIGHT))
+	//{
+	//	if (villageMove)
+	//	{
+	//		if (!playerCrash[2])
+	//		{
+	//			player.X += 2.0f;
+	//			bgMove3 -= 2.0f;
+	//		}
+	//	}
+	//}
+
 	// 앉기 시
 	if (KEYMANAGER->isStayKeyDown(VK_DOWN))
 	{
@@ -155,8 +332,9 @@ void Unit::playerUpdate(void)
 	{
 		player.Jump = true;
 		player.JumpCount = true;
-		player.Speed = 10.5f;
+		player.Speed = -10.5f;
 		player.Gravity = 0.8f;
+
 	}
 
 	if (worldTimeCount % 15 == 0) player.JumpFrameX++;
@@ -165,23 +343,42 @@ void Unit::playerUpdate(void)
 	if (player.Jump)
 	{
 		player.State = P_JUMP;
-		player.Gravity -= 0.3f;
-		player.Y -= player.Speed + player.Gravity;
+		player.Gravity += 0.3f;
+		player.Y += player.Gravity + player.Speed;
+	}
+
+	if (playerCrash[3])
+	{
+		player.Jump = false;
+		player.Gravity = 0;
+		player.Speed = 10.0f;
 	}
 
 	if (player.Rc.top >= 522)
 	{
-		player.Jump = false;
-		player.JumpCount = false;
-		player.Y = 570;
-		player.State = P_STAND;
-		player.JumpFrameX = 0;
-
+		if (player.DownRc.left && player.DownRc.right)
+		{
+			player.Jump = false;
+			player.JumpCount = false;
+			player.Y = 570;
+			player.State = P_STAND;
+			player.JumpFrameX = 0;
+		}
 		if (KEYMANAGER->isOnceKeyUp('Z'))
 		{
 			player.State = P_STAND;
 		}
 	}
+
+	//if (player.Rc.bottom)
+	//{			
+	//	RECT temp;
+	//	if (IntersectRect(&temp, &player.Rc, &Wall[2]))
+	//	{
+	//		player.Y -= player.Speed - player.Gravity;
+	//	}		
+	//}
+
 #pragma endregion
 
 #pragma region 플레이어 이동 시 인덱스 업데이트
@@ -362,13 +559,102 @@ void Unit::playerUpdate(void)
 	}
 #pragma endregion
 
-	player.Rc = RectMakeCenter(player.X, player.Y, 69, 103);
+	// 플레이어 충돌용 업데이트
+	playerRc[0] = RectMakeCenter(player.Rc.left, (player.Rc.bottom - player.Rc.top) / 2 + player.Rc.top, 5, 5);
+	playerRc[1] = RectMakeCenter((player.Rc.right - player.Rc.left) / 2 + player.Rc.left, player.Rc.top, 5, 5);
+	playerRc[2] = RectMakeCenter(player.Rc.right, (player.Rc.bottom - player.Rc.top) / 2 + player.Rc.top, 5, 5);
+	playerRc[3] = RectMakeCenter((player.Rc.right - player.Rc.left) / 2 + player.Rc.left, player.Rc.bottom, 5, 5);
+
+	//for (int i = 0; i < _countof(Wall); i++)
+	for (int i = 0; i < _countof(Wall); i++)
+	{
+		RECT rc;
+		// 땅의 벽 1
+		if (IntersectRect(&rc, &playerRc[0], &Wall[0]))
+		{
+			playerCrash[0] = true;
+		}
+		if (IntersectRect(&rc, &playerRc[0], &Wall[1]))
+		{
+			playerCrash[0] = true;
+		}
+		if (IntersectRect(&rc, &playerRc[0], &Wall[2]))
+		{ 
+			playerCrash[0] = true;
+		}
+
+		if (!IntersectRect(&rc, &playerRc[0], &Wall[i]))
+		{
+			playerCrash[0] = false;
+		}
+
+
+
+		// 위로 올라가는 계단 2
+		if (IntersectRect(&rc, &playerRc[1], &Wall[3]))
+		{
+			playerCrash[1] = true;
+		}
+		if (IntersectRect(&rc, &playerRc[1], &Wall[4]))
+		{
+			playerCrash[1] = true;
+		}
+		if (IntersectRect(&rc, &playerRc[1], &Wall[5]))
+		{
+			playerCrash[1] = true;
+		}
+		if (IntersectRect(&rc, &playerRc[1], &Wall[6]))
+		{
+			playerCrash[1] = true;
+		}
+
+
+		// 위로 올라가는 계단 3
+		if (IntersectRect(&rc, &playerRc[2], &Wall[7]))
+		{
+			playerCrash[2] = true;
+		}
+		if (IntersectRect(&rc, &playerRc[2], &Wall[8]))
+		{
+			playerCrash[2] = true;
+		}
+		if (IntersectRect(&rc, &playerRc[2], &Wall[9]))
+		{
+			playerCrash[2] = true;
+		}
+		if (IntersectRect(&rc, &playerRc[2], &Wall[10]))
+		{
+			playerCrash[2] = true;
+		}
+
+
+		// 계단 벽 난간 4
+		if (IntersectRect(&rc, &playerRc[3], &Wall[11]))
+		{
+			playerCrash[3] = true;
+		}
+		if (IntersectRect(&rc, &playerRc[3], &Wall[12]))
+		{
+			playerCrash[3] = true;
+		}
+
+
+		// 계단 벽 난간 5
+		if (IntersectRect(&rc, &playerRc[4], &Wall[13]))
+		{
+			playerCrash[4] = true;
+		}
+		if (IntersectRect(&rc, &playerRc[4], &Wall[14]))
+		{
+			playerCrash[4] = true;
+		}
+	}
 }
 
 void Unit::playerRender(void)
 {
-	//DrawRectMake(getMemDC(), player.AttackRc);
 	//DrawRectMake(getMemDC(), player.Rc);
+	//DrawRectMake(getMemDC(), player.DownRc);
 
 #pragma region 플레이어 랜더
 	if (player.State == P_STAND)
@@ -505,4 +791,6 @@ void Unit::playerRender(void)
 		if (player.Inven == CHARECTER) IMAGEMANAGER->findImage("캐릭터")->render(getMemDC(), 0, 0);
 	}
 #pragma endregion
+	for (int i = 0; i < _countof(playerRc); i++)
+		DrawRectMake(getMemDC(), playerRc[i]);
 }

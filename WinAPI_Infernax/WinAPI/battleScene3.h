@@ -8,6 +8,15 @@ private:
 	int bgAlpha3;
 	Unit* unit;
 
+	int wallX, wallY;
+	RECT Wall[15];
+
+	float bgMove3;
+
+	int gostFrameX, gostFrameY;
+
+	int worldTimeCount;
+
 public:
 	HRESULT init(void);
 	void release(void);

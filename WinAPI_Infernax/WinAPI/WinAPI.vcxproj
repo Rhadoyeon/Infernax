@@ -146,6 +146,7 @@
     <ClCompile Include="battleScene.cpp" />
     <ClCompile Include="battleScene2.cpp" />
     <ClCompile Include="battleScene3.cpp" />
+    <ClCompile Include="battleScene4.cpp" />
     <ClCompile Include="BossVomit.cpp" />
     <ClCompile Include="C3DMatrix.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -157,8 +158,10 @@
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="GameNode.cpp" />
     <ClCompile Include="GImage.cpp" />
+    <ClCompile Include="BossBelphegor.cpp" />
     <ClCompile Include="ImageManager.cpp" />
     <ClCompile Include="Images.cpp" />
+    <ClCompile Include="ItemSkill.cpp" />
     <ClCompile Include="IWindowMessage.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -173,6 +176,7 @@
     <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="Quest.cpp" />
     <ClCompile Include="QuestSample.cpp" />
+    <ClCompile Include="SaveManager.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="ShopScene.cpp" />
     <ClCompile Include="SoundManager.cpp" />
@@ -181,7 +185,6 @@
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="TempSoundManager.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Unit.cpp" />
@@ -195,6 +198,7 @@
     <ClInclude Include="battleScene.h" />
     <ClInclude Include="battleScene2.h" />
     <ClInclude Include="battleScene3.h" />
+    <ClInclude Include="battleScene4.h" />
     <ClInclude Include="C3DMatrix.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClInclude>
@@ -206,6 +210,7 @@
     <ClInclude Include="GameNode.h" />
     <ClInclude Include="GImage.h" />
     <ClInclude Include="ImageManager.h" />
+    <ClInclude Include="ItemSkill.h" />
     <ClInclude Include="IWindowMessage.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClInclude>
@@ -218,6 +223,7 @@
     <ClInclude Include="Quest.h" />
     <ClInclude Include="QuestSample.h" />
     <ClInclude Include="RandomFunction.h" />
+    <ClInclude Include="SaveManager.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="ShopScene.h" />
     <ClInclude Include="SingletonBase.h" />
@@ -225,7 +231,6 @@
     <ClInclude Include="SoundScene.h" />
     <ClInclude Include="StartScene.h" />
     <ClInclude Include="Stdafx.h" />
-    <ClInclude Include="TempSoundManager.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Unit.h" />

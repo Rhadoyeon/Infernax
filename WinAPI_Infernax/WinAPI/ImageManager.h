@@ -11,7 +11,7 @@ STL 맵 핵심
 - 맵을 추가하는 방법은 insert를 사용하고 키와 벨류를 동시에 추가해야 하니 pair이나 make_pair를 사용한다.
 */
 
-class ImageManager:public SingletonBase<ImageManager>
+class ImageManager : public SingletonBase<ImageManager>
 {
 private:
 	typedef map<string, GImage*> mapImageList;

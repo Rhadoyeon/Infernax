@@ -6,6 +6,7 @@ HRESULT Unit::init(void)
     playerInit();
     enemyInit();
     bossVomitInit();
+    BelphegorInit();
 
     worldTimeCount = 0;
 
@@ -21,6 +22,7 @@ void Unit::update(void)
     playerUpdate();
     enemyUpdate();
     bossVomitUpdate();
+    BelphegorUpdate();
 
     worldTimeCount++;
 }
@@ -30,5 +32,5 @@ void Unit::render(void)
     enemyRender();
     bossVomitRender();
     playerRender();
-
+    BelphegorRender();
 }

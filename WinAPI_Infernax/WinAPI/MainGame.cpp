@@ -6,6 +6,11 @@
 #include "battleScene2.h"
 #include "VillageScene.h"
 #include "ShopScene.h"
+#include "battleScene3.h"
+#include "battleScene4.h"
+//#include "battleScene5.h"
+//#include "battleScene6.h"
+//#include "battleScene7.h"
 
 HRESULT MainGame::init(void)
 {
@@ -18,11 +23,13 @@ HRESULT MainGame::init(void)
 	SCENEMANAGER->addScene("배틀맵2", new battleScene2);
 	SCENEMANAGER->addScene("마을", new VillageScene);
 	SCENEMANAGER->addScene("무기상점", new ShopScene);
+	SCENEMANAGER->addScene("배틀맵3", new battleScene3);
+	SCENEMANAGER->addScene("배틀맵4", new battleScene4);
+	//SCENEMANAGER->addScene("배틀맵5", new battleScene3);
+	//SCENEMANAGER->addScene("배틀맵6", new battleScene3);
+	//SCENEMANAGER->addScene("배틀맵7", new battleScene3);
 
-	//SCENEMANAGER->addScene("방어구", new VillageScene);
-	//SCENEMANAGER->addScene("스킬", new VillageScene);
-
-	SCENEMANAGER->changeScene("마을");
+	SCENEMANAGER->changeScene("배틀맵4");
 
 	return S_OK;
 }

@@ -6,7 +6,7 @@ HRESULT battleScene2::init(void)
 	unit = new Unit;
 	unit->init();
 
-	//villageMove = false;
+	//////villageMove = false;
 	return S_OK;
 }
 
@@ -25,7 +25,7 @@ void battleScene2::update(void)
 		if (bgAlpha2 > 255)
 		{
 			SCENEMANAGER->changeScene("¸¶À»");
-			unit->setPlayerVillage(true);
+			//unit->setPlayerVillage(true);
 		}
 	}
 }

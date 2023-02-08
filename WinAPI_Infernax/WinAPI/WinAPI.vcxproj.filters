@@ -53,8 +53,35 @@
     <Filter Include="GameScene\Start&amp;Main">
       <UniqueIdentifier>{bfadee52-05f9-4fac-8b62-7f6704b02018}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API FrameWork\GameCore\Manager\Save">
+      <UniqueIdentifier>{5aa1e285-c167-4075-b5ab-f64507d8663a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\GameCore\Manager\Font">
+      <UniqueIdentifier>{c2ca48bc-6570-416f-8642-201af95aeee0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\GameCore\Manager\Image">
+      <UniqueIdentifier>{0656501f-c07a-4434-bfdb-1c0a5ed23fe9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\GameCore\Manager\Key">
+      <UniqueIdentifier>{92fa4887-046b-46f2-a972-de4a4d508b54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\GameCore\Manager\Scene">
+      <UniqueIdentifier>{7bb1ce7a-ca6b-44e8-b872-cb0a7a00a43e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\GameCore\Manager\Sound">
+      <UniqueIdentifier>{82bc901f-4e70-49b0-83fb-3d227635a644}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\GameCore\Manager\Time">
+      <UniqueIdentifier>{4ccfd3dd-afeb-499b-8f60-04bf197b2573}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameScene\Item">
+      <UniqueIdentifier>{b6722ddc-b873-4259-8687-3ec102cbebe4}</UniqueIdentifier>
+    </Filter>
     <Filter Include="GameScene\Village&amp;Shop">
       <UniqueIdentifier>{ef1c0b54-51b7-4508-bb94-8ffebaa986f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Unit\Enemy">
+      <UniqueIdentifier>{81785b7d-44fd-4e7c-be75-60f67ea74fa3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -82,32 +109,14 @@
     <ClCompile Include="GImage.cpp">
       <Filter>API FrameWork\Image</Filter>
     </ClCompile>
-    <ClCompile Include="TempSoundManager.cpp">
-      <Filter>API FrameWork\GameCore\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="KeyManager.cpp">
-      <Filter>API FrameWork\GameCore\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="ImageManager.cpp">
-      <Filter>API FrameWork\GameCore\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="FontManager.cpp">
-      <Filter>API FrameWork\GameCore\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="Utils.cpp">
       <Filter>API FrameWork\Utility\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="TimeManager.cpp">
-      <Filter>API FrameWork\GameCore\Manager</Filter>
     </ClCompile>
     <ClCompile Include="ProgressBar.cpp">
       <Filter>API FrameWork</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>API FrameWork</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
-      <Filter>API FrameWork\GameCore\Manager</Filter>
     </ClCompile>
     <ClCompile Include="JsonDataScene.cpp">
       <Filter>Json</Filter>
@@ -121,12 +130,6 @@
     <ClCompile Include="QuestSample.cpp">
       <Filter>Json</Filter>
     </ClCompile>
-    <ClCompile Include="SoundManager.cpp">
-      <Filter>API FrameWork\GameCore\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="Timer.cpp">
-      <Filter>API FrameWork</Filter>
-    </ClCompile>
     <ClCompile Include="SoundScene.cpp">
       <Filter>API FrameWork\Scene</Filter>
     </ClCompile>
@@ -137,13 +140,7 @@
     <ClCompile Include="Unit.cpp">
       <Filter>Unit</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Unit</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Unit</Filter>
-    </ClCompile>
-    <ClCompile Include="BossVomit.cpp">
       <Filter>Unit</Filter>
     </ClCompile>
     <ClCompile Include="battleScene.cpp">
@@ -166,6 +163,45 @@
     </ClCompile>
     <ClCompile Include="VillageScene.cpp">
       <Filter>GameScene\Village&amp;Shop</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveManager.cpp">
+      <Filter>API FrameWork\GameCore\Manager\Save</Filter>
+    </ClCompile>
+    <ClCompile Include="FontManager.cpp">
+      <Filter>API FrameWork\GameCore\Manager\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageManager.cpp">
+      <Filter>API FrameWork\GameCore\Manager\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyManager.cpp">
+      <Filter>API FrameWork\GameCore\Manager\Key</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>API FrameWork\GameCore\Manager\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>API FrameWork\GameCore\Manager\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>API FrameWork\GameCore\Manager\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemSkill.cpp">
+      <Filter>GameScene\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>API FrameWork\GameCore\Manager\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="BossVomit.cpp">
+      <Filter>Unit\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Unit\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="BossBelphegor.cpp">
+      <Filter>Unit\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="battleScene4.cpp">
+      <Filter>GameScene\Battle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -199,32 +235,14 @@
     <ClInclude Include="GImage.h">
       <Filter>API FrameWork\Image</Filter>
     </ClInclude>
-    <ClInclude Include="TempSoundManager.h">
-      <Filter>API FrameWork\GameCore\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="KeyManager.h">
-      <Filter>API FrameWork\GameCore\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="ImageManager.h">
-      <Filter>API FrameWork\GameCore\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="FontManager.h">
-      <Filter>API FrameWork\GameCore\Manager</Filter>
-    </ClInclude>
     <ClInclude Include="Utils.h">
       <Filter>API FrameWork\Utility\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="TimeManager.h">
-      <Filter>API FrameWork\GameCore\Manager</Filter>
     </ClInclude>
     <ClInclude Include="ProgressBar.h">
       <Filter>API FrameWork</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>API FrameWork</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneManager.h">
-      <Filter>API FrameWork\GameCore\Manager</Filter>
     </ClInclude>
     <ClInclude Include="JsonDataScene.h">
       <Filter>Json</Filter>
@@ -237,12 +255,6 @@
     </ClInclude>
     <ClInclude Include="QuestSample.h">
       <Filter>Json</Filter>
-    </ClInclude>
-    <ClInclude Include="SoundManager.h">
-      <Filter>API FrameWork\GameCore\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>API FrameWork</Filter>
     </ClInclude>
     <ClInclude Include="SoundScene.h">
       <Filter>API FrameWork\Scene</Filter>
@@ -274,6 +286,36 @@
     <ClInclude Include="VillageScene.h">
       <Filter>GameScene\Village&amp;Shop</Filter>
     </ClInclude>
+    <ClInclude Include="SaveManager.h">
+      <Filter>API FrameWork\GameCore\Manager\Save</Filter>
+    </ClInclude>
+    <ClInclude Include="FontManager.h">
+      <Filter>API FrameWork\GameCore\Manager\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageManager.h">
+      <Filter>API FrameWork\GameCore\Manager\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyManager.h">
+      <Filter>API FrameWork\GameCore\Manager\Key</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>API FrameWork\GameCore\Manager\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>API FrameWork\GameCore\Manager\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>API FrameWork\GameCore\Manager\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemSkill.h">
+      <Filter>GameScene\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>API FrameWork\GameCore\Manager\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="battleScene4.h">
+      <Filter>GameScene\Battle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="CodingInterview\Question.txt">
@@ -284,11 +326,11 @@
     <None Include="Characters.json">
       <Filter>Json</Filter>
     </None>
-    <None Include="Item.json">
-      <Filter>Json</Filter>
-    </None>
     <None Include="Quest.json">
       <Filter>Json</Filter>
+    </None>
+    <None Include="Item.json">
+      <Filter>GameScene\Item</Filter>
     </None>
   </ItemGroup>
 </Project>
