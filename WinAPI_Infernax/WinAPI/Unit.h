@@ -17,12 +17,27 @@ enum PLAYER_STATE
 
 enum ENEMY_STATE
 {
+	E_STAND,
 	E_WALK,
 	E_JUMP,
 	E_ATTACK,
 	E_DEAL,					// 플레이어에게 공격받음
 	E_DIE,
-	E_WEAPON
+	E_WEAPON,
+};
+
+enum BOSS_BELPHEGOR
+{
+	B_STAND,
+	B_WALK,
+	B_WALK2,
+	B_TAKE,
+	B_ATTACK,				// 창 공격
+	B_ATTACK2,				// 불덩이 공격
+	B_DEAL,					// 플레이어에게 공격받음
+	B_DIE,
+	B_WEAPON,
+	B_SCREAM
 };
 
 enum PLAYER_INVEN
@@ -60,8 +75,6 @@ struct PlayerStruct
 	bool JumpCount;			// 점프확인
 	bool Inventory;			// 인벤토리
 	bool Move;				// 플레이어 움직임
-	//bool MoveCheck;			// 움직임 체크
-
 	bool colliChkDown;
 
 };
@@ -105,15 +118,27 @@ struct BossStruct
 
 struct BelphegorStruct
 {
-	ENEMY_STATE BelphegorState;
+	BOSS_BELPHEGOR BelphegorState;
 	RECT Rc;
-	RECT JavelinRc;
+	RECT AttackRc;
 	float X, Y;
-	float JavelinX, JavelinY;
 	int FrameX, FrameY;
-	int SkillFrameX, JavelinFrameX, JavelinTrowFrameX;
+	int SkillFrameX, ScreamFrameX, WalkFrameX, StandFrameX;
+	float BossTimeCount;
+
+	bool Attack;		 // 보스가 공격 상태인가 아닌가
+	int Count;	 // 패턴 나눠주는 카운트
+	int DieCount;
+	bool Pattern;
+
 	bool Die;
-	bool weaponGun;
+};
+
+struct JavelinStruct
+{
+	RECT Rc;
+	float X, Y;
+	int FrameX, TrowFrameX, TakeFrameX, StayFrameX;
 };
 
 class Unit : public GameNode
@@ -141,7 +166,13 @@ private: // 첫번째 보스
 
 private: // 두번째 보스
 	BelphegorStruct belphegor;
+	JavelinStruct javelin;
 	int BelphegorFrameX, BelphegorFrameY;
+	// 분기별로 나눠준 랜더와 업데이트
+	int ChangeBoss;
+	int BossPattern;
+	// ChangeBoss 안의 패턴 (순차적으로 진행)
+	int ChangeBossPaturn;
 
 public:
 	HRESULT init(void);
@@ -189,14 +220,8 @@ public:
 	// 플레이어 무브 접근자
 	bool getPlayerMove(void) { return player.Move; }
 
-	// 플레이어 키매니저 접근자
-	//int getPlayerKeyManager(void) {return player.}
-
 	// 렉트 충돌용 설정자
-	void setWall(int num, RECT rc) 
-	{
-		Wall[num] = rc;
-	}
+	void setWall(int num, RECT rc) { Wall[num] = rc; }
 
 	Unit() {}
 	~Unit() {}

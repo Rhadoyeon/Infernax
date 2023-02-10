@@ -70,15 +70,13 @@ void battleScene3::update(void)
 		}
 	}
 
-	worldTimeCount++;
-	if (worldTimeCount % 10 == 0) gostFrameX++;
-	if (gostFrameX > IMAGEMANAGER->findImage("벨페고르보스_스킬")->getMaxFrameX()) gostFrameX = 0;
+	//worldTimeCount++;
+	//if (worldTimeCount % 10 == 0) gostFrameX++;
+	//if (gostFrameX > IMAGEMANAGER->findImage("벨페고르보스_스킬")->getMaxFrameX()) gostFrameX = 0;
 }
 
 void battleScene3::render(void)
 {
-
-
 	IMAGEMANAGER->findImage("배경1")->render(getMemDC(), unit->getBgMove3() - 1438, -194);
 	IMAGEMANAGER->findImage("배경2")->render(getMemDC(), unit->getBgMove3() - 1438, -194);
 	IMAGEMANAGER->findImage("전투3")->render(getMemDC(), unit->getBgMove3() - 1438, -194);
@@ -98,12 +96,9 @@ void battleScene3::render(void)
 	//DrawRectMake(getMemDC(), Wall[12]);
 	//DrawRectMake(getMemDC(), Wall[13]);
 	//DrawRectMake(getMemDC(), Wall[14]);
-
-	
 	//IMAGEMANAGER->findImage("귀신")->frameRender(getMemDC(), 0, 0, gostFrameX, gostFrameY);
 
 	unit->playerRender();
-	//IMAGEMANAGER->findImage("벨페고르보스_스킬")->frameRender(getMemDC(), WINSIZE_X/2, WINSIZE_Y/2, gostFrameX, gostFrameY);
 
 	IMAGEMANAGER->findImage("알파블랙")->alphaRender(getMemDC(), 0, 0, bgAlpha3);
 }

@@ -76,12 +76,6 @@ void MainGame::Images(void)
 	// 상점(방어구, 스킬, 여관)
 	IMAGEMANAGER->addImage("무기상점", Village"SmithBG.bmp", 1363, 1000, true, COLORDEL);
 	IMAGEMANAGER->addImage("방어구", OBJ"Armer.bmp", 85, 86, true, COLORDEL);
-
-	//IMAGEMANAGER->addImage("구매배경", Village"BuyBG.bmp", 1280, 297, true, COLORDEL);
-	//IMAGEMANAGER->addImage("방어구구매창", Village"SmithBuy.bmp", 1363, 1000, true, COLORDEL);
-	//IMAGEMANAGER->addImage("마법구매창", Village"MagicBuy.bmp", 1363, 1000, true, COLORDEL);
-	//IMAGEMANAGER->addImage("스킬구매창", Village"SkillBuy.bmp", 1363, 1000, true, COLORDEL);
-
 	IMAGEMANAGER->addFrameImage("방어구구매창", Village"BuySmith.bmp", 2560, 279, 2, 1, true, COLORDEL);
 	IMAGEMANAGER->addImage("스킬구매창", Village"BuySkill.bmp", 1280, 279, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("마법구매창", Village"BuyMagic.bmp", 2560, 279, 2, 1, true, COLORDEL);
@@ -107,9 +101,23 @@ void MainGame::Images(void)
 	// 보라색 보스
 	IMAGEMANAGER->addImage("벨페고르배경", BG"BossMapBg.bmp", 2172, 800);
 	IMAGEMANAGER->addFrameImage("벨페고르_컷씬", ENEMY"BelphegorBossStand.bmp", 6444, 426, 12, 1, true, COLORDEL);
-	IMAGEMANAGER->addFrameImage("벨페고르_스킬", ENEMY"BelphegorBossSkill.bmp", 13320, 762, 20, 2,  true, COLORDEL);
+	//IMAGEMANAGER->addFrameImage("벨페고르_스킬", ENEMY"BelphegorBossSkill.bmp", 13320, 762, 20, 2,  true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("벨페고르_창던지기", ENEMY"BelphegorBossJavelin.bmp", 2664, 762, 4, 2, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("벨페고르_창", ENEMY"BelphegorBossWeaponJavelin.bmp", 3027, 762, 4, 2, true, COLORDEL);
+
+	// 벨페고르 관절
+	IMAGEMANAGER->addFrameImage("벨페고르_외침", ENEMY"BelphegorBossScream.bmp", 2664, 762, 4, 2, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("벨페고르_걷기", ENEMY"BelphegorBossWalk.bmp", 2664, 762, 4, 2, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("벨페고르_창회수", ENEMY"BelphegorBossJavelinTake.bmp", 3330, 762, 5, 2, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("벨페고르_서있기", ENEMY"BelphegorBossWaite.bmp", 666, 762, 1, 2, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("벨페고르의_창", ENEMY"BelphegorBossWeaponJavelinStay.bmp", 684, 504, 2, 2, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("벨페고르_걷기_창", ENEMY"BelphegorBossWalk2.bmp", 1596, 762, 4, 2, true, COLORDEL);
+
+	// 수정 중
+	IMAGEMANAGER->addFrameImage("벨페고르_소환포탈", ENEMY"BelphegorPotar.bmp", 1197, 762, 3, 1, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("벨페고르_소환포탈", ENEMY"BelphegorPotar2.bmp", 1197, 762, 3, 1, true, COLORDEL);
+
+	//IMAGEMANAGER->addFrameImage("벨페고르_외침_창", ENEMY"BelphegorBossScream2.bmp", 2664, 762, 4, 2, true, COLORDEL);
 
 	// 배틀씬3 적 (귀신)
 	IMAGEMANAGER->addFrameImage("귀신", ENEMY"Gost.bmp", 87, 210, 1, 2, true, COLORDEL);
