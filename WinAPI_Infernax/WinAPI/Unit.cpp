@@ -3,14 +3,14 @@
 
 HRESULT Unit::init(void)
 {
-    playerInit();
-    enemyInit();
-    bossVomitInit();
-    BelphegorInit();
+	playerInit();
+	enemyInit();
+	bossVomitInit();
+	BelphegorInit();
 
-    worldTimeCount = 0;
+	worldTimeCount = 0;
 
-    return S_OK;
+	return S_OK;
 }
 
 void Unit::release(void)
@@ -19,18 +19,18 @@ void Unit::release(void)
 
 void Unit::update(void)
 {
-    playerUpdate();
-    enemyUpdate();
-    bossVomitUpdate();
-    BelphegorUpdate();
+	playerUpdate();
+	enemyUpdate();
+	bossVomitUpdate();
+	BelphegorUpdate();
 
-    worldTimeCount++;
+	worldTimeCount++;
 }
 
 void Unit::render(void)
 {
-    enemyRender();
-    bossVomitRender();
-    playerRender();
-    BelphegorRender();
+	enemyRender();
+	bossVomitRender();
+	playerRender();
+	BelphegorRender();
 }

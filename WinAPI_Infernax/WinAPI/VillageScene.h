@@ -6,7 +6,7 @@
 class VillageScene : public GameNode
 {
 private:
-	
+
 	float bgMove;
 	int bgAlpha3;
 	Unit* unit;

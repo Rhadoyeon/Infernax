@@ -37,34 +37,34 @@ void Unit::playerUpdate(void)
 	player.DownRc = RectMakeCenter(player.Rc.left + 33, player.Rc.top + 97, 10, 10);
 
 #pragma region 픽셀 충돌
-//	// 업
-//	for (int i = player.UpRc.left - 10; i < player.UpRc.right + 10; i++)
-//	{
-//		COLORREF UpColor = GetPixel(IMAGEMANAGER->findImage("픽셀_전투3")->getMemDC(),
-//			i + bgMove3, player.UpRc.top + 200);
-//
-//		int UpR = GetRValue(UpColor);
-//		int UpG = GetGValue(UpColor);
-//		int UpB = GetBValue(UpColor);
-//
-//
-//		if (UpR == 255 && UpG == 0 && UpB == 0)
-//		{
-//			player.colliChkUp = true;
-//		}
-//
-//		else
-//		{
-//			player.colliChkUp = false;
-//			//player.Gravity -= 0.5f;
-//		}
-//
-//		if (player.colliChkUp)
-//		{
-//			player.Y += 0.1f;
-//		}
-//	}
-	// 다운
+	//	// 업
+	//	for (int i = player.UpRc.left - 10; i < player.UpRc.right + 10; i++)
+	//	{
+	//		COLORREF UpColor = GetPixel(IMAGEMANAGER->findImage("픽셀_전투3")->getMemDC(),
+	//			i + bgMove3, player.UpRc.top + 200);
+	//
+	//		int UpR = GetRValue(UpColor);
+	//		int UpG = GetGValue(UpColor);
+	//		int UpB = GetBValue(UpColor);
+	//
+	//
+	//		if (UpR == 255 && UpG == 0 && UpB == 0)
+	//		{
+	//			player.colliChkUp = true;
+	//		}
+	//
+	//		else
+	//		{
+	//			player.colliChkUp = false;
+	//			//player.Gravity -= 0.5f;
+	//		}
+	//
+	//		if (player.colliChkUp)
+	//		{
+	//			player.Y += 0.1f;
+	//		}
+	//	}
+		// 다운
 	for (int i = player.DownRc.left - 10; i < player.DownRc.right + 10; i++)
 	{
 		COLORREF DownColor = GetPixel(IMAGEMANAGER->findImage("픽셀_전투3")->getMemDC(),
@@ -92,60 +92,60 @@ void Unit::playerUpdate(void)
 			//player.Gravity -= 0.2f;
 		}
 	}
-//	// 오른쪽
-//	for (int i = player.RightRc.top - 10; i < player.RightRc.bottom + 10; i++)
-//	{
-//
-//		COLORREF RightColor = GetPixel(IMAGEMANAGER->findImage("픽셀_전투3")->getMemDC(),
-//			player.RightRc.right + bgMove3 + 20, i + 200);
-//
-//		int RightR = GetRValue(RightColor);
-//		int RightG = GetGValue(RightColor);
-//		int RightB = GetBValue(RightColor);
-//
-//
-//		if (RightR == 255 && RightG == 0 && RightB == 0)
-//		{
-//			player.colliChkRight = true;
-//		}
-//
-//		else
-//		{
-//			player.colliChkRight = false;
-//		}
-//
-//		if (player.colliChkRight)
-//		{
-//			player.X += 0.1f;
-//		}
-//	}
-//
-//	// 왼쪽
-//	for (int i = player.LeftRc.top - 10; i < player.LeftRc.bottom + 10; i++)
-//	{
-//
-//		COLORREF LeftColor = GetPixel(IMAGEMANAGER->findImage("픽셀_전투3")->getMemDC(),
-//			player.LeftRc.left + bgMove3, i + 200);
-//
-//		int LeftR = GetRValue(LeftColor);
-//		int LeftG = GetGValue(LeftColor);
-//		int LeftB = GetBValue(LeftColor);
-//
-//
-//		if (LeftR == 255 && LeftG == 0 && LeftB == 0)
-//		{
-//			player.colliChkLeft = true;
-//		}
-//		else
-//		{
-//			player.colliChkLeft = false;
-//		}
-//
-//		if (player.colliChkLeft)
-//		{
-//			player.X += 0.1f;
-//		}
-//	}
+	//	// 오른쪽
+	//	for (int i = player.RightRc.top - 10; i < player.RightRc.bottom + 10; i++)
+	//	{
+	//
+	//		COLORREF RightColor = GetPixel(IMAGEMANAGER->findImage("픽셀_전투3")->getMemDC(),
+	//			player.RightRc.right + bgMove3 + 20, i + 200);
+	//
+	//		int RightR = GetRValue(RightColor);
+	//		int RightG = GetGValue(RightColor);
+	//		int RightB = GetBValue(RightColor);
+	//
+	//
+	//		if (RightR == 255 && RightG == 0 && RightB == 0)
+	//		{
+	//			player.colliChkRight = true;
+	//		}
+	//
+	//		else
+	//		{
+	//			player.colliChkRight = false;
+	//		}
+	//
+	//		if (player.colliChkRight)
+	//		{
+	//			player.X += 0.1f;
+	//		}
+	//	}
+	//
+	//	// 왼쪽
+	//	for (int i = player.LeftRc.top - 10; i < player.LeftRc.bottom + 10; i++)
+	//	{
+	//
+	//		COLORREF LeftColor = GetPixel(IMAGEMANAGER->findImage("픽셀_전투3")->getMemDC(),
+	//			player.LeftRc.left + bgMove3, i + 200);
+	//
+	//		int LeftR = GetRValue(LeftColor);
+	//		int LeftG = GetGValue(LeftColor);
+	//		int LeftB = GetBValue(LeftColor);
+	//
+	//
+	//		if (LeftR == 255 && LeftG == 0 && LeftB == 0)
+	//		{
+	//			player.colliChkLeft = true;
+	//		}
+	//		else
+	//		{
+	//			player.colliChkLeft = false;
+	//		}
+	//
+	//		if (player.colliChkLeft)
+	//		{
+	//			player.X += 0.1f;
+	//		}
+	//	}
 #pragma endregion
 
 #pragma region 키 입력 시 플레이어 이동
@@ -339,7 +339,7 @@ void Unit::playerUpdate(void)
 
 	if (worldTimeCount % 15 == 0) player.JumpFrameX++;
 	if (player.FrameX > IMAGEMANAGER->findImage("플레이어_점프")->getMaxFrameX()) player.JumpFrameX = 1;
-	
+
 	if (player.Jump)
 	{
 		player.State = P_JUMP;
@@ -579,7 +579,7 @@ void Unit::playerUpdate(void)
 			playerCrash[0] = true;
 		}
 		if (IntersectRect(&rc, &playerRc[0], &Wall[2]))
-		{ 
+		{
 			playerCrash[0] = true;
 		}
 

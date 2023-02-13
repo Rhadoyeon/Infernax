@@ -138,7 +138,7 @@ void ShopScene::update(void)
 		{
 			if (uiOn[0])
 			{
-				if(item->getItemSkill()[0].price < SAVEMANAGER->getPlayerGold()) SAVEMANAGER->setPlayerGold(SAVEMANAGER->getPlayerGold() - item->getItemSkill()[0].price);
+				if (item->getItemSkill()[0].price < SAVEMANAGER->getPlayerGold()) SAVEMANAGER->setPlayerGold(SAVEMANAGER->getPlayerGold() - item->getItemSkill()[0].price);
 			}
 			if (uiOn[1])
 			{
@@ -153,7 +153,7 @@ void ShopScene::update(void)
 					if (buyFrameX == 1) SAVEMANAGER->setPlayerGold(SAVEMANAGER->getPlayerGold() - item->getItemSkill()[4].price);
 				}
 			}
-		}		
+		}
 	}
 #pragma endregion
 
@@ -182,7 +182,7 @@ void ShopScene::render(void)
 {
 
 #pragma region 상점 그리기
-	IMAGEMANAGER->findImage("무기상점")->render(getMemDC(), shop.X - 30, shop.Y -162);
+	IMAGEMANAGER->findImage("무기상점")->render(getMemDC(), shop.X - 30, shop.Y - 162);
 	//DrawRectMake(getMemDC(), unit->getPlayerRc());
 	DrawRectMake(getMemDC(), npcTemp[0]);
 	DrawRectMake(getMemDC(), npcTemp[1]);

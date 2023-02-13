@@ -11,7 +11,7 @@ HRESULT VillageScene::init(void)
 	_battleScene2 = new battleScene2;
 	_battleScene2->init();
 
-	bgMove = 0;	
+	bgMove = 0;
 
 
 	return S_OK;
@@ -32,7 +32,7 @@ void VillageScene::update(void)
 		SCENEMANAGER->changeScene("무기상점");
 	}
 
-	if (unit->getPlayerX() <= 40 )
+	if (unit->getPlayerX() <= 40)
 	{
 		bgAlpha3 += 2;
 		if (bgAlpha3 > 255)

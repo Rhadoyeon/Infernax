@@ -26,12 +26,6 @@
     <Filter Include="MainGame">
       <UniqueIdentifier>{f774a363-6d4c-4a16-814e-31b09577fcc5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="API FrameWork\Image">
-      <UniqueIdentifier>{3ade2f97-fca1-483c-94c8-5c1db157a66d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="CodingInterview">
-      <UniqueIdentifier>{aba916b2-d608-4045-affa-08b7167da573}</UniqueIdentifier>
-    </Filter>
     <Filter Include="API FrameWork\GameCore\Manager">
       <UniqueIdentifier>{ca82977d-5706-4660-9768-dc9ff1ad6554}</UniqueIdentifier>
     </Filter>
@@ -55,9 +49,6 @@
     </Filter>
     <Filter Include="API FrameWork\GameCore\Manager\Save">
       <UniqueIdentifier>{5aa1e285-c167-4075-b5ab-f64507d8663a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\GameCore\Manager\Font">
-      <UniqueIdentifier>{c2ca48bc-6570-416f-8642-201af95aeee0}</UniqueIdentifier>
     </Filter>
     <Filter Include="API FrameWork\GameCore\Manager\Image">
       <UniqueIdentifier>{0656501f-c07a-4434-bfdb-1c0a5ed23fe9}</UniqueIdentifier>
@@ -83,6 +74,12 @@
     <Filter Include="Unit\Enemy">
       <UniqueIdentifier>{81785b7d-44fd-4e7c-be75-60f67ea74fa3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API FrameWork\GameCore\Manager\Font">
+      <UniqueIdentifier>{c2ca48bc-6570-416f-8642-201af95aeee0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\GameCore\Manager\Image\GImage">
+      <UniqueIdentifier>{3ade2f97-fca1-483c-94c8-5c1db157a66d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C3DMatrix.cpp">
@@ -107,7 +104,7 @@
       <Filter>MainGame</Filter>
     </ClCompile>
     <ClCompile Include="GImage.cpp">
-      <Filter>API FrameWork\Image</Filter>
+      <Filter>API FrameWork\GameCore\Manager\Image\GImage</Filter>
     </ClCompile>
     <ClCompile Include="Utils.cpp">
       <Filter>API FrameWork\Utility\Math</Filter>
@@ -233,7 +230,7 @@
       <Filter>MainGame</Filter>
     </ClInclude>
     <ClInclude Include="GImage.h">
-      <Filter>API FrameWork\Image</Filter>
+      <Filter>API FrameWork\GameCore\Manager\Image\GImage</Filter>
     </ClInclude>
     <ClInclude Include="Utils.h">
       <Filter>API FrameWork\Utility\Math</Filter>
@@ -316,11 +313,6 @@
     <ClInclude Include="battleScene4.h">
       <Filter>GameScene\Battle</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="CodingInterview\Question.txt">
-      <Filter>CodingInterview</Filter>
-    </Text>
   </ItemGroup>
   <ItemGroup>
     <None Include="Characters.json">

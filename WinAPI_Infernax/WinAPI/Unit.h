@@ -33,7 +33,10 @@ enum BOSS_BELPHEGOR
 	B_WALK2,
 	B_TAKE,
 	B_ATTACK,				// 창 공격
-	B_ATTACK2,				// 불덩이 공격
+	B_ATTACK2,				// 걷기
+	B_ATTACK3,				// 불덩이 공격
+	B_ATTACK4,				// 발차기 공격
+	B_ATTACK5,				// 걷기2
 	B_DEAL,					// 플레이어에게 공격받음
 	B_DIE,
 	B_WEAPON,
@@ -92,6 +95,7 @@ struct EnemyStruct	// zombie
 	bool Right;
 };
 
+// 보스 파이몬
 struct BossStruct
 {
 	ENEMY_STATE State;
@@ -116,6 +120,7 @@ struct BossStruct
 	bool Right;
 };
 
+// 보스 벨페고르
 struct BelphegorStruct
 {
 	BOSS_BELPHEGOR BelphegorState;
@@ -123,12 +128,19 @@ struct BelphegorStruct
 	RECT AttackRc;
 	float X, Y;
 	int FrameX, FrameY;
-	int SkillFrameX, ScreamFrameX, WalkFrameX, StandFrameX;
+	int SkillFrameX, ScreamFrameX, WalkFrameX, StandFrameX, KickFrameX, DieFrameX;
 	float BossTimeCount;
 
-	bool Attack;		 // 보스가 공격 상태인가 아닌가
-	int Count;	 // 패턴 나눠주는 카운트
-	int DieCount;
+	bool Attack;		// 보스가 공격 상태인가 아닌가
+	int Count;			// 패턴 나눠주는 카운트
+	int DieCount;		// 죽음의 카운트
+	int Hp;
+
+	float WalkCount;
+
+	float Time;			// 전역 타임
+
+	bool ChangePotal;	// 포탈 체인지
 	bool Pattern;
 
 	bool Die;
@@ -139,6 +151,16 @@ struct JavelinStruct
 	RECT Rc;
 	float X, Y;
 	int FrameX, TrowFrameX, TakeFrameX, StayFrameX;
+};
+
+struct PotalStruct
+{
+	RECT Rc;
+	RECT FireballRc;
+	float X, Y;
+	int FrameX1, FrameX2;
+	int FireBallFrameX;
+	int tick;
 };
 
 class Unit : public GameNode
@@ -165,9 +187,14 @@ private: // 첫번째 보스
 	BossStruct vomitBoss;
 
 private: // 두번째 보스
+
+	// 보스 패턴 넣어주는 큐
+	queue<int> qBelphegor;
+
 	BelphegorStruct belphegor;
 	JavelinStruct javelin;
-	int BelphegorFrameX, BelphegorFrameY;
+	PotalStruct potal;
+
 	// 분기별로 나눠준 랜더와 업데이트
 	int ChangeBoss;
 	int BossPattern;
@@ -195,6 +222,8 @@ public:
 	void BelphegorInit(void);
 	void BelphegorUpdate(void);
 	void BelphegorRender(void);
+
+	void BelphegorPattern(void);
 
 	void setPlayerX(float X) { player.X = X; }
 	void setPlayerY(float Y) { player.Y = Y; }

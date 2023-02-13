@@ -8,13 +8,13 @@ HRESULT battleScene3::init(void)
 	wallX = wallY = 0;
 
 	bgMove3 = 0;
-	
+
 	unit = new Unit;
 	unit->init();
 
 	unit->setPlayerVillage(true);
 	unit->setPlayerX(1200);
-    
+
 	return S_OK;
 }
 
@@ -45,7 +45,7 @@ void battleScene3::update(void)
 	Wall[8] = RectMakeCenter(unit->getBgMove3() - 476, wallY + 330, 10, 46);		// 계단 2층 왼쪽
 	Wall[9] = RectMakeCenter(unit->getBgMove3() - 436, wallY + 350, 91, 10);		// 계단 2층 위
 	Wall[10] = RectMakeCenter(unit->getBgMove3() - 436, wallY + 310, 91, 10);		// 계단 2층 아래
-	
+
 	// 계단 벽 난간 4
 	Wall[11] = RectMakeCenter(unit->getBgMove3() - 488, wallY + 224, 10, 107);		// 오른쪽
 	Wall[12] = RectMakeCenter(unit->getBgMove3() - 528, wallY + 174, 91, 10);		// 위

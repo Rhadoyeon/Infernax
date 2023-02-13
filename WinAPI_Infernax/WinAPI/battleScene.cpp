@@ -67,7 +67,7 @@ void battleScene::render(void)
 	//IMAGEMANAGER->findImage("배경1")->render(getMemDC(), unit->getBgMove() - 1200, 0);
 	//IMAGEMANAGER->findImage("배경2")->render(getMemDC(), unit->getBgMove() - 1200, -200);
 	//IMAGEMANAGER->findImage("전투1")->render(getMemDC(), unit->getBgMove() - 1000, -200);
-	
+
 
 	IMAGEMANAGER->findImage("배경1")->render(getMemDC(), -200, 0);
 	IMAGEMANAGER->findImage("배경2")->render(getMemDC(), -200, -200);

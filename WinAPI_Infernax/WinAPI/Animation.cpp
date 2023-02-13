@@ -1,7 +1,7 @@
 #include "Stdafx.h"
 #include "Animation.h"
 
-							//∏‚πˆ ¿Ã¥œº»∂Û¿Ã¡Æ
+//∏‚πˆ ¿Ã¥œº»∂Û¿Ã¡Æ
 Animation::Animation(void) : _frameNum(0),
 							 _frameWidth(0),
 							 _frameHeight(0),
@@ -198,7 +198,7 @@ void Animation::setPlayFrame(int start, int end, bool reverse, bool loop)
 
 void Animation::setFPS(int framePerSec)
 {
-	_frameUpdateSec = 1 / (float)framePerSec ;
+	_frameUpdateSec = 1 / (float)framePerSec;
 }
 
 void Animation::frameUpdate(float elapsedTime)

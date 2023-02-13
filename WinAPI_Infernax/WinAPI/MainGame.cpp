@@ -49,11 +49,9 @@ void MainGame::update(void)
 void MainGame::render(void)
 {
 	PatBlt(getMemDC(), 0, 0, WINSIZE_X, WINSIZE_Y, BLACKNESS);
-	
+
 	SCENEMANAGER->render();
 
 	TIMEMANAGER->render(getMemDC());
 	this->getBackBuffer()->render(getHDC());
 }
-
-

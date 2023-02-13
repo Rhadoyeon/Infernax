@@ -238,9 +238,6 @@
     <ClInclude Include="VillageScene.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="CodingInterview\Question.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Characters.json" />
     <None Include="Item.json" />
     <None Include="Quest.json" />

@@ -26,7 +26,7 @@ private:
 public:
 	HRESULT init(int totalW, int totalH, int frameW, int frameH);
 	void release(void);
-	
+
 	//frameRender 에서 반복여부랑, 역재생 여부
 	void setDefPlayFrame(bool reverse = false, bool loop = false);
 	//원하는 프레임만 출력해주기 위한 함수

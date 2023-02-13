@@ -7,7 +7,7 @@ void Unit::bossVomitInit(void)
 	vomitBoss.X = 0.0f;
 	vomitBoss.Y = 552.0f;
 
-	vomitBoss.FrameX = vomitBoss.FrameY = vomitBoss.AttackFrameX  = vomitBoss.DieFrameX1 = vomitBoss.DieFrameX2 = vomitBoss.FireFrameX = 0;
+	vomitBoss.FrameX = vomitBoss.FrameY = vomitBoss.AttackFrameX = vomitBoss.DieFrameX1 = vomitBoss.DieFrameX2 = vomitBoss.FireFrameX = 0;
 
 	vomitBoss.State = E_WALK;
 	vomitBoss.Hp = 0;
@@ -135,7 +135,7 @@ void Unit::bossVomitUpdate(void)
 			}
 		}
 	}
-	
+
 	if (vomitBoss.Hp == 400)
 	{
 		vomitBoss.Die = true;
@@ -175,18 +175,18 @@ void Unit::bossVomitRender(void)
 	{
 		if (vomitBoss.FrameY == 1)	IMAGEMANAGER->findImage("보스_대기")->frameRender(getMemDC(), vomitBoss.OneRc.left - 100, vomitBoss.OneRc.top - 283, vomitBoss.AttackFrameX, vomitBoss.FrameY);
 		else if (vomitBoss.FrameY == 0) IMAGEMANAGER->findImage("보스_대기")->frameRender(getMemDC(), vomitBoss.OneRc.left - 180, vomitBoss.OneRc.top - 283, vomitBoss.AttackFrameX, vomitBoss.FrameY);
-	
+
 		if (vomitBoss.AttackFrameX == 9)
 		{
 			if (vomitBoss.FrameY == 1)	IMAGEMANAGER->findImage("보스_불길1")->frameRender(getMemDC(), vomitBoss.OneRc.left - 125, vomitBoss.OneRc.top + 12, vomitBoss.FireFrameX, vomitBoss.FrameY);
 			else if (vomitBoss.FrameY == 0) IMAGEMANAGER->findImage("보스_불길1")->frameRender(getMemDC(), vomitBoss.OneRc.left + 195, vomitBoss.OneRc.top + 12, vomitBoss.FireFrameX, vomitBoss.FrameY);
 
-			if (vomitBoss.FrameY == 1)	IMAGEMANAGER->findImage("보스_불꽃2")->frameRender(getMemDC(), vomitBoss.OneRc.left - 115 , vomitBoss.OneRc.top + 52, vomitBoss.FireFrameX, vomitBoss.FrameY);
+			if (vomitBoss.FrameY == 1)	IMAGEMANAGER->findImage("보스_불꽃2")->frameRender(getMemDC(), vomitBoss.OneRc.left - 115, vomitBoss.OneRc.top + 52, vomitBoss.FireFrameX, vomitBoss.FrameY);
 			else if (vomitBoss.FrameY == 0) IMAGEMANAGER->findImage("보스_불꽃2")->frameRender(getMemDC(), vomitBoss.OneRc.left + 240, vomitBoss.OneRc.top + 52, vomitBoss.FireFrameX, vomitBoss.FrameY);
-			
+
 			if (vomitBoss.FrameY == 1)	IMAGEMANAGER->findImage("보스_불꽃2")->frameRender(getMemDC(), vomitBoss.OneRc.left - 170, vomitBoss.OneRc.top + 52, vomitBoss.FireFrameX, vomitBoss.FrameY);
 			else if (vomitBoss.FrameY == 0) IMAGEMANAGER->findImage("보스_불꽃2")->frameRender(getMemDC(), vomitBoss.OneRc.left + 300, vomitBoss.OneRc.top + 52, vomitBoss.FireFrameX, vomitBoss.FrameY);
-		}		
+		}
 	}
 	if (vomitBoss.Die)
 	{

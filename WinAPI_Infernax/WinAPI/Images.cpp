@@ -36,7 +36,7 @@ void MainGame::Images(void)
 	IMAGEMANAGER->addImage("구름_아래", BG"StartCloudDown.bmp", 1287, 237, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("번개_왼쪽", OBJ"ThunderL.bmp", 615, 321, 5, 1, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("번개_오른쪽", OBJ"ThunderR.bmp", 1035, 309, 5, 1, true, COLORDEL);
-	IMAGEMANAGER->addFrameImage("넘김글자", BG"PressAnyKey.bmp",	2628, 20, 6, 1, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("넘김글자", BG"PressAnyKey.bmp", 2628, 20, 6, 1, true, COLORDEL);
 
 	// 메인메뉴
 	IMAGEMANAGER->addImage("게임선택", BG"MainSelect.bmp", 1280, 800, true, COLORDEL);
@@ -101,23 +101,31 @@ void MainGame::Images(void)
 	// 보라색 보스
 	IMAGEMANAGER->addImage("벨페고르배경", BG"BossMapBg.bmp", 2172, 800);
 	IMAGEMANAGER->addFrameImage("벨페고르_컷씬", ENEMY"BelphegorBossStand.bmp", 6444, 426, 12, 1, true, COLORDEL);
-	//IMAGEMANAGER->addFrameImage("벨페고르_스킬", ENEMY"BelphegorBossSkill.bmp", 13320, 762, 20, 2,  true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("벨페고르_걷기", ENEMY"BelphegorBossWalk.bmp", 2664, 762, 4, 2, true, COLORDEL);
+
+	// 벨페고르 스킬1
 	IMAGEMANAGER->addFrameImage("벨페고르_창던지기", ENEMY"BelphegorBossJavelin.bmp", 2664, 762, 4, 2, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("벨페고르_창", ENEMY"BelphegorBossWeaponJavelin.bmp", 3027, 762, 4, 2, true, COLORDEL);
-
-	// 벨페고르 관절
-	IMAGEMANAGER->addFrameImage("벨페고르_외침", ENEMY"BelphegorBossScream.bmp", 2664, 762, 4, 2, true, COLORDEL);
-	IMAGEMANAGER->addFrameImage("벨페고르_걷기", ENEMY"BelphegorBossWalk.bmp", 2664, 762, 4, 2, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("벨페고르_창회수", ENEMY"BelphegorBossJavelinTake.bmp", 3330, 762, 5, 2, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("벨페고르_서있기", ENEMY"BelphegorBossWaite.bmp", 666, 762, 1, 2, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("벨페고르의_창", ENEMY"BelphegorBossWeaponJavelinStay.bmp", 684, 504, 2, 2, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("벨페고르_걷기_창", ENEMY"BelphegorBossWalk2.bmp", 1596, 762, 4, 2, true, COLORDEL);
 
-	// 수정 중
-	IMAGEMANAGER->addFrameImage("벨페고르_소환포탈", ENEMY"BelphegorPotar.bmp", 1197, 762, 3, 1, true, COLORDEL);
-	IMAGEMANAGER->addFrameImage("벨페고르_소환포탈", ENEMY"BelphegorPotar2.bmp", 1197, 762, 3, 1, true, COLORDEL);
+	// 벨페고르 스킬2
+	IMAGEMANAGER->addFrameImage("벨페고르_비명", ENEMY"BelphegorBossScream.bmp", 2664, 762, 4, 2, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("벨페고르_비명_창", ENEMY"BelphegorBossScream2.bmp", 2664, 762, 4, 2, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("벨페고르_소환포탈1", OBJ"Portal1.bmp", 855, 135, 3, 1, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("벨페고르_소환포탈2", OBJ"Portal2.bmp", 855, 135, 3, 1, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("벨페고르_소환포탈3", OBJ"Portal3.bmp", 2565, 270, 9, 2, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("벨페고르_화염구", OBJ"FireBall.bmp", 441, 126, 7, 2, true, COLORDEL);
 
-	//IMAGEMANAGER->addFrameImage("벨페고르_외침_창", ENEMY"BelphegorBossScream2.bmp", 2664, 762, 4, 2, true, COLORDEL);
+	// 벨페고르 스킬3
+	IMAGEMANAGER->addFrameImage("벨페고르_발차기", ENEMY"BelphegorBossKick.bmp", 2644, 792, 4, 2, true, COLORDEL);
+
+	// 벨페고르 죽음
+	IMAGEMANAGER->addFrameImage("벨페고르_죽음", ENEMY"BelphegorBossDie.bmp", 14256, 960, 16, 2, true, COLORDEL);
+
+#pragma endregion
 
 	// 배틀씬3 적 (귀신)
 	IMAGEMANAGER->addFrameImage("귀신", ENEMY"Gost.bmp", 87, 210, 1, 2, true, COLORDEL);

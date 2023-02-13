@@ -36,7 +36,7 @@ private:
 	int buyFrameX;
 
 	int bgAlpha;
-	
+
 	int sellNum; // 상점 아이템 번호
 	bool uiOn[3]; // 샵 ui 열었니?
 	bool isSell;  // true 구매, false 구매 x
