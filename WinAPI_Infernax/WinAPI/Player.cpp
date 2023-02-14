@@ -269,6 +269,7 @@ void Unit::playerUpdate(void)
 
 	}
 
+
 	//if (KEYMANAGER->isStayKeyDown(VK_LEFT))
 	//{
 	//	if (villageMove)
@@ -347,37 +348,51 @@ void Unit::playerUpdate(void)
 		player.Y += player.Gravity + player.Speed;
 	}
 
-	if (playerCrash[3])
+	if (player.Rc.top >= 520)
 	{
-		player.Jump = false;
-		player.Gravity = 0;
-		player.Speed = 10.0f;
-	}
-
-	if (player.Rc.top >= 522)
-	{
-		if (player.DownRc.left && player.DownRc.right)
-		{
+		//if (player.DownRc.bottom && player.DownRc.top)
+		//{
 			player.Jump = false;
 			player.JumpCount = false;
 			player.Y = 570;
 			player.State = P_STAND;
 			player.JumpFrameX = 0;
-		}
+		//}
 		if (KEYMANAGER->isOnceKeyUp('Z'))
 		{
 			player.State = P_STAND;
 		}
 	}
 
-	//if (player.Rc.bottom)
+	//if (player.Rc.bottom && player.Rc.top)
 	//{			
-	//	RECT temp;
-	//	if (IntersectRect(&temp, &player.Rc, &Wall[2]))
-	//	{
-	//		player.Y -= player.Speed - player.Gravity;
-	//	}		
+		RECT temp;
+		if (IntersectRect(&temp, &player.Rc, &Wall[2]))
+		{
+			//player.Y -= player.Speed - player.Gravity;
+			player.Speed = -1.1f;
+			player.Gravity = 0.8f;
+			player.Jump = false;
+		}
+
+		if (IntersectRect(&temp, &player.Rc, &Wall[5]))
+		{
+			//player.Y -= player.Speed - player.Gravity;
+			player.Speed = -1.1f;
+			player.Gravity = 0.8f;
+			player.Jump = false;
+		}
+
+		if (IntersectRect(&temp, &player.Rc, &Wall[9]))
+		{
+			//player.Y -= player.Speed - player.Gravity;
+			player.Speed = -1.1f;
+			player.Gravity = 0.8f;
+			player.Jump = false;
+		}
+
 	//}
+
 
 #pragma endregion
 
@@ -565,30 +580,27 @@ void Unit::playerUpdate(void)
 	playerRc[2] = RectMakeCenter(player.Rc.right, (player.Rc.bottom - player.Rc.top) / 2 + player.Rc.top, 5, 5);
 	playerRc[3] = RectMakeCenter((player.Rc.right - player.Rc.left) / 2 + player.Rc.left, player.Rc.bottom, 5, 5);
 
-	//for (int i = 0; i < _countof(Wall); i++)
 	for (int i = 0; i < _countof(Wall); i++)
 	{
 		RECT rc;
 		// 땅의 벽 1
-		if (IntersectRect(&rc, &playerRc[0], &Wall[0]))
-		{
-			playerCrash[0] = true;
-		}
-		if (IntersectRect(&rc, &playerRc[0], &Wall[1]))
-		{
-			playerCrash[0] = true;
-		}
 		if (IntersectRect(&rc, &playerRc[0], &Wall[2]))
 		{
 			playerCrash[0] = true;
 		}
+		if (IntersectRect(&rc, &playerRc[2], &Wall[2]))
+		{
+			playerCrash[0] = true;
+		}
+		if (IntersectRect(&rc, &playerRc[3], &Wall[2]))
+		{
+			playerCrash[0] = true;
+		}
 
-		if (!IntersectRect(&rc, &playerRc[0], &Wall[i]))
+		if (!IntersectRect(&rc, &playerRc[1], &Wall[i]))
 		{
 			playerCrash[0] = false;
 		}
-
-
 
 		// 위로 올라가는 계단 2
 		if (IntersectRect(&rc, &playerRc[1], &Wall[3]))
@@ -606,6 +618,11 @@ void Unit::playerUpdate(void)
 		if (IntersectRect(&rc, &playerRc[1], &Wall[6]))
 		{
 			playerCrash[1] = true;
+		}
+
+		if (!IntersectRect(&rc, &playerRc[1], &Wall[i]))
+		{
+			playerCrash[1] = false;
 		}
 
 
@@ -627,27 +644,31 @@ void Unit::playerUpdate(void)
 			playerCrash[2] = true;
 		}
 
+		if (!IntersectRect(&rc, &playerRc[2], &Wall[i]))
+		{
+			playerCrash[2] = false;
+		}
+
+
 
 		// 계단 벽 난간 4
-		if (IntersectRect(&rc, &playerRc[3], &Wall[11]))
-		{
-			playerCrash[3] = true;
-		}
-		if (IntersectRect(&rc, &playerRc[3], &Wall[12]))
-		{
-			playerCrash[3] = true;
-		}
-
-
+		//if (IntersectRect(&rc, &playerRc[3], &Wall[11]))
+		//{
+		//	playerCrash[3] = true;
+		//}
+		//if (IntersectRect(&rc, &playerRc[3], &Wall[12]))
+		//{
+		//	playerCrash[3] = true;
+		//}
 		// 계단 벽 난간 5
-		if (IntersectRect(&rc, &playerRc[4], &Wall[13]))
-		{
-			playerCrash[4] = true;
-		}
-		if (IntersectRect(&rc, &playerRc[4], &Wall[14]))
-		{
-			playerCrash[4] = true;
-		}
+		//if (IntersectRect(&rc, &playerRc[4], &Wall[13]))
+		//{
+		//	playerCrash[4] = true;
+		//}
+		//if (IntersectRect(&rc, &playerRc[4], &Wall[14]))
+		//{
+		//	playerCrash[4] = true;
+		//}
 	}
 }
 

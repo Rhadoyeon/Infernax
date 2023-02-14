@@ -6,6 +6,8 @@ HRESULT battleScene4::init(void)
 	unit = new Unit;
 	unit->init();
 
+	bgAlpha4 = 0;
+
 	unit->setPlayerVillage(true);
 	unit->setPlayerX(100.0f);
 	unit->setPlayerDirection(true);
@@ -27,7 +29,7 @@ void battleScene4::update(void)
 		bgAlpha4 += 2;
 		if (bgAlpha4 > 255)
 		{
-			SCENEMANAGER->changeScene("¹èÆ²¸Ê5");
+			SCENEMANAGER->changeScene("¹èÆ²¸Ê3");
 		}
 	}
 }
@@ -41,4 +43,6 @@ void battleScene4::render(void)
 
 	unit->BelphegorRender();
 	unit->playerRender();
+
+	IMAGEMANAGER->findImage("¾ËÆÄºí·¢")->alphaRender(getMemDC(), 0, 0, bgAlpha4);
 }

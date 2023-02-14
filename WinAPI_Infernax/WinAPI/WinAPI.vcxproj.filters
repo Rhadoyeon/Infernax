@@ -200,6 +200,27 @@
     <ClCompile Include="battleScene4.cpp">
       <Filter>GameScene\Battle</Filter>
     </ClCompile>
+    <ClCompile Include="BossCrocell.cpp">
+      <Filter>Unit\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="battleScene5.cpp">
+      <Filter>GameScene\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="battleScene6.cpp">
+      <Filter>GameScene\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="battleScene7.cpp">
+      <Filter>GameScene\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="battleScene8.cpp">
+      <Filter>GameScene\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="battleScene9.cpp">
+      <Filter>GameScene\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="BossAncientWorm.cpp">
+      <Filter>Unit\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C3DMatrix.h">
@@ -311,6 +332,21 @@
       <Filter>API FrameWork\GameCore\Manager\Time</Filter>
     </ClInclude>
     <ClInclude Include="battleScene4.h">
+      <Filter>GameScene\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="battleScene5.h">
+      <Filter>GameScene\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="battleScene6.h">
+      <Filter>GameScene\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="battleScene7.h">
+      <Filter>GameScene\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="battleScene8.h">
+      <Filter>GameScene\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="battleScene9.h">
       <Filter>GameScene\Battle</Filter>
     </ClInclude>
   </ItemGroup>

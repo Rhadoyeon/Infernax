@@ -7,9 +7,9 @@ void Unit::BelphegorInit(void)
 	belphegor.SkillFrameX = belphegor.ScreamFrameX = belphegor.WalkFrameX = 0;
 	belphegor.StandFrameX = belphegor.KickFrameX = belphegor.DieFrameX = 0;
 
-	belphegor.BossTimeCount = belphegor.Time = 0.0f;
+	belphegor.BossTimeCount = /*belphegor.Time =*/ 0.0f;
 	belphegor.Attack = belphegor.Pattern = belphegor.Die = false;
-	belphegor.Hp = belphegor.Count = belphegor.DieCount = belphegor.WalkCount = 0;
+	belphegor.Hp = belphegor.Count = /*belphegor.DieCount = belphegor.WalkCount =*/ 0;
 
 	belphegor.BelphegorState = B_WALK;
 	javelin.X = javelin.Y = 0;
@@ -21,15 +21,13 @@ void Unit::BelphegorInit(void)
 	potal.FrameX1 = potal.FrameX2 = 0;
 	potal.FireBallFrameX = 0;
 
-	ChangeBoss = 0;
+	//ChangeBoss = 0;
 
-	BelphegorPattern();
+	//BelphegorPattern();
 }
 
 void Unit::BelphegorUpdate(void)
 {
-	cout << belphegor.Count << endl;
-
 	belphegor.Rc = RectMake(belphegor.X + 150, belphegor.Y, 222, 390);
 	belphegor.AttackRc = RectMake(belphegor.X - 60, belphegor.Y, 666, 390);
 	javelin.Rc = RectMake(belphegor.X - 100, belphegor.Y + 255, 254, 127);
@@ -326,7 +324,7 @@ void Unit::BelphegorUpdate(void)
 				if (belphegor.KickFrameX == 3 && belphegor.Count == 4 && !belphegor.Die)
 				{
 					belphegor.KickFrameX = 0;
-					belphegor.WalkCount = TIMEMANAGER->getWorldTime();
+					// belphegor.WalkCount = TIMEMANAGER->getWorldTime();
 					belphegor.Count = 1;
 				}
 				//if (belphegor.BelphegorState != B_ATTACK2)
@@ -488,7 +486,7 @@ void Unit::BelphegorRender(void)
 		IMAGEMANAGER->findImage("벨페고르_컷씬")->frameRender(getMemDC(), belphegor.X, belphegor.Y - 40, belphegor.FrameX, 0);
 	}
 
-	if (ChangeBoss == 1)
+	else if (ChangeBoss == 1)
 	{
 		IMAGEMANAGER->findImage("벨페고르_창던지기")->frameRender(getMemDC(), belphegor.X, belphegor.Y, javelin.TrowFrameX, 0);
 	}
@@ -664,12 +662,12 @@ void Unit::BelphegorRender(void)
 	//DrawRectMake(getMemDC(), RectMake(belphegor.JavelinX, belphegor.JavelinY, 10, 10));
 }
 
-void Unit::BelphegorPattern(void)
-{
-	qBelphegor.push(1);
-	qBelphegor.push(2);
-	qBelphegor.push(3);
-	qBelphegor.push(2);
-	qBelphegor.push(4);
-	qBelphegor.push(2);
-}
+//void Unit::BelphegorPattern(void)
+//{
+//	qBelphegor.push(1);
+//	qBelphegor.push(2);
+//	qBelphegor.push(3);
+//	qBelphegor.push(2);
+//	qBelphegor.push(4);
+//	qBelphegor.push(2);
+//}

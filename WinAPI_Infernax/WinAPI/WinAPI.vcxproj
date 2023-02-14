@@ -147,6 +147,13 @@
     <ClCompile Include="battleScene2.cpp" />
     <ClCompile Include="battleScene3.cpp" />
     <ClCompile Include="battleScene4.cpp" />
+    <ClCompile Include="battleScene5.cpp" />
+    <ClCompile Include="battleScene6.cpp" />
+    <ClCompile Include="battleScene7.cpp" />
+    <ClCompile Include="battleScene8.cpp" />
+    <ClCompile Include="battleScene9.cpp" />
+    <ClCompile Include="BossAncientWorm.cpp" />
+    <ClCompile Include="BossCrocell.cpp" />
     <ClCompile Include="BossVomit.cpp" />
     <ClCompile Include="C3DMatrix.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -199,6 +206,11 @@
     <ClInclude Include="battleScene2.h" />
     <ClInclude Include="battleScene3.h" />
     <ClInclude Include="battleScene4.h" />
+    <ClInclude Include="battleScene5.h" />
+    <ClInclude Include="battleScene6.h" />
+    <ClInclude Include="battleScene7.h" />
+    <ClInclude Include="battleScene8.h" />
+    <ClInclude Include="battleScene9.h" />
     <ClInclude Include="C3DMatrix.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClInclude>

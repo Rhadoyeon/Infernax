@@ -15,6 +15,15 @@ enum PLAYER_STATE
 	P_DIE
 };
 
+// 인벤토리
+enum PLAYER_INVEN
+{
+	MAGIC,
+	QUEST,
+	CHARECTER
+};
+
+// 보스 파이몬(vomit)
 enum ENEMY_STATE
 {
 	E_STAND,
@@ -43,11 +52,19 @@ enum BOSS_BELPHEGOR
 	B_SCREAM
 };
 
-enum PLAYER_INVEN
+enum BOSS_CROCELL
 {
-	MAGIC,
-	QUEST,
-	CHARECTER
+	C_ATTACK1,
+	C_ATTACK2,
+	C_DIE
+};
+
+enum BOSS_ANCIENTWORM
+{
+	A_ATTACK1,
+	A_ATTACK2,
+	A_ATTACK3,
+	A_DIE
 };
 
 struct PlayerStruct
@@ -81,7 +98,7 @@ struct PlayerStruct
 	bool colliChkDown;
 
 };
-
+// 보스 파이몬(vomit)
 struct EnemyStruct	// zombie
 {
 	ENEMY_STATE State;
@@ -94,8 +111,6 @@ struct EnemyStruct	// zombie
 	bool Die;
 	bool Right;
 };
-
-// 보스 파이몬
 struct BossStruct
 {
 	ENEMY_STATE State;
@@ -133,26 +148,24 @@ struct BelphegorStruct
 
 	bool Attack;		// 보스가 공격 상태인가 아닌가
 	int Count;			// 패턴 나눠주는 카운트
-	int DieCount;		// 죽음의 카운트
+	//int DieCount;		// 죽음의 카운트
 	int Hp;
 
-	float WalkCount;
+	//float WalkCount;
 
-	float Time;			// 전역 타임
+	//float Time;			// 전역 타임
 
-	bool ChangePotal;	// 포탈 체인지
+	//bool ChangePotal;	// 포탈 체인지
 	bool Pattern;
 
 	bool Die;
 };
-
 struct JavelinStruct
 {
 	RECT Rc;
 	float X, Y;
 	int FrameX, TrowFrameX, TakeFrameX, StayFrameX;
 };
-
 struct PotalStruct
 {
 	RECT Rc;
@@ -163,6 +176,55 @@ struct PotalStruct
 	int tick;
 };
 
+// 보스 크로셀
+struct CrocellStruct
+{
+	BOSS_CROCELL CrocellState;
+	RECT Rc;
+	float X, Y;
+	int SkillFrameX1, SkillFrameX2, DieFrameX;
+	int Hp;
+
+	//bool EnemyDiePatternChange;
+	bool Die;
+};
+struct SkeletonStruct
+{
+	RECT Rc;
+	float X, Y;
+	int WalKFrame, AttackFrame;
+	int Hp;
+
+	bool Die;
+};
+struct CrocellBullet
+{
+	float X, Y;
+	RECT BulletRc;
+	float degree;
+	bool shot;
+};
+
+// 보스 고대웜
+struct AncientWormStruct
+{
+	BOSS_ANCIENTWORM AncientWormState;
+	RECT Rc;
+	float X, Y;
+	// 레이저, 파이어볼, 낙석
+	int LaserFrameX, FireballFrameX, RockfallFrameX, DieFrameX;
+	int Hp;
+
+	bool Die;
+};
+struct AncientBullet // 파이어볼
+{
+	float X, Y;
+	RECT BulletRc;
+	float degree;
+	bool shot;
+};
+// 보스 미정
 class Unit : public GameNode
 {
 private: // 플레이어
@@ -176,6 +238,7 @@ private: // 플레이어
 	float bgMove;			// 화면 움직임
 	float bgMove3;			// 화면 움직임
 	int worldTimeCount;
+	//int playerJumpCheck;
 	bool villageMove;
 
 	RECT Wall[15];
@@ -189,7 +252,7 @@ private: // 첫번째 보스
 private: // 두번째 보스
 
 	// 보스 패턴 넣어주는 큐
-	queue<int> qBelphegor;
+	// queue<int> qBelphegor;
 
 	BelphegorStruct belphegor;
 	JavelinStruct javelin;
@@ -201,6 +264,20 @@ private: // 두번째 보스
 	// ChangeBoss 안의 패턴 (순차적으로 진행)
 	int ChangeBossPaturn;
 
+private: // 세번째 보스
+
+	CrocellStruct Crocell;
+	SkeletonStruct Skeleton;
+
+	vector<CrocellBullet> vBullet;
+	// 시간 흐름대로 지나가는 패턴
+	float currentTime;
+	int CrocellPattern;
+
+private: // 네번째 보스(고대웜)
+	AncientWormStruct AncientWorm;
+
+	vector<AncientBullet> vBullet;
 public:
 	HRESULT init(void);
 	void release(void);
@@ -222,8 +299,17 @@ public:
 	void BelphegorInit(void);
 	void BelphegorUpdate(void);
 	void BelphegorRender(void);
+	//void BelphegorPattern(void);
 
-	void BelphegorPattern(void);
+	void CrocellInit(void);
+	void CrocellUpdate(void);
+	void CrocellRender(void);
+	//##
+	void CrocellSkeletonReset(void);
+
+	void AncientWormInit(void);
+	void AncientWormUpdate(void);
+	void AncientWormRender(void);
 
 	void setPlayerX(float X) { player.X = X; }
 	void setPlayerY(float Y) { player.Y = Y; }

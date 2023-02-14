@@ -7,6 +7,8 @@ HRESULT Unit::init(void)
 	enemyInit();
 	bossVomitInit();
 	BelphegorInit();
+	CrocellInit();
+	AncientWormInit();
 
 	worldTimeCount = 0;
 
@@ -23,6 +25,8 @@ void Unit::update(void)
 	enemyUpdate();
 	bossVomitUpdate();
 	BelphegorUpdate();
+	CrocellUpdate();
+	AncientWormUpdate();
 
 	worldTimeCount++;
 }
@@ -33,4 +37,6 @@ void Unit::render(void)
 	bossVomitRender();
 	playerRender();
 	BelphegorRender();
+	CrocellRender();
+	AncientWormRender();
 }

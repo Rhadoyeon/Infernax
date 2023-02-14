@@ -70,9 +70,14 @@ void battleScene3::update(void)
 		}
 	}
 
-	//worldTimeCount++;
-	//if (worldTimeCount % 10 == 0) gostFrameX++;
-	//if (gostFrameX > IMAGEMANAGER->findImage("벨페고르보스_스킬")->getMaxFrameX()) gostFrameX = 0;
+	if (unit->getPlayerY() <= 100)
+	{
+		bgAlpha3 += 2;
+		if (bgAlpha3 > 255)
+		{
+			SCENEMANAGER->changeScene("배틀맵5");
+		}
+	}
 }
 
 void battleScene3::render(void)
@@ -81,21 +86,22 @@ void battleScene3::render(void)
 	IMAGEMANAGER->findImage("배경2")->render(getMemDC(), unit->getBgMove3() - 1438, -194);
 	IMAGEMANAGER->findImage("전투3")->render(getMemDC(), unit->getBgMove3() - 1438, -194);
 
-	//DrawRectMake(getMemDC(), Wall[0]);
-	//DrawRectMake(getMemDC(), Wall[1]);
-	//DrawRectMake(getMemDC(), Wall[2]);
-	//DrawRectMake(getMemDC(), Wall[3]);
-	//DrawRectMake(getMemDC(), Wall[4]);
-	//DrawRectMake(getMemDC(), Wall[5]);
-	//DrawRectMake(getMemDC(), Wall[6]);
-	//DrawRectMake(getMemDC(), Wall[7]);
-	//DrawRectMake(getMemDC(), Wall[8]);
-	//DrawRectMake(getMemDC(), Wall[9]);
-	//DrawRectMake(getMemDC(), Wall[10]);
-	//DrawRectMake(getMemDC(), Wall[11]);
-	//DrawRectMake(getMemDC(), Wall[12]);
-	//DrawRectMake(getMemDC(), Wall[13]);
-	//DrawRectMake(getMemDC(), Wall[14]);
+	DrawRectMake(getMemDC(), Wall[0]);
+	DrawRectMake(getMemDC(), Wall[1]);
+	DrawRectMake(getMemDC(), Wall[2]);
+	DrawRectMake(getMemDC(), Wall[3]);
+	DrawRectMake(getMemDC(), Wall[4]);
+	DrawRectMake(getMemDC(), Wall[5]);
+	DrawRectMake(getMemDC(), Wall[6]);
+	DrawRectMake(getMemDC(), Wall[7]);
+	DrawRectMake(getMemDC(), Wall[8]);
+	DrawRectMake(getMemDC(), Wall[9]);
+	DrawRectMake(getMemDC(), Wall[10]);
+	DrawRectMake(getMemDC(), Wall[11]);
+	DrawRectMake(getMemDC(), Wall[12]);
+	DrawRectMake(getMemDC(), Wall[13]);
+	DrawRectMake(getMemDC(), Wall[14]);
+
 	//IMAGEMANAGER->findImage("귀신")->frameRender(getMemDC(), 0, 0, gostFrameX, gostFrameY);
 
 	unit->playerRender();
