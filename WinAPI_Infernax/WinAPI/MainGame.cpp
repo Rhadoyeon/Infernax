@@ -33,7 +33,7 @@ HRESULT MainGame::init(void)
 	SCENEMANAGER->addScene("πË∆≤∏ 8", new battleScene8); // ∫∏Ω∫?
 	SCENEMANAGER->addScene("πË∆≤∏ 9", new battleScene9); // ∞Ì¥Îø˙
 
-	SCENEMANAGER->changeScene("πË∆≤∏ 7");
+	SCENEMANAGER->changeScene("πË∆≤∏ 9");
 
 	return S_OK;
 }

@@ -212,16 +212,26 @@ struct AncientWormStruct
 	RECT Rc;
 	float X, Y;
 	// 레이저, 파이어볼, 낙석
-	int LaserFrameX, FireballFrameX, RockfallFrameX, DieFrameX;
-	int Hp;
+	int FrameX, FrameX1, FireballFrameX, FireballFrameX1, RockfallFrameX, DieFrameX;
+	int Time, Pattern;
+	int Hp;	
+	float currentTime;
 
 	bool Die;
+};
+struct AncientLaser
+{
+	float X, Y;
+	RECT Rc;
+	int LaserFrameX, LaserFrameX1;
+	bool shot, change;
 };
 struct AncientBullet // 파이어볼
 {
 	float X, Y;
 	RECT BulletRc;
-	float degree;
+	//float degree;
+	float gravity;
 	bool shot;
 };
 // 보스 미정
@@ -276,8 +286,9 @@ private: // 세번째 보스
 
 private: // 네번째 보스(고대웜)
 	AncientWormStruct AncientWorm;
-
-	vector<AncientBullet> vBullet;
+	AncientLaser Laser;
+	AncientBullet FireBall;
+	vector<AncientBullet> vABullet;
 public:
 	HRESULT init(void);
 	void release(void);

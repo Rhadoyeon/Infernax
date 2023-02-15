@@ -375,6 +375,9 @@ void Unit::playerUpdate(void)
 			player.Jump = false;
 		}
 
+		// else player.Jump = true;
+
+
 		if (IntersectRect(&temp, &player.Rc, &Wall[5]))
 		{
 			//player.Y -= player.Speed - player.Gravity;

@@ -85,7 +85,7 @@ void Unit::CrocellUpdate(void)
 				{
 					float BulletX = RND->getFromFloatTo(900.0f, 960.0f);
 					float BulletY = RND->getFromFloatTo(350.0f, 400.0f);
-					vBullet.push_back({ BulletX, BulletY, RectMakeCenter(BulletX, BulletY, 11, 12), getAngle(BulletX, BulletY, player.X, player.Y) + (float)(i - 0.5) * 2, false });
+					vBullet.push_back({ BulletX, BulletY, RectMakeCenter(BulletX, BulletY, 11, 12), getAngle(BulletX, BulletY, player.X, player.Y) + (i - 1) * 100, false });
 				}
 
 				//BulletX += cosf(getAngle(0.0f, 0.0f, 69.0f, 198.0f));

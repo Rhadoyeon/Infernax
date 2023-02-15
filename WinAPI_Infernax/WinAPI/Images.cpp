@@ -28,7 +28,7 @@ void MainGame::Images(void)
 	//IMAGEMANAGER->addFrameImage("플레이어_상처", PLAYER"PlayerDeal.bmp", 342, 228, 2, 2, true, COLORDEL);
 	//IMAGEMANAGER->addFrameImage("플레이어_죽음", PLAYER"PlayerDie.bmp", 342, 228, 2, 2, true, COLORDEL);
 
-#pragma region 메인메뉴 & 마을 & 인벤토리
+#pragma region 메인메뉴 & 마을 & 상점 & 인벤토리 & 오브젝트
 	// 시작
 	IMAGEMANAGER->addFrameImage("시작", BG"StartScene.bmp", 4255, 800, 3, 1, true, COLORDEL);
 	IMAGEMANAGER->addImage("제목", OBJ"Infernax.bmp", 951, 405, true, COLORDEL);
@@ -65,6 +65,12 @@ void MainGame::Images(void)
 	IMAGEMANAGER->addImage("퀘스트", INVEN"Quest.bmp", WINSIZE_X, WINSIZE_Y, true, COLORDEL);
 	IMAGEMANAGER->addImage("캐릭터", INVEN"Charicter.bmp", WINSIZE_X, WINSIZE_Y, true, COLORDEL);
 
+	// 오브젝트
+	//IMAGEMANAGER->addImage("십자가", OBJ"Cross.bmp", 120, 210, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("죽음이펙트", OBJ"EnemyDieEffect.bmp", 153, 114, 3, 1, true, COLORDEL);
+	IMAGEMANAGER->addImage("알파블랙", OBJ"BgBlack.bmp", WINSIZE_X, WINSIZE_Y, true, COLORDEL);
+	IMAGEMANAGER->addImage("화이트", OBJ"BgWhite.bmp", WINSIZE_X, WINSIZE_Y, true, COLORDEL);
+	IMAGEMANAGER->addImage("선택", OBJ"Select.bmp", 136, 136, true, COLORDEL);
 #pragma endregion
 
 #pragma region 배틀씬 1-9
@@ -143,7 +149,15 @@ void MainGame::Images(void)
 	IMAGEMANAGER->addImage("고대웜배경1", BG"battleSceneBG5.bmp", 2498, 1000, true, COLORDEL);
 	IMAGEMANAGER->addImage("고대웜배경2", BG"battleSceneBG6.bmp", 1847, 500, true, COLORDEL);
 	IMAGEMANAGER->addImage("고대웜전투지형", BG"battleSceneLAND8.bmp", 1682, 1000, true, COLORDEL);
+	// 고대웜
+	IMAGEMANAGER->addFrameImage("고대웜", ENEMY"AncientWormSkill2.bmp", 1560, 417, 4, 1, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("고대웜_입X", ENEMY"AncientWorm.bmp", 780, 417, 2, 1, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("고대웜_입O", ENEMY"AncientWormSkill.bmp", 780, 417, 2, 1, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("고대웜_레이저볼", ENEMY"AncientWormLaserBall.bmp", 324, 186, 2, 1, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("고대웜_레이저", ENEMY"AncientWormLaser.bmp", 6264, 126, 4, 1, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("고대웜_레이저2", ENEMY"AncientWormLaser2.bmp", 3132, 126, 2, 1, true, COLORDEL);
 
+	IMAGEMANAGER->addFrameImage("고대웜_화염구", ENEMY"AncientWormFireBall.bmp", 189, 63, 3, 1, true, COLORDEL);
 	// 배틀씬9 보스(미정)
 
 	// 배틀씬4 적 (스켈레톤) 배틀씬(미정) 해골 등장
@@ -152,11 +166,4 @@ void MainGame::Images(void)
 	//IMAGEMANAGER->addFrameImage("해골_공격", ENEMY"SkeletonAttack.bmp", 189, 110, 3, 2, true, COLORDEL);
 
 #pragma endregion
-
-	// 오브젝트
-	//IMAGEMANAGER->addImage("십자가", OBJ"Cross.bmp", 120, 210, true, COLORDEL);
-	IMAGEMANAGER->addFrameImage("죽음이펙트", OBJ"EnemyDieEffect.bmp", 153, 114, 3, 1, true, COLORDEL);
-	IMAGEMANAGER->addImage("알파블랙", OBJ"BgBlack.bmp", WINSIZE_X, WINSIZE_Y, true, COLORDEL);
-	IMAGEMANAGER->addImage("화이트", OBJ"BgWhite.bmp", WINSIZE_X, WINSIZE_Y, true, COLORDEL);
-	IMAGEMANAGER->addImage("선택", OBJ"Select.bmp", 136, 136, true, COLORDEL);
 }
