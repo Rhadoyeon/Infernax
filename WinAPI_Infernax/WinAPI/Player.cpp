@@ -371,7 +371,7 @@ void Unit::playerUpdate(void)
 		{
 			//player.Y -= player.Speed - player.Gravity;
 			player.Speed = -1.1f;
-			player.Gravity = 0.8f;
+			player.Gravity = 0.0f;
 			player.Jump = false;
 		}
 
@@ -382,7 +382,7 @@ void Unit::playerUpdate(void)
 		{
 			//player.Y -= player.Speed - player.Gravity;
 			player.Speed = -1.1f;
-			player.Gravity = 0.8f;
+			player.Gravity = 0.0f;
 			player.Jump = false;
 		}
 
@@ -390,7 +390,7 @@ void Unit::playerUpdate(void)
 		{
 			//player.Y -= player.Speed - player.Gravity;
 			player.Speed = -1.1f;
-			player.Gravity = 0.8f;
+			player.Gravity = 0.0f;
 			player.Jump = false;
 		}
 

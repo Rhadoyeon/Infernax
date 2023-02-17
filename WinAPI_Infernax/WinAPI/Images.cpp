@@ -158,6 +158,9 @@ void MainGame::Images(void)
 	IMAGEMANAGER->addFrameImage("고대웜_레이저2", ENEMY"AncientWormLaser2.bmp", 3132, 126, 2, 1, true, COLORDEL);
 
 	IMAGEMANAGER->addFrameImage("고대웜_화염구", ENEMY"AncientWormFireBall.bmp", 189, 63, 3, 1, true, COLORDEL);
+	IMAGEMANAGER->addImage("고대웜_벽돌", ENEMY"AncientWormRockFall.bmp", 47, 47, true, COLORDEL);
+
+	IMAGEMANAGER->addFrameImage("레드오션", BG"RedOcean.bmp", 8640, 141, 3, 1, true, COLORDEL);
 	// 배틀씬9 보스(미정)
 
 	// 배틀씬4 적 (스켈레톤) 배틀씬(미정) 해골 등장

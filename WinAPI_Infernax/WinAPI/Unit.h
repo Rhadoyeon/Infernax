@@ -64,6 +64,7 @@ enum BOSS_ANCIENTWORM
 	A_ATTACK1,
 	A_ATTACK2,
 	A_ATTACK3,
+	A_ATTACK4,
 	A_DIE
 };
 
@@ -216,7 +217,10 @@ struct AncientWormStruct
 	int Time, Pattern;
 	int Hp;	
 	float currentTime;
+	float gravity;
+	float rockGravity;
 
+	bool UpDown;
 	bool Die;
 };
 struct AncientLaser
@@ -230,9 +234,20 @@ struct AncientBullet // 파이어볼
 {
 	float X, Y;
 	RECT BulletRc;
+	int count;
 	//float degree;
+	float speed;
 	float gravity;
+	int oneShot;
 	bool shot;
+};
+struct AncientRockFall
+{
+	int X, Y;
+	RECT Rc;
+	int count;
+	float speed;
+	float gravity;
 };
 // 보스 미정
 class Unit : public GameNode
@@ -288,7 +303,15 @@ private: // 네번째 보스(고대웜)
 	AncientWormStruct AncientWorm;
 	AncientLaser Laser;
 	AncientBullet FireBall;
+	AncientRockFall RockFall;
+
 	vector<AncientBullet> vABullet;
+	vector<AncientBullet>::iterator viABullet;
+	vector<AncientRockFall> vRock;
+
+	int OceanFrame;
+	int bulletCount;
+
 public:
 	HRESULT init(void);
 	void release(void);

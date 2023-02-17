@@ -20,6 +20,8 @@ void Unit::CrocellInit(void)
 	currentTime = 5000;
 	CrocellPattern = 0;
 
+	OceanFrame = 0;
+
 	CrocellSkeletonReset();
 	//vBullet.X = vBullet.Y = 0;
 	//vBullet.shot = false;
@@ -33,6 +35,9 @@ void Unit::CrocellUpdate(void)
 
 	Crocell.Rc = RectMake(Crocell.X + 870, Crocell.Y + 220, 300, 400);
 	Skeleton.Rc = RectMake(Skeleton.X + 980, Skeleton.Y + 510, 58, 109);
+
+	if (worldTimeCount % 30 == 0) OceanFrame++;
+	if (OceanFrame > IMAGEMANAGER->findImage("레드오션")->getMaxFrameX()) OceanFrame = 0;
 
 	if (!Crocell.Die)
 	{
@@ -175,6 +180,8 @@ void Unit::CrocellRender(void)
 			IMAGEMANAGER->findImage("크로셀_죽음")->frameRender(getMemDC(), Crocell.Rc.left - 150, Crocell.Rc.top - 84, Crocell.DieFrameX, 0);
 		}
 	}
+
+	IMAGEMANAGER->findImage("레드오션")->frameRender(getMemDC(), 0, 720, OceanFrame, 0);
 }
 
 void Unit::CrocellSkeletonReset(void)
