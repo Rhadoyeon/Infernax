@@ -23,7 +23,7 @@ enum PLAYER_INVEN
 	CHARECTER
 };
 
-// 보스 파이몬(vomit)
+// 보스 파이몬(vomit) 1번째
 enum ENEMY_STATE
 {
 	E_STAND,
@@ -34,7 +34,7 @@ enum ENEMY_STATE
 	E_DIE,
 	E_WEAPON,
 };
-
+// 2번째
 enum BOSS_BELPHEGOR
 {
 	B_STAND,
@@ -51,14 +51,14 @@ enum BOSS_BELPHEGOR
 	B_WEAPON,
 	B_SCREAM
 };
-
+// 3번째
 enum BOSS_CROCELL
 {
 	C_ATTACK1,
 	C_ATTACK2,
 	C_DIE
 };
-
+// 4번째
 enum BOSS_ANCIENTWORM
 {
 	A_ATTACK1,
@@ -67,9 +67,10 @@ enum BOSS_ANCIENTWORM
 	A_ATTACK4,
 	A_DIE
 };
-
+// 5번째
 enum BOSS_LEVIATHAN
 {
+	L_STAY,
 	L_ATTACK1,
 	L_ATTACK2,
 	L_DIE
@@ -108,7 +109,7 @@ struct PlayerStruct
 
 };
 
-// 보스 파이몬(vomit)
+// 보스 파이몬(vomit) 1번째
 struct EnemyStruct	// zombie
 {
 	ENEMY_STATE State;
@@ -145,7 +146,7 @@ struct BossStruct
 	bool Right;
 };
 
-// 보스 벨페고르
+// 보스 벨페고르 2번째
 struct BelphegorStruct
 {
 	BOSS_BELPHEGOR BelphegorState;
@@ -186,7 +187,7 @@ struct PotalStruct
 	int tick;
 };
 
-// 보스 크로셀
+// 보스 크로셀 3번째
 struct CrocellStruct
 {
 	BOSS_CROCELL CrocellState;
@@ -215,7 +216,7 @@ struct CrocellBullet
 	bool shot;
 };
 
-// 보스 고대웜
+// 보스 고대웜 4번째
 struct AncientWormStruct
 {
 	BOSS_ANCIENTWORM AncientWormState;
@@ -252,14 +253,14 @@ struct AncientRockFall
 	float gravity;
 };
 
-// 보스 레비아탄
+// 보스 레비아탄 5번째
 struct LeviathanStruct
 {
 	BOSS_LEVIATHAN LeviathanState;
 	RECT Rc;
 	float X, Y;
 	// 대기, 레이저, 불
-	int FrameX, FrameX1, FireFrameX, LaserFrameX, DieFrameX;
+	int FrameX, FrameY, FireMotionFrameX, FireFrameX, LaserFrameX, DieFrameX;
 	int Time, Pattern;
 	int Hp;
 	float currentTime;

@@ -34,6 +34,7 @@ void Unit::BelphegorUpdate(void)
 	belphegor.Rc = RectMake(belphegor.X + 150, belphegor.Y, 222, 390);
 	belphegor.AttackRc = RectMake(belphegor.X - 60, belphegor.Y, 666, 390);
 	javelin.Rc = RectMake(belphegor.X - 100, belphegor.Y + 255, 254, 127);
+
 	// if(!belphegor.Attack) belphegor.JavelinRc = RectMake(belphegor.X + 180, belphegor.Y + 133, 348, 254);
 
 #pragma region 보스 컷씬 업데이트
@@ -233,6 +234,8 @@ void Unit::BelphegorUpdate(void)
 					{
 						javelin.TrowFrameX = javelin.TakeFrameX = 0;
 						belphegor.Count = 2;
+						belphegor.BossTimeCount = 5.0f;
+						belphegor.BossTimeCount = TIMEMANAGER->getWorldTime();
 						//belphegor.Count = qBelphegor.front();
 						//qBelphegor.pop();
 						//if (qBelphegor.empty()) BelphegorPattern();
@@ -256,8 +259,7 @@ void Unit::BelphegorUpdate(void)
 					//}
 				}
 			}
-
-			// 패턴2 걷기 후 다시 렉트와 충돌되면 다른 패턴으로 넘어간다.
+			// 패턴2 걷기 후 5초가 지나면 다른 패턴으로 넘어간다.
 			else if (belphegor.BelphegorState == B_ATTACK2)
 			{
 				if (worldTimeCount % 25 == 0) belphegor.WalkFrameX++;
@@ -276,7 +278,7 @@ void Unit::BelphegorUpdate(void)
 					belphegor.X += 1;
 				}
 
-				if (player.Rc.right + 50 >= belphegor.Rc.left || player.Rc.left - 50 <= belphegor.Rc.right && belphegor.Count == 2 && !belphegor.Die)
+				if (TIMEMANAGER->getWorldTime() - belphegor.BossTimeCount > 3 && !belphegor.Die)
 				{
 					belphegor.Count = 3;
 				}

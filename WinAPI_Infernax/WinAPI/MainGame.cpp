@@ -30,7 +30,7 @@ HRESULT MainGame::init(void)
 	SCENEMANAGER->addScene("배틀맵5", new battleScene5);	 // 통과지점
 	SCENEMANAGER->addScene("배틀맵6", new battleScene6);	 // 크로셀
 	SCENEMANAGER->addScene("배틀맵7", new battleScene7); // 통과지점
-	SCENEMANAGER->addScene("배틀맵8", new battleScene8); // 보스?
+	SCENEMANAGER->addScene("배틀맵8", new battleScene8); //	레비아탄
 	SCENEMANAGER->addScene("배틀맵9", new battleScene9); // 고대웜
 
 	SCENEMANAGER->changeScene("배틀맵8");

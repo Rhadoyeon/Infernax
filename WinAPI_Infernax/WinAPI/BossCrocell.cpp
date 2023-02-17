@@ -170,7 +170,7 @@ void Unit::CrocellRender(void)
 		}
 	}
 
-	if (Crocell.Die)
+	else if (Crocell.Die)
 	{
 		if (Crocell.CrocellState == C_DIE)
 		{

@@ -165,9 +165,9 @@ void MainGame::Images(void)
 	IMAGEMANAGER->addImage("·¹ºñ¾ÆÅºÀüÅõÁöÇü2", BG"LeviathanLAND2.bmp", 2812, 1362, true, COLORDEL);
 	// ·¹ºñ¾ÆÅº
 	IMAGEMANAGER->addFrameImage("·¹ºñ¾ÆÅº_´ë±â", ENEMY"LeviathanStay.bmp", 630, 786, 2, 2, true, COLORDEL);
-	IMAGEMANAGER->addFrameImage("·¹ºñ¾ÆÅº_³»·Á°¨", ENEMY"LeviathanDown.bmp", 945, 786, 3, 2, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("·¹ºñ¾ÆÅº_ÀÔ¼ö", ENEMY"LeviathanDown.bmp", 945, 786, 3, 2, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("·¹ºñ¾ÆÅº_·¹ÀÌÀú", ENEMY"LeviathanLaser.bmp", 1575, 393, 5, 1, true, COLORDEL);
-	IMAGEMANAGER->addFrameImage("·¹ºñ¾ÆÅº_ºÒ¸ð¼Ç", ENEMY"LeviathanFire.bmp", 1260, 786, 4, 2, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("·¹ºñ¾ÆÅº_È­¿°»Õ±â", ENEMY"LeviathanFire.bmp", 1260, 786, 4, 2, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("·¹ºñ¾ÆÅº_ºÒ", ENEMY"LeviathanFire1.bmp", 1692, 468, 6, 2, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("·¹ºñ¾ÆÅº_Á×À½", ENEMY"LeviathanDie.bmp", 945, 786, 3, 2, true, COLORDEL);
 

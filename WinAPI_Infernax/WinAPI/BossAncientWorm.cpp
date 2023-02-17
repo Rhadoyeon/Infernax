@@ -10,7 +10,7 @@ void Unit::AncientWormInit(void)
 	AncientWorm.Hp = 0;
 	AncientWorm.gravity = 0.0f;
 	AncientWorm.Die = AncientWorm.UpDown = false;
-	AncientWorm.currentTime = 3.0f;
+	AncientWorm.currentTime = 0.0f;
 
 	//레이저
 	AncientWormLaser.X = AncientWormLaser.Y = 0;
@@ -44,11 +44,14 @@ void Unit::AncientWormUpdate(void)
 			AncientWorm.AncientWormState = A_ATTACK1;
 			if (worldTimeCount % 30 == 0) AncientWorm.FrameX++;
 			if (AncientWorm.FrameX > IMAGEMANAGER->findImage("고대웜")->getMaxFrameX()) AncientWorm.FrameX = 3;
+
 			// 웜의 프레임이 맥스 일때 패턴은 1로 / 프레임은 0으로 초기화
-			if (AncientWorm.FrameX == 3)
+			if (AncientWorm.FrameX == 3 && AncientWorm.Pattern == 0 && !AncientWorm.Die)
 			{
 				AncientWorm.FrameX = 0;
 				AncientWorm.Pattern = 1;
+				AncientWorm.currentTime = 5.0f;
+				AncientWorm.currentTime = TIMEMANAGER->getWorldTime();
 			}
 		}
 
@@ -66,19 +69,10 @@ void Unit::AncientWormUpdate(void)
 			if (AncientWormLaser.LaserFrameX1 > IMAGEMANAGER->findImage("고대웜_레이저")->getMaxFrameX())
 			{
 				AncientWormLaser.LaserFrameX1 = 2;
-				if (!AncientWormLaser.change) AncientWorm.currentTime = TIMEMANAGER->getWorldTime();
-				AncientWormLaser.change = true;
-			}
-			// 일정 시간이 지나고 레이저에서 화염구 패턴으로 바꿔준다.
-			if (TIMEMANAGER->getWorldTime() - AncientWorm.currentTime > 5)
-			{
-				if (AncientWormLaser.LaserFrameX1 == 2 && AncientWormLaser.change)
-				{
-					AncientWormLaser.change = false;
-				}
 			}
 
-			if (!AncientWormLaser.change)
+			// 일정 시간이 지나고 레이저에서 화염구 패턴으로 바꿔준다.
+			if (TIMEMANAGER->getWorldTime() - AncientWorm.currentTime > 5 && AncientWorm.Pattern == 1 && !AncientWorm.Die)
 			{
 				AncientWorm.Pattern = 2;
 
@@ -137,7 +131,7 @@ void Unit::AncientWormUpdate(void)
 					else i++;
 
 					// 사이즈가 0이 될때(화염구가 모두 사라질때) 패턴은 3으로 변경된다.
-					if (vABullet.size() == 0)
+					if (vABullet.size() == 0 && AncientWorm.Pattern == 2 && !AncientWorm.Die)
 					{
 						AncientWorm.Pattern = 3;
 					}
@@ -214,7 +208,7 @@ void Unit::AncientWormUpdate(void)
 				}
 
 				// 사이즈가 0이 될때 웜을 다시 제자리에 올려주고 패턴 0으로 간다.
-				if (vRock.size() == 0)
+				if (vRock.size() == 0 && AncientWorm.Pattern == 3 && !AncientWorm.Die)
 				{
 					AncientWorm.Rc.top -= 200;
 					AncientWorm.Rc.bottom -= 200;
