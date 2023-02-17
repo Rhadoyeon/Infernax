@@ -68,6 +68,14 @@ enum BOSS_ANCIENTWORM
 	A_DIE
 };
 
+enum BOSS_LEVIATHAN
+{
+	L_ATTACK1,
+	L_ATTACK2,
+	L_DIE
+};
+
+// 플레이어
 struct PlayerStruct
 {
 	float X, Y, Speed, Gravity;		// 위치/중력
@@ -99,6 +107,7 @@ struct PlayerStruct
 	bool colliChkDown;
 
 };
+
 // 보스 파이몬(vomit)
 struct EnemyStruct	// zombie
 {
@@ -223,13 +232,6 @@ struct AncientWormStruct
 	bool UpDown;
 	bool Die;
 };
-struct AncientLaser
-{
-	float X, Y;
-	RECT Rc;
-	int LaserFrameX, LaserFrameX1;
-	bool shot, change;
-};
 struct AncientBullet // 파이어볼
 {
 	float X, Y;
@@ -249,7 +251,40 @@ struct AncientRockFall
 	float speed;
 	float gravity;
 };
-// 보스 미정
+
+// 보스 레비아탄
+struct LeviathanStruct
+{
+	BOSS_LEVIATHAN LeviathanState;
+	RECT Rc;
+	float X, Y;
+	// 대기, 레이저, 불
+	int FrameX, FrameX1, FireFrameX, LaserFrameX, DieFrameX;
+	int Time, Pattern;
+	int Hp;
+	float currentTime;
+	float gravity;
+
+	bool Down;
+	bool Die;
+};
+struct LeviathanLaser
+{
+	float X, Y;
+	RECT Rc;
+	int LaserFrameX, LaserFrameX1;
+	bool shot, change;
+};
+
+// 공동 (고대웜 & 레비아탄)
+struct Laser
+{
+	float X, Y;
+	RECT Rc;
+	int LaserFrameX, LaserFrameX1;
+	bool shot, change;
+};
+
 class Unit : public GameNode
 {
 private: // 플레이어
@@ -268,17 +303,13 @@ private: // 플레이어
 
 	RECT Wall[15];
 
-private: // 배틀씬1 적
+private: // 배틀씬1 적(좀비)
 	EnemyStruct zombie;
 
-private: // 첫번째 보스
+private: // 첫번째 보스(파이몬)
 	BossStruct vomitBoss;
 
-private: // 두번째 보스
-
-	// 보스 패턴 넣어주는 큐
-	// queue<int> qBelphegor;
-
+private: // 두번째 보스(벨페고르)
 	BelphegorStruct belphegor;
 	JavelinStruct javelin;
 	PotalStruct potal;
@@ -289,7 +320,7 @@ private: // 두번째 보스
 	// ChangeBoss 안의 패턴 (순차적으로 진행)
 	int ChangeBossPaturn;
 
-private: // 세번째 보스
+private: // 세번째 보스(크로셀)
 
 	CrocellStruct Crocell;
 	SkeletonStruct Skeleton;
@@ -301,7 +332,7 @@ private: // 세번째 보스
 
 private: // 네번째 보스(고대웜)
 	AncientWormStruct AncientWorm;
-	AncientLaser Laser;
+	Laser AncientWormLaser;
 	AncientBullet FireBall;
 	AncientRockFall RockFall;
 
@@ -309,8 +340,20 @@ private: // 네번째 보스(고대웜)
 	vector<AncientBullet>::iterator viABullet;
 	vector<AncientRockFall> vRock;
 
-	int OceanFrame;
+	int RedOceanFrame;
 	int bulletCount;
+
+private: // 다섯번째 보스(레비아탄)
+	LeviathanStruct Leviathan;
+	Laser LeviathanLaser;
+
+	int BlueOceanFrame;
+
+private: // 여섯번째 보스(늑대인간)
+
+private: // 일곱번째 보스(아폴리온)
+
+private: // 여덟번째 보스(마몬 or 마할몬 or 지옥의 투사 or 변형체(헬 모나크))
 
 public:
 	HRESULT init(void);
@@ -344,6 +387,10 @@ public:
 	void AncientWormInit(void);
 	void AncientWormUpdate(void);
 	void AncientWormRender(void);
+
+	void LeviathanInit(void);
+	void LeviathanUpdate(void);
+	void LeviathanRender(void);
 
 	void setPlayerX(float X) { player.X = X; }
 	void setPlayerY(float Y) { player.Y = Y; }

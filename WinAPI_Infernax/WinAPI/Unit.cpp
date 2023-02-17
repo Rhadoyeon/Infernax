@@ -9,6 +9,7 @@ HRESULT Unit::init(void)
 	BelphegorInit();
 	CrocellInit();
 	AncientWormInit();
+	LeviathanInit();
 
 	worldTimeCount = 0;
 
@@ -27,6 +28,7 @@ void Unit::update(void)
 	BelphegorUpdate();
 	CrocellUpdate();
 	AncientWormUpdate();
+	LeviathanUpdate();
 
 	worldTimeCount++;
 }
@@ -39,4 +41,6 @@ void Unit::render(void)
 	BelphegorRender();
 	CrocellRender();
 	AncientWormRender();
+	LeviathanRender();
+
 }

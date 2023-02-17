@@ -1,7 +1,6 @@
 #include "Stdafx.h"
 #include "Unit.h"
 
-
 // 보스가 적을 소환한다.
 // 소환하는 프레임을 돌린다.
 // 좀비가 나오고 좀비가 죽으면! (불값을 줘서 죽은 후 트루가 되서 패턴 2가 나오게)
@@ -13,19 +12,15 @@
 void Unit::CrocellInit(void)
 {
 	Crocell.X = Crocell.Y = 0;
-	Crocell.SkillFrameX1 /*= Crocell.SkillFrameY1*/ = Crocell.SkillFrameX2 = Crocell.DieFrameX = 0;
+	Crocell.SkillFrameX1 = Crocell.SkillFrameX2 = Crocell.DieFrameX = 0;
 
-	Crocell.Hp = 0;
-	/*Crocell.EnemyDiePatternChange =*/ Crocell.Die = false;
+	Crocell.Hp = CrocellPattern = 0;
+	Crocell.Die = false;
 	currentTime = 5000;
-	CrocellPattern = 0;
 
-	OceanFrame = 0;
+	RedOceanFrame = 0;
 
 	CrocellSkeletonReset();
-	//vBullet.X = vBullet.Y = 0;
-	//vBullet.shot = false;
-	//vBullet.degree = 0.0f;
 }
 
 void Unit::CrocellUpdate(void)
@@ -36,12 +31,12 @@ void Unit::CrocellUpdate(void)
 	Crocell.Rc = RectMake(Crocell.X + 870, Crocell.Y + 220, 300, 400);
 	Skeleton.Rc = RectMake(Skeleton.X + 980, Skeleton.Y + 510, 58, 109);
 
-	if (worldTimeCount % 30 == 0) OceanFrame++;
-	if (OceanFrame > IMAGEMANAGER->findImage("레드오션")->getMaxFrameX()) OceanFrame = 0;
+	if (worldTimeCount % 30 == 0) RedOceanFrame++;
+	if (RedOceanFrame > IMAGEMANAGER->findImage("레드오션")->getMaxFrameX()) RedOceanFrame = 0;
 
 	if (!Crocell.Die)
 	{
-
+		// 패턴1 좀비 소환 / 크로셀의 특정 프레임이 마지막 프레임이 되면 좀비가 소환된다.
 		if (CrocellPattern == 0)
 		{
 			Crocell.CrocellState = C_ATTACK1;
@@ -69,6 +64,7 @@ void Unit::CrocellUpdate(void)
 				Skeleton.Die = true;
 			}
 
+			// 스켈레톤이 죽으면 크로셀 패턴은 1로 넘어간다.
 			if (Skeleton.Die && CrocellPattern == 0)
 			{
 				CrocellPattern = 1;
@@ -78,6 +74,7 @@ void Unit::CrocellUpdate(void)
 			//cout << CrocellPattern << endl;
 		}
 
+		// 패턴2 특정 프레임이 되면 총알을 생성한다.
 		else if (CrocellPattern == 1)
 		{
 			Crocell.SkillFrameX2 = 0;
@@ -98,6 +95,7 @@ void Unit::CrocellUpdate(void)
 			}
 		}
 
+		// 패턴3 눈에서 총알이 나간다. 3개의 공간으로 나가며 초반에는 플레이어 쪽으로 향한다.
 		else if (CrocellPattern == 2)
 		{
 			if (worldTimeCount % 17 == 0) Crocell.SkillFrameX2++;
@@ -110,7 +108,6 @@ void Unit::CrocellUpdate(void)
 			}
 
 
-			//Crocell.SkillFrameX2 = 2;
 			if (TIMEMANAGER->getWorldTime() - currentTime > /*5*/1)
 			{
 				CrocellPattern = 0;
@@ -126,8 +123,8 @@ void Unit::CrocellUpdate(void)
 			if (Crocell.Hp < 400) Crocell.Hp++;
 		}
 	}
-	//cout << CrocellPattern << endl;
 
+	// 크로셀 죽음
 	if (Crocell.Hp == 400)
 	{
 		Crocell.Die = true;
@@ -181,7 +178,7 @@ void Unit::CrocellRender(void)
 		}
 	}
 
-	IMAGEMANAGER->findImage("레드오션")->frameRender(getMemDC(), 0, 720, OceanFrame, 0);
+	IMAGEMANAGER->findImage("레드오션")->frameRender(getMemDC(), 0, 720, RedOceanFrame, 0);
 }
 
 void Unit::CrocellSkeletonReset(void)

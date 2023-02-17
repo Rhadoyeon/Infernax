@@ -37,7 +37,7 @@ void VillageScene::update(void)
 		bgAlpha3 += 2;
 		if (bgAlpha3 > 255)
 		{
-			SCENEMANAGER->changeScene("πË∆≤∏ 3");
+			SCENEMANAGER->changeScene("πË∆≤∏ 4");
 		}
 	}
 }

@@ -29,7 +29,7 @@ void battleScene4::update(void)
 		bgAlpha4 += 2;
 		if (bgAlpha4 > 255)
 		{
-			SCENEMANAGER->changeScene("πË∆≤∏ 3");
+			SCENEMANAGER->changeScene("πË∆≤∏ 5");
 		}
 	}
 }

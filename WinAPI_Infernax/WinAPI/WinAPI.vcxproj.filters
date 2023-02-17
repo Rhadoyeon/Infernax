@@ -221,6 +221,9 @@
     <ClCompile Include="BossAncientWorm.cpp">
       <Filter>Unit\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="BossLeviathan.cpp">
+      <Filter>Unit\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C3DMatrix.h">

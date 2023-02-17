@@ -145,7 +145,7 @@ void MainGame::Images(void)
 	// 배틀씬7 맵
 	IMAGEMANAGER->addImage("전투7", BG"battleSceneLAND9.bmp", 2500, 1000, true, COLORDEL);
 
-	// 배틀씬8 고대웜 보스
+	// 배틀씬9 고대웜 보스
 	IMAGEMANAGER->addImage("고대웜배경1", BG"battleSceneBG5.bmp", 2498, 1000, true, COLORDEL);
 	IMAGEMANAGER->addImage("고대웜배경2", BG"battleSceneBG6.bmp", 1847, 500, true, COLORDEL);
 	IMAGEMANAGER->addImage("고대웜전투지형", BG"battleSceneLAND8.bmp", 1682, 1000, true, COLORDEL);
@@ -156,11 +156,28 @@ void MainGame::Images(void)
 	IMAGEMANAGER->addFrameImage("고대웜_레이저볼", ENEMY"AncientWormLaserBall.bmp", 324, 186, 2, 1, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("고대웜_레이저", ENEMY"AncientWormLaser.bmp", 6264, 126, 4, 1, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("고대웜_레이저2", ENEMY"AncientWormLaser2.bmp", 3132, 126, 2, 1, true, COLORDEL);
-
 	IMAGEMANAGER->addFrameImage("고대웜_화염구", ENEMY"AncientWormFireBall.bmp", 189, 63, 3, 1, true, COLORDEL);
 	IMAGEMANAGER->addImage("고대웜_벽돌", ENEMY"AncientWormRockFall.bmp", 47, 47, true, COLORDEL);
 
+	// 배틀씬8 레비아탄 보스
+	IMAGEMANAGER->addImage("레비아탄배경1", BG"LeviathanBG.bmp", 2236, 1300, true, COLORDEL);
+	IMAGEMANAGER->addImage("레비아탄전투지형1", BG"LeviathanLAND1.bmp", 2812, 1362, true, COLORDEL);
+	IMAGEMANAGER->addImage("레비아탄전투지형2", BG"LeviathanLAND2.bmp", 2812, 1362, true, COLORDEL);
+	// 레비아탄
+	IMAGEMANAGER->addFrameImage("레비아탄_대기", ENEMY"LeviathanStay.bmp", 630, 786, 2, 2, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("레비아탄_내려감", ENEMY"LeviathanDown.bmp", 945, 786, 3, 2, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("레비아탄_레이저", ENEMY"LeviathanLaser.bmp", 1575, 393, 5, 1, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("레비아탄_불모션", ENEMY"LeviathanFire.bmp", 1260, 786, 4, 2, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("레비아탄_불", ENEMY"LeviathanFire1.bmp", 1692, 468, 6, 2, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("레비아탄_죽음", ENEMY"LeviathanDie.bmp", 945, 786, 3, 2, true, COLORDEL);
+
+	// 배틀씬 10
+	// 배틀씬 11
+	// 배틀씬 12
+
 	IMAGEMANAGER->addFrameImage("레드오션", BG"RedOcean.bmp", 8640, 141, 3, 1, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("블루오션", BG"BlueOcean.bmp", 8640, 141, 3, 1, true, COLORDEL);
+
 	// 배틀씬9 보스(미정)
 
 	// 배틀씬4 적 (스켈레톤) 배틀씬(미정) 해골 등장

@@ -154,6 +154,7 @@
     <ClCompile Include="battleScene9.cpp" />
     <ClCompile Include="BossAncientWorm.cpp" />
     <ClCompile Include="BossCrocell.cpp" />
+    <ClCompile Include="BossLeviathan.cpp" />
     <ClCompile Include="BossVomit.cpp" />
     <ClCompile Include="C3DMatrix.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>

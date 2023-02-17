@@ -3,7 +3,11 @@
 
 void Unit::BelphegorInit(void)
 {
-	belphegor.FrameX = belphegor.FrameY = javelin.TrowFrameX = javelin.FrameX = javelin.TrowFrameX = 0;
+	// 벨페고르
+	belphegor.X = 620;
+	belphegor.Y = 240;
+	belphegor.BelphegorState = B_WALK;
+	belphegor.FrameX = belphegor.FrameY = 0;
 	belphegor.SkillFrameX = belphegor.ScreamFrameX = belphegor.WalkFrameX = 0;
 	belphegor.StandFrameX = belphegor.KickFrameX = belphegor.DieFrameX = 0;
 
@@ -11,13 +15,12 @@ void Unit::BelphegorInit(void)
 	belphegor.Attack = belphegor.Pattern = belphegor.Die = false;
 	belphegor.Hp = belphegor.Count = /*belphegor.DieCount = belphegor.WalkCount =*/ 0;
 
-	belphegor.BelphegorState = B_WALK;
+	// 창
+	javelin.TrowFrameX = javelin.FrameX = javelin.TrowFrameX = 0;
 	javelin.X = javelin.Y = 0;
-	belphegor.X = 620;
-	belphegor.Y = 240;
 
+	//포탈
 	potal.FireballRc = RectMake(belphegor.X - 350, belphegor.Y - 150, 63, 64);
-
 	potal.FrameX1 = potal.FrameX2 = 0;
 	potal.FireBallFrameX = 0;
 
