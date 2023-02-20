@@ -21,14 +21,14 @@ void battleScene9::release(void)
 
 void battleScene9::update(void)
 {
-	//if (unit->getPlayerX() <= 30)
-	//{
-	//	bgAlpha9 += 2;
-	//	if (bgAlpha9 > 255)
-	//	{
-	//		SCENEMANAGER->changeScene("¹èÆ²¸Ê7");
-	//	}
-	//}
+	if (unit->getPlayerX() <= 30)
+	{
+		bgAlpha9 += 2;
+		if (bgAlpha9 > 255)
+		{
+			SCENEMANAGER->changeScene("·¹ºñ¾ÆÅº_ÀÎÆ®·Î");
+		}
+	}
 
 	unit->update();
 

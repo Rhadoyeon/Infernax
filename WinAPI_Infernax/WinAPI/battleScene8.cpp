@@ -8,7 +8,7 @@ HRESULT battleScene8::init(void)
 
 	//change = false;
 
-	unit->setPlayerX(800.0f);
+	unit->setPlayerX(750.0f);
 
 	bgAlpha8 = 0;
 	return S_OK;
@@ -22,21 +22,14 @@ void battleScene8::release(void)
 void battleScene8::update(void)
 {
 	unit->update();
-	if (unit->getPlayerX() >= 1135)
+	if (unit->getPlayerX() <= 30)
 	{
 		bgAlpha8 += 2;
 		if (bgAlpha8 > 255)
 		{
-			SCENEMANAGER->changeScene("¹èÆ²¸Ê7");
-			//change = true;
+			SCENEMANAGER->changeScene("´Á´ëÀÎ°£_ÀÎÆ®·Î");
 		}
 	}
-
-	//if (change)
-	//{
-	//	unit->setPlayerX(100.0f);
-	//	unit->setPlayerDirection(true);
-	//}
 }
 
 void battleScene8::render(void)

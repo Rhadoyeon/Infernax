@@ -10,15 +10,14 @@ HRESULT Unit::init(void)
 	CrocellInit();
 	AncientWormInit();
 	LeviathanInit();
+	LycanthropeInit();
 
 	worldTimeCount = 0;
 
 	return S_OK;
 }
 
-void Unit::release(void)
-{
-}
+void Unit::release(void) {}
 
 void Unit::update(void)
 {
@@ -29,6 +28,7 @@ void Unit::update(void)
 	CrocellUpdate();
 	AncientWormUpdate();
 	LeviathanUpdate();
+	LycanthropeUpdate();
 
 	worldTimeCount++;
 }
@@ -42,5 +42,5 @@ void Unit::render(void)
 	CrocellRender();
 	AncientWormRender();
 	LeviathanRender();
-
+	LycanthropeRender();
 }

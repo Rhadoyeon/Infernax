@@ -22,11 +22,15 @@ private:
 	int crossX[10], crossY[10];
 	int crowFrameX, crowFrameY;
 
+	bool videoSkip;
+
 public:
 	HRESULT init(void);
 	void release(void);
 	void update(void);
 	void render(void);
+
+	//bool getVideo(void) { return video; }
 
 	battleScene() {}
 	~battleScene() {}

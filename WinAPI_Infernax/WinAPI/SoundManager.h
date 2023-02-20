@@ -30,8 +30,8 @@ FMOD
 	람다에 들어간다.
 
 */
-constexpr auto soundBuffer = 10;
-constexpr auto extraSoundChannel = 5;
+constexpr auto soundBuffer = 100;
+constexpr auto extraSoundChannel = 100;
 constexpr auto totalSoundChannel = soundBuffer + extraSoundChannel;
 
 using namespace FMOD;

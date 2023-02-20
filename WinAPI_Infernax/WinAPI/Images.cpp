@@ -153,9 +153,7 @@ void MainGame::Images(void)
 	IMAGEMANAGER->addFrameImage("°í´ë¿ú", ENEMY"AncientWormSkill2.bmp", 1560, 417, 4, 1, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("°í´ë¿ú_ÀÔX", ENEMY"AncientWorm.bmp", 780, 417, 2, 1, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("°í´ë¿ú_ÀÔO", ENEMY"AncientWormSkill.bmp", 780, 417, 2, 1, true, COLORDEL);
-	IMAGEMANAGER->addFrameImage("°í´ë¿ú_·¹ÀÌÀúº¼", ENEMY"AncientWormLaserBall.bmp", 324, 186, 2, 1, true, COLORDEL);
-	IMAGEMANAGER->addFrameImage("°í´ë¿ú_·¹ÀÌÀú", ENEMY"AncientWormLaser.bmp", 6264, 126, 4, 1, true, COLORDEL);
-	IMAGEMANAGER->addFrameImage("°í´ë¿ú_·¹ÀÌÀú2", ENEMY"AncientWormLaser2.bmp", 3132, 126, 2, 1, true, COLORDEL);
+	//IMAGEMANAGER->addFrameImage("·¹ÀÌÀú2", ENEMY"AncientWormLaser2.bmp", 3132, 126, 2, 1, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("°í´ë¿ú_È­¿°±¸", ENEMY"AncientWormFireBall.bmp", 189, 63, 3, 1, true, COLORDEL);
 	IMAGEMANAGER->addImage("°í´ë¿ú_º®µ¹", ENEMY"AncientWormRockFall.bmp", 47, 47, true, COLORDEL);
 
@@ -166,13 +164,22 @@ void MainGame::Images(void)
 	// ·¹ºñ¾ÆÅº
 	IMAGEMANAGER->addFrameImage("·¹ºñ¾ÆÅº_´ë±â", ENEMY"LeviathanStay.bmp", 630, 786, 2, 2, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("·¹ºñ¾ÆÅº_ÀÔ¼ö", ENEMY"LeviathanDown.bmp", 945, 786, 3, 2, true, COLORDEL);
-	IMAGEMANAGER->addFrameImage("·¹ºñ¾ÆÅº_·¹ÀÌÀú", ENEMY"LeviathanLaser.bmp", 1575, 393, 5, 1, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("·¹ºñ¾ÆÅº_·¹ÀÌÀú", ENEMY"LeviathanLaser.bmp", 1575, 768, 5, 2, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("·¹ºñ¾ÆÅº_È­¿°»Õ±â", ENEMY"LeviathanFire.bmp", 1260, 786, 4, 2, true, COLORDEL);
-	IMAGEMANAGER->addFrameImage("·¹ºñ¾ÆÅº_ºÒ", ENEMY"LeviathanFire1.bmp", 1692, 468, 6, 2, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("·¹ºñ¾ÆÅº_ºÒ", ENEMY"LeviathanFire1.bmp", 846, 468, 6, 2, true, COLORDEL);
 	IMAGEMANAGER->addFrameImage("·¹ºñ¾ÆÅº_Á×À½", ENEMY"LeviathanDie.bmp", 945, 786, 3, 2, true, COLORDEL);
 
+	// ·¹ºñ¾ÆÅº & °í´ë¿ú °øµ¿
+	IMAGEMANAGER->addFrameImage("·¹ÀÌÀúº¼", ENEMY"LaserBall.bmp", 324, 372, 2, 2, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("·¹ÀÌÀú", ENEMY"Laser.bmp", 6264, 126, 4, 1, true, COLORDEL);
+	IMAGEMANAGER->addFrameImage("·¹ºñ¾ÆÅº_·¹ÀÌÀú½ºÅ³", ENEMY"LeviathanLaserSkill.bmp", 15660, 126, 10, 1, true, COLORDEL);
+
 	// ¹èÆ²¾À 10
+	IMAGEMANAGER->addImage("´Á´ëÀÎ°£¹è°æ", BG"LycanthropeBG.bmp", 1368, 769, true, COLORDEL);
+
+
 	// ¹èÆ²¾À 11
+	
 	// ¹èÆ²¾À 12
 
 	IMAGEMANAGER->addFrameImage("·¹µå¿À¼Ç", BG"RedOcean.bmp", 8640, 141, 3, 1, true, COLORDEL);

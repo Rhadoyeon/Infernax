@@ -26,6 +26,8 @@ public:
 	GameNode* addScene(string sceneName, GameNode* scene);
 	GameNode* addLodingScene(string loadingScene, GameNode* scene);
 	
+	bool isPlayScene(string sceneName);
+
 	HRESULT changeScene(string sceneName);
 
 	//로딩 스레드 함수

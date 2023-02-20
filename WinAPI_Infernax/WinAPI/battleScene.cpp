@@ -8,6 +8,8 @@ HRESULT battleScene::init(void)
 
 	bgMove = 0;
 
+	videoSkip = false;
+
 	// 까마귀 초기화
 	for (int i = 0; i < _countof(crows); i++)
 	{
@@ -53,7 +55,7 @@ void battleScene::update(void)
 		bgAlpha1 += 2;
 		if (bgAlpha1 > 255)
 		{
-			SCENEMANAGER->changeScene("배틀맵2");
+			SCENEMANAGER->changeScene("파이몬_인트로");
 		}
 	}
 

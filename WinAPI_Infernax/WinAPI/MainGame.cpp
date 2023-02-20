@@ -13,6 +13,19 @@
 #include "battleScene7.h"
 #include "battleScene8.h"
 #include "battleScene9.h"
+#include "battleScene10.h"
+//#include "battleScene11.h"
+//#include "battleScene12.h"
+//#include "battleScene13.h"
+
+//비디오
+#include "Opening.h"
+#include "BossVomitIntro.h"
+//#include "BossBelphegorIntro.h"
+#include "BossCrocellIntro.h"
+#include "BossLeviathanIntro.h"
+#include "BossLycanthropeIntro.h"
+
 
 HRESULT MainGame::init(void)
 {
@@ -21,18 +34,33 @@ HRESULT MainGame::init(void)
 
 	SCENEMANAGER->addScene("시작", new StartScene);
 	SCENEMANAGER->addScene("메인메뉴", new MainMenu);
-	SCENEMANAGER->addScene("배틀맵", new battleScene);	 // 초반 좀비
-	SCENEMANAGER->addScene("배틀맵2", new battleScene2);	 // 파이몬
+	SCENEMANAGER->addScene("배틀맵", new battleScene);		// 좀비
+	SCENEMANAGER->addScene("배틀맵2", new battleScene2);		// 파이몬
 	SCENEMANAGER->addScene("마을", new VillageScene);
 	SCENEMANAGER->addScene("무기상점", new ShopScene);
-	SCENEMANAGER->addScene("배틀맵3", new battleScene3);  // 통과지점
-	SCENEMANAGER->addScene("배틀맵4", new battleScene4);	 // 벨페고르
-	SCENEMANAGER->addScene("배틀맵5", new battleScene5);	 // 통과지점
-	SCENEMANAGER->addScene("배틀맵6", new battleScene6);	 // 크로셀
-	SCENEMANAGER->addScene("배틀맵7", new battleScene7); // 통과지점
-	SCENEMANAGER->addScene("배틀맵8", new battleScene8); //	레비아탄
-	SCENEMANAGER->addScene("배틀맵9", new battleScene9); // 고대웜
+	SCENEMANAGER->addScene("배틀맵3", new battleScene3);		// 통과지점
+	SCENEMANAGER->addScene("배틀맵4", new battleScene4);		// 벨페고르
+	SCENEMANAGER->addScene("배틀맵5", new battleScene5);		// 통과지점
+	SCENEMANAGER->addScene("배틀맵6", new battleScene6);		// 크로셀
+	SCENEMANAGER->addScene("배틀맵7", new battleScene7);		// 통과지점
+	SCENEMANAGER->addScene("배틀맵8", new battleScene8);		// 레비아탄
+	SCENEMANAGER->addScene("배틀맵9", new battleScene9);		// 고대웜
+	SCENEMANAGER->addScene("배틀맵10", new battleScene10);	// 늑대인간
+	//SCENEMANAGER->addScene("배틀맵11", new battleScene11);
+	//SCENEMANAGER->addScene("배틀맵12", new battleScene12);
+	//SCENEMANAGER->addScene("배틀맵13", new battleScene13);
 
+	// 비디오
+	SCENEMANAGER->addScene("오프닝", new Opening);		// 메인 다음 오프닝 비디오
+	SCENEMANAGER->addScene("파이몬_인트로", new BossVomitIntro);
+	//SCENEMANAGER->addScene("벨페고르_인트로", new BossBelphegorIntro);
+	SCENEMANAGER->addScene("크로셀_인트로", new BossCrocellIntro);
+	SCENEMANAGER->addScene("레비아탄_인트로", new BossLeviathanIntro);
+	SCENEMANAGER->addScene("늑대인간_인트로", new BossLycanthropeIntro);
+
+	//엔딩	
+
+	// 현재 씬
 	SCENEMANAGER->changeScene("배틀맵8");
 
 	return S_OK;
@@ -55,7 +83,12 @@ void MainGame::render(void)
 	PatBlt(getMemDC(), 0, 0, WINSIZE_X, WINSIZE_Y, BLACKNESS);
 
 	SCENEMANAGER->render();
-
 	TIMEMANAGER->render(getMemDC());
+
+	if (!SCENEMANAGER->isPlayScene("오프닝") &&
+		!SCENEMANAGER->isPlayScene("파이몬_인트로") &&
+		!SCENEMANAGER->isPlayScene("크로셀_인트로") &&
+		!SCENEMANAGER->isPlayScene("레비아탄_인트로") &&
+		!SCENEMANAGER->isPlayScene("늑대인간_인트로"))
 	this->getBackBuffer()->render(getHDC());
 }

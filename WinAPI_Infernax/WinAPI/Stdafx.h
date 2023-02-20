@@ -36,6 +36,8 @@
 
 #include <SDKDDKVer.h>
 
+#pragma comment (lib, "Vfw32.lib")
+#include <Vfw.h>
 
 // =====================
 //! C 런타임 헤더 파일

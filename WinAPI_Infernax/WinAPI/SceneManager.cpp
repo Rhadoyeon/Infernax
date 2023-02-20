@@ -109,6 +109,21 @@ GameNode* SceneManager::addLodingScene(string loadingScene, GameNode* scene)
     return scene;
 }
 
+bool SceneManager::isPlayScene(string sceneName)
+{
+    bool chk;
+
+    mapSceneIter find = _mSceneList.find(sceneName);
+
+    if (_currentScene == find->second)
+    {
+        chk = true;
+    }
+    else chk = false;
+
+    return chk;
+}
+
 HRESULT SceneManager::changeScene(string sceneName)
 {
     mapSceneIter find = _mSceneList.find(sceneName);

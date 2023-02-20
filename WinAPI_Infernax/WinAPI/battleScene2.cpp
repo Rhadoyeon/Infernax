@@ -3,10 +3,12 @@
 
 HRESULT battleScene2::init(void)
 {
+	//SOUNDMANAGER->addSound("전투배경음", "Resources/Sounds/BossBattle.wav", true, true);
+	//SOUNDMANAGER->play("전투배경음", 100);
+
 	unit = new Unit;
 	unit->init();
 
-	//////villageMove = false;
 	return S_OK;
 }
 
@@ -17,6 +19,7 @@ void battleScene2::release(void)
 
 void battleScene2::update(void)
 {
+
 	unit->update();
 
 	if (unit->getPlayerX() <= 30)

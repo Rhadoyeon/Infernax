@@ -11,6 +11,9 @@ void Unit::enemyInit(void)
 
 	zombie.Hp = 0;
 	zombie.Die = false;
+	//SOUNDMANAGER->addSound("경로", "경로", true, true);
+	//SOUNDMANAGER->addSound("경로", "경로", false, false);
+
 #pragma endregion
 }
 

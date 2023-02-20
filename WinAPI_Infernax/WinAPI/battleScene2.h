@@ -8,6 +8,8 @@ private:
 	int bgAlpha2;
 	Unit* unit;
 
+	HWND video;
+
 public:
 	HRESULT init(void);
 	void release(void);

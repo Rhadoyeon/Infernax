@@ -23,57 +23,65 @@ enum PLAYER_INVEN
 	CHARECTER
 };
 
-// 보스 파이몬(vomit) 1번째
+// 1번째 보스 파이몬(vomit)
 enum ENEMY_STATE
 {
-	E_STAND,
 	E_WALK,
-	E_JUMP,
-	E_ATTACK,
-	E_DEAL,					// 플레이어에게 공격받음
-	E_DIE,
-	E_WEAPON,
+	E_ATTACK,	// 불쏘기
+	E_DIE
 };
 // 2번째
 enum BOSS_BELPHEGOR
 {
 	B_STAND,
-	B_WALK,
-	B_WALK2,
-	B_TAKE,
-	B_ATTACK,				// 창 공격
-	B_ATTACK2,				// 걷기
-	B_ATTACK3,				// 불덩이 공격
-	B_ATTACK4,				// 발차기 공격
-	B_ATTACK5,				// 걷기2
-	B_DEAL,					// 플레이어에게 공격받음
-	B_DIE,
-	B_WEAPON,
-	B_SCREAM
+	B_WALK,		// 창 X 걷기
+	B_WALK2,	// 창 O 걷기
+	B_TAKE,		// 창 가져가기
+	B_ATTACK,	// 창 공격
+	B_ATTACK2,	// 걷기
+	B_ATTACK3,	// 불덩이 공격
+	B_ATTACK4,	// 발차기 공격
+	B_ATTACK5,	// 걷기2
+	B_DEAL,		// 플레이어에게 공격받음
+	B_SCREAM,	// 소리치고 포탈소환
+	B_DIE
 };
 // 3번째
 enum BOSS_CROCELL
 {
-	C_ATTACK1,
-	C_ATTACK2,
+	C_ATTACK1,	// 좀비소환
+	C_ATTACK2,	// 총알
 	C_DIE
 };
 // 4번째
 enum BOSS_ANCIENTWORM
 {
-	A_ATTACK1,
-	A_ATTACK2,
-	A_ATTACK3,
-	A_ATTACK4,
+	A_ATTACK1,	// 대기
+	A_ATTACK2,	// 레이저
+	A_ATTACK3,	// 화염구
+	A_ATTACK4,	// 낙석
 	A_DIE
 };
 // 5번째
 enum BOSS_LEVIATHAN
 {
-	L_STAY,
-	L_ATTACK1,
-	L_ATTACK2,
+	L_STAY,	   // 대기
+	L_ATTACK1, // 화염 오른쪽
+	L_ATTACK2, // 화염 왼쪽
+	L_ATTACK3, // 레이저 오른쪽
+	L_ATTACK4, // 레이저 왼쪽
+	L_DOWN,	   // 입수
+	L_UP,	   // 올라오기
 	L_DIE
+};
+// 6번째
+enum BOSS_LYCANTHROPE
+{
+	LT_WALK,		// 걷기
+	LT_ATTACK1,		// 크게 할퀴기
+	LT_ATTACK2,		// 연속 할퀴기
+	LT_JUMPATTACK,	// 점프
+	LT_DIE
 };
 
 // 플레이어
@@ -258,26 +266,20 @@ struct LeviathanStruct
 {
 	BOSS_LEVIATHAN LeviathanState;
 	RECT Rc;
+	RECT FireRc;
 	float X, Y;
+	float FireX, FireY;
 	// 대기, 레이저, 불
-	int FrameX, FrameY, FireMotionFrameX, FireFrameX, LaserFrameX, DieFrameX;
+	int FrameX, FrameY, FireMotionFrameX, FireFrameX, DownFrameX, LaserMotionX, DieFrameX;
 	int Time, Pattern;
 	int Hp;
-	float currentTime;
+	float currentTime1, currentTime2, currentTime3;
 	float gravity;
 
-	bool Down;
-	bool Die;
-};
-struct LeviathanLaser
-{
-	float X, Y;
-	RECT Rc;
-	int LaserFrameX, LaserFrameX1;
-	bool shot, change;
+	bool Down, Shake, Die;
 };
 
-// 공동 (고대웜 & 레비아탄)
+// 보스 공동 스킬 (고대웜 & 레비아탄)
 struct Laser
 {
 	float X, Y;
@@ -286,10 +288,15 @@ struct Laser
 	bool shot, change;
 };
 
+// 보스 늑대인간 6번째
+struct LycanthropeStruct
+{
+
+};
+
 class Unit : public GameNode
 {
 private: // 플레이어
-
 	PlayerStruct player;
 
 	// 플레이어 충돌용
@@ -322,7 +329,6 @@ private: // 두번째 보스(벨페고르)
 	int ChangeBossPaturn;
 
 private: // 세번째 보스(크로셀)
-
 	CrocellStruct Crocell;
 	SkeletonStruct Skeleton;
 
@@ -351,10 +357,11 @@ private: // 다섯번째 보스(레비아탄)
 	int BlueOceanFrame;
 
 private: // 여섯번째 보스(늑대인간)
+	LycanthropeStruct Lycanthrope;
 
-private: // 일곱번째 보스(아폴리온)
+//private: // 일곱번째 보스(아폴리온)
 
-private: // 여덟번째 보스(마몬 or 마할몬 or 지옥의 투사 or 변형체(헬 모나크))
+//private: // 여덟번째 보스(마몬 or 마할몬 or 지옥의 투사 or 변형체(헬 모나크))
 
 public:
 	HRESULT init(void);
@@ -365,33 +372,35 @@ public:
 	void playerInit(void);
 	void playerUpdate(void);
 	void playerRender(void);
-
+	// 적(좀비)
 	void enemyInit(void);
 	void enemyUpdate(void);
 	void enemyRender(void);
-
+	// 1번째 보스
 	void bossVomitInit(void);
 	void bossVomitUpdate(void);
 	void bossVomitRender(void);
-
+	// 2번째 보스
 	void BelphegorInit(void);
 	void BelphegorUpdate(void);
 	void BelphegorRender(void);
-	//void BelphegorPattern(void);
-
+	// 3번째 보스
 	void CrocellInit(void);
 	void CrocellUpdate(void);
 	void CrocellRender(void);
-	//##
 	void CrocellSkeletonReset(void);
-
+	// 4번째 보스
 	void AncientWormInit(void);
 	void AncientWormUpdate(void);
 	void AncientWormRender(void);
-
+	// 5번째 보스
 	void LeviathanInit(void);
 	void LeviathanUpdate(void);
 	void LeviathanRender(void);
+	// 6번째 보스
+	void LycanthropeInit(void);
+	void LycanthropeUpdate(void);
+	void LycanthropeRender(void);
 
 	void setPlayerX(float X) { player.X = X; }
 	void setPlayerY(float Y) { player.Y = Y; }

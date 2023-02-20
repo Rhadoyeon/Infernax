@@ -184,9 +184,9 @@ void ShopScene::render(void)
 #pragma region 상점 그리기
 	IMAGEMANAGER->findImage("무기상점")->render(getMemDC(), shop.X - 30, shop.Y - 162);
 	//DrawRectMake(getMemDC(), unit->getPlayerRc());
-	DrawRectMake(getMemDC(), npcTemp[0]);
-	DrawRectMake(getMemDC(), npcTemp[1]);
-	DrawRectMake(getMemDC(), npcTemp[2]);
+	//DrawRectMake(getMemDC(), npcTemp[0]);
+	//DrawRectMake(getMemDC(), npcTemp[1]);
+	//DrawRectMake(getMemDC(), npcTemp[2]);
 
 	if (uiOn[0])
 	{

@@ -3,6 +3,9 @@
 
 void Unit::playerInit(void)
 {
+	SOUNDMANAGER->addSound("플레이어_타격", "Resources/Sounds/PlayerHit.wav", false, false);
+	SOUNDMANAGER->addSound("플레이어_점프", "Resources/Sounds/PlayerJump.wav", false, false);
+
 #pragma region 플레이어 변수 초기화
 	player.X = 900;
 	player.Y = 570;
@@ -321,6 +324,7 @@ void Unit::playerUpdate(void)
 	if (KEYMANAGER->isOnceKeyDown('X'))
 	{
 		player.State = P_ATTACK;
+		SOUNDMANAGER->play("플레이어_타격", 100);
 	}
 	if (KEYMANAGER->isOnceKeyUp('X'))
 	{
@@ -335,6 +339,8 @@ void Unit::playerUpdate(void)
 		player.JumpCount = true;
 		player.Speed = -10.5f;
 		player.Gravity = 0.8f;
+
+		SOUNDMANAGER->play("플레이어_점프", 100);
 
 	}
 

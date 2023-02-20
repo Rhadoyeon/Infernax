@@ -63,10 +63,10 @@ void Unit::AncientWormUpdate(void)
 			if (AncientWorm.FrameX1 > IMAGEMANAGER->findImage("고대웜_입O")->getMaxFrameX()) AncientWorm.FrameX1 = 0;
 
 			if (worldTimeCount % 17 == 0) AncientWormLaser.LaserFrameX++;
-			if (AncientWormLaser.LaserFrameX > IMAGEMANAGER->findImage("고대웜_레이저볼")->getMaxFrameX()) AncientWormLaser.LaserFrameX = 0;
+			if (AncientWormLaser.LaserFrameX > IMAGEMANAGER->findImage("레이저볼")->getMaxFrameX()) AncientWormLaser.LaserFrameX = 0;
 
 			if (worldTimeCount % 17 == 0) AncientWormLaser.LaserFrameX1++;
-			if (AncientWormLaser.LaserFrameX1 > IMAGEMANAGER->findImage("고대웜_레이저")->getMaxFrameX())
+			if (AncientWormLaser.LaserFrameX1 > IMAGEMANAGER->findImage("레이저")->getMaxFrameX())
 			{
 				AncientWormLaser.LaserFrameX1 = 2;
 			}
@@ -259,8 +259,8 @@ void Unit::AncientWormRender(void)
 			if (AncientWorm.AncientWormState == A_ATTACK2)
 			{
 				IMAGEMANAGER->findImage("고대웜_입O")->frameRender(getMemDC(), AncientWorm.Rc.left, AncientWorm.Rc.top, AncientWorm.FrameX1, 0);
-				IMAGEMANAGER->findImage("고대웜_레이저")->frameRender(getMemDC(), AncientWormLaser.Rc.left - 810, AncientWormLaser.Rc.top - 8, AncientWormLaser.LaserFrameX1, 0);
-				IMAGEMANAGER->findImage("고대웜_레이저볼")->frameRender(getMemDC(), AncientWorm.Rc.left - 90, AncientWorm.Rc.top + 180, AncientWormLaser.LaserFrameX, 0);
+				IMAGEMANAGER->findImage("레이저")->frameRender(getMemDC(), AncientWormLaser.Rc.left - 810, AncientWormLaser.Rc.top - 8, AncientWormLaser.LaserFrameX1, 0);
+				IMAGEMANAGER->findImage("레이저볼")->frameRender(getMemDC(), AncientWorm.Rc.left - 90, AncientWorm.Rc.top + 180, AncientWormLaser.LaserFrameX, 0);
 			}
 		}
 

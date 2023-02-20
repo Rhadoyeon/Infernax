@@ -27,7 +27,7 @@ void battleScene5::update(void)
 		bgAlpha5 += 2;
 		if (bgAlpha5 > 255)
 		{
-			SCENEMANAGER->changeScene("πË∆≤∏ 6");
+			SCENEMANAGER->changeScene("≈©∑Œºø_¿Œ∆Æ∑Œ");
 		}
 	}
 
@@ -36,7 +36,7 @@ void battleScene5::update(void)
 		bgAlpha5 += 2;
 		if (bgAlpha5 > 255)
 		{
-			SCENEMANAGER->changeScene("πË∆≤∏ 7");
+			SCENEMANAGER->changeScene("πË∆≤∏ 9");
 		}
 	}
 	// cout << unit->getPlayerX() << endl;

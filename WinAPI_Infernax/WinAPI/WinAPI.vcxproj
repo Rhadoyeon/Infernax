@@ -144,6 +144,7 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AnimationScene.cpp" />
     <ClCompile Include="battleScene.cpp" />
+    <ClCompile Include="battleScene10.cpp" />
     <ClCompile Include="battleScene2.cpp" />
     <ClCompile Include="battleScene3.cpp" />
     <ClCompile Include="battleScene4.cpp" />
@@ -153,9 +154,14 @@
     <ClCompile Include="battleScene8.cpp" />
     <ClCompile Include="battleScene9.cpp" />
     <ClCompile Include="BossAncientWorm.cpp" />
+    <ClCompile Include="BossCrocellIntro.cpp" />
     <ClCompile Include="BossCrocell.cpp" />
     <ClCompile Include="BossLeviathan.cpp" />
+    <ClCompile Include="BossLeviathanIntro.cpp" />
+    <ClCompile Include="BossLycanthrope.cpp" />
+    <ClCompile Include="BossLycanthropeIntro.cpp" />
     <ClCompile Include="BossVomit.cpp" />
+    <ClCompile Include="BossVomitIntro.cpp" />
     <ClCompile Include="C3DMatrix.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -180,6 +186,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="Opening.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="Quest.cpp" />
@@ -187,6 +194,7 @@
     <ClCompile Include="SaveManager.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="ShopScene.cpp" />
+    <ClCompile Include="SoundPush.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="SoundScene.cpp" />
     <ClCompile Include="StartScene.cpp" />
@@ -204,6 +212,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnimationScene.h" />
     <ClInclude Include="battleScene.h" />
+    <ClInclude Include="battleScene10.h" />
     <ClInclude Include="battleScene2.h" />
     <ClInclude Include="battleScene3.h" />
     <ClInclude Include="battleScene4.h" />
@@ -212,6 +221,10 @@
     <ClInclude Include="battleScene7.h" />
     <ClInclude Include="battleScene8.h" />
     <ClInclude Include="battleScene9.h" />
+    <ClInclude Include="BossCrocellIntro.h" />
+    <ClInclude Include="BossLeviathanIntro.h" />
+    <ClInclude Include="BossLycanthropeIntro.h" />
+    <ClInclude Include="BossVomitIntro.h" />
     <ClInclude Include="C3DMatrix.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClInclude>
@@ -232,6 +245,7 @@
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="Opening.h" />
     <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="Quest.h" />
     <ClInclude Include="QuestSample.h" />
@@ -240,6 +254,7 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="ShopScene.h" />
     <ClInclude Include="SingletonBase.h" />
+    <ClInclude Include="SoundPush.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="SoundScene.h" />
     <ClInclude Include="StartScene.h" />

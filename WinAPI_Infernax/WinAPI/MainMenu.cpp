@@ -49,7 +49,7 @@ void MainMenu::update(void)
 
 	if (KEYMANAGER->isOnceKeyDown(VK_SPACE))
 	{
-		SCENEMANAGER->changeScene("¹èÆ²¸Ê");
+		SCENEMANAGER->changeScene("¿ÀÇÁ´×");
 	}
 
 	settingRc = RectMakeCenter(mainX, mainY, 100, 100);
